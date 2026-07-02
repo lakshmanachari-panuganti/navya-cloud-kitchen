@@ -1,7 +1,7 @@
 name: Deploy · PRD
 
 # Production deploy: main branch → prd SWA. Same single-SWA model as dev
-# (see deploy-dev.yml). No PR previews for prd — those live on dev.
+# (see deploy-dev.yml). No PR previews for prd - those live on dev.
 
 on:
   push:

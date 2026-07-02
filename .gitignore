@@ -2,7 +2,7 @@
 node_modules/
 api/node_modules/
 
-# Azure Functions local settings — contains connection strings + Razorpay keys
+# Azure Functions local settings - contains connection strings + Razorpay keys
 local.settings.json
 api/local.settings.json
 
