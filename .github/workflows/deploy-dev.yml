@@ -33,11 +33,6 @@ concurrency:
   group: deploy-dev-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  # Node 22 = current LTS ("Jod"). Node 20 entered Maintenance in Oct 2025.
-  # See https://endoflife.date/nodejs
-  NODE_VERSION: '22'
-
 jobs:
   build-and-deploy:
     name: Build & Deploy - Dev
@@ -53,22 +48,6 @@ jobs:
           submodules: false
           lfs: false
 
-      - name: Use Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: npm
-          cache-dependency-path: api/package-lock.json
-
-      - name: Install API dependencies
-        working-directory: api
-        run: |
-          if [ -f package-lock.json ]; then
-            npm ci --omit=dev --no-audit --no-fund
-          else
-            npm install --omit=dev --no-audit --no-fund
-          fi
-
       - name: Deploy to Azure Static Web Apps
         id: swa
         uses: Azure/static-web-apps-deploy@v1
@@ -76,15 +55,13 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_DEV }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: upload
-          # Vanilla static site — no build output folder. app_location is the
-          # repo root; skip_app_build tells SWA to ship files as-is.
+          # Vanilla static site — no build step. app_location is the repo
+          # root; skip_app_build tells the SWA action to ship files as-is.
+          # Oryx handles `npm install` inside api/ during the build phase.
           app_location: '/'
           api_location: 'api'
           output_location: ''
           skip_app_build: true
-          # We ran `npm ci --omit=dev` above; skip Oryx's api build so it
-          # doesn't re-install and pull dev deps back in.
-          skip_api_build: true
 
   close-preview:
     name: Close PR Preview (DEV)
