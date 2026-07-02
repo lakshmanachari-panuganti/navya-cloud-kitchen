@@ -1076,9 +1076,23 @@ a { color: inherit; text-decoration: none; }
     font-size: 0.82rem;
     transition: color var(--t-fast);
 }
+.footer-contact a,
+.footer-contact span {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+.footer-contact a svg {
+    color: rgba(255,255,255,0.45);
+    transition: color var(--t-fast), transform var(--t-fast);
+}
 .footer-links a:hover,
 .footer-contact a:hover {
     color: #fff;
+}
+.footer-contact a:hover svg {
+    color: var(--saffron-light);
+    transform: translateY(-1px);
 }
 .footer-bottom {
     padding-top: var(--space-8);
