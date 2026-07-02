@@ -255,7 +255,7 @@ function buildPodiCard(item) {
     card.innerHTML = `
         <div class="pcard-img-wrap">
             <img src="${item.image}" alt="${item.name}" class="pcard-img" loading="lazy"
-                 onerror="this.src='https://placehold.co/420x240/faf5ec/1e5631?text=Navya+Cloud+Kitchen+Online'">
+                 onerror="this.src='https://placehold.co/420x240/faf5ec/1e5631?text=Navya+Cloud+Kitchen'">
         </div>
         <header class="pcard-tags">
             <span class="pcard-tier">${item.tier}</span>
@@ -354,7 +354,7 @@ function buildSweetCard(item) {
     card.innerHTML = `
         <div class="pcard-img-wrap">
             <img src="${item.image}" alt="${item.name}" class="pcard-img" loading="lazy"
-                 onerror="this.src='https://placehold.co/420x240/faf5ec/1e5631?text=Navya+Cloud+Kitchen+Online'">
+                 onerror="this.src='https://placehold.co/420x240/faf5ec/1e5631?text=Navya+Cloud+Kitchen'">
         </div>
         <header class="pcard-tags">
             <span class="pcard-tier">Sweet</span>
@@ -632,7 +632,7 @@ async function initiatePayment() {
             key: CONFIG.RAZORPAY_KEY_ID,
             amount: order.amount,
             currency: CONFIG.CURRENCY,
-            name: "Navya Cloud Kitchen Online",
+            name: "Navya Cloud Kitchen",
             description: "Homemade Delicacies - Next-Day Dispatch",
             image: IMG("logo.png", "navyas_kitchen_logo_1780835858832.png"),
             order_id: order.id,
@@ -686,7 +686,7 @@ function showSuccess(orderId, total, name, phone, address, date) {
 
     const lines = Object.values(cart).map(i => `• ${i.name} ×${i.qty} (₹${i.price * i.qty})`).join("\n");
     const msg = encodeURIComponent(
-        `*New Order - Navya Cloud Kitchen Online*\n\n` +
+        `*New Order - Navya Cloud Kitchen*\n\n` +
         `*Ref:* ${orderId}\n*Name:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}\n*Date:* ${date}\n\n` +
         `*Items:*\n${lines}\n\n*Items Total: ₹${total}*\n` +
         `_Courier extra - paid to Rapido/Porter at drop-off._\n\nThank you! 🙏`
