@@ -23,7 +23,7 @@ if (Test-Path $StaticSitesClientMetadata) {
 }
 
 Write-Host "======================================================" -ForegroundColor Cyan
-Write-Host "  Navya's Kitchen — Function App Deployment Script   " -ForegroundColor Cyan
+Write-Host "  Navya's Kitchen - Function App Deployment Script   " -ForegroundColor Cyan
 Write-Host "======================================================" -ForegroundColor Cyan
 
 # ── 1. Azure CLI Login Check ──────────────────────────────────────────────────
@@ -85,7 +85,7 @@ if (Test-Path "$ProjectRoot\copy-assets.js") {
 }
 
 # Stage only frontend files into a slim folder so the app zip excludes
-# api/node_modules (~13 MB) and deploy scripts — keeping upload well within
+# api/node_modules (~13 MB) and deploy scripts - keeping upload well within
 # the 5-minute SAS token window.
 $StagingDir = "$ProjectRoot\_swa_deploy"
 Write-Host "      Staging frontend files → _swa_deploy/ ..."
@@ -103,7 +103,7 @@ if (Test-Path "$ProjectRoot\images") {
     Copy-Item "$ProjectRoot\images" "$StagingDir\images" -Recurse -Force
 }
 $stagingSize = (Get-ChildItem $StagingDir -Recurse | Measure-Object -Property Length -Sum).Sum
-Write-Host "      Staging complete — $([Math]::Round($stagingSize/1MB, 1)) MB (vs 22 MB full dir)." -ForegroundColor Green
+Write-Host "      Staging complete - $([Math]::Round($stagingSize/1MB, 1)) MB (vs 22 MB full dir)." -ForegroundColor Green
 
 # ── 5. Deploy via StaticSitesClient ───────────────────────────────────────────
 Write-Host "`n[5/5] Deploying to Azure Static Web Apps..." -ForegroundColor Yellow
@@ -122,12 +122,12 @@ if (-not (Test-Path $StaticSitesClientPath)) {
 
 Write-Host "      Using: $StaticSitesClientPath" -ForegroundColor Gray
 
-# Set env vars directly — child process inherits them, output streams to console in real-time.
+# Set env vars directly - child process inherits them, output streams to console in real-time.
 # WorkingDirectory is changed to $env:TEMP so StaticSitesClient CWD != APP_LOCATION (required by the tool).
 $env:DEPLOYMENT_ACTION = "upload"
 $env:DEPLOYMENT_PROVIDER = "SwaCli"
 $env:REPOSITORY_BASE = $ProjectRoot
-$env:APP_LOCATION = "_swa_deploy"   # slim staging folder — no node_modules
+$env:APP_LOCATION = "_swa_deploy"   # slim staging folder - no node_modules
 $env:API_LOCATION = "api"
 $env:SKIP_APP_BUILD = "true"
 $env:SKIP_API_BUILD = "true"

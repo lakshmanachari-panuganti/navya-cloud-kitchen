@@ -13,7 +13,7 @@ param(
     [string]$Environment = 'prd'
 )
 
-# Fail fast — the previous version piped errors to Out-Null which hid a
+# Fail fast - the previous version piped errors to Out-Null which hid a
 # missing-resource-group failure and made it look like PRD was deployed
 # when it wasn't.
 $ErrorActionPreference = 'Stop'
@@ -68,7 +68,7 @@ if ($swaExists) {
 
 Write-Host "Pre-flight checks passed. Names are available.`n" -ForegroundColor Green
 
-# 0. Create Resource Group (idempotent — az group create is a no-op if it
+# 0. Create Resource Group (idempotent - az group create is a no-op if it
 # already exists with the same location). This step was missing from the
 # original script, which is why running it with $Environment = 'prd'
 # silently failed at the storage-account step.

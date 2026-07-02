@@ -1,4 +1,4 @@
-# 🍽️ Navya's Cloud Kitchen — Deployment & Architecture Guide
+# 🍽️ Navya's Cloud Kitchen - Deployment & Architecture Guide
 
 > A mobile-first, serverless food ordering web app built on Azure Static Web Apps  
 > with integrated Azure Functions for payment processing.
@@ -80,14 +80,14 @@ All resources follow a strict naming convention: `{type}-{appname}-{env}`
 
 | Resource | Name | SKU / Tier | Purpose |
 |---|---|---|---|
-| **Resource Group** | `rg-navyascloudkitchen1-dev` | — | Container for all resources |
+| **Resource Group** | `rg-navyascloudkitchen1-dev` | - | Container for all resources |
 | **Static Web App** | `swa-navyascloudkitchen1-dev` | Free | Hosts frontend + managed Functions |
 | **Storage Account** | `stnavyascloudkitchen1dev` | Standard LRS | Azure Table Storage for orders |
 | **Application Insights** | `appi-navyascloudkitchen1-dev` | Pay-as-you-go | API monitoring & logging |
 
-> **Note:** Azure Storage Account names do **not** allow hyphens — hence `stnavyascloudkitchen1dev` (no hyphens).
+> **Note:** Azure Storage Account names do **not** allow hyphens - hence `stnavyascloudkitchen1dev` (no hyphens).
 
-> **Note:** Azure Functions are **managed/integrated** inside the SWA — no separate Function App resource needed for the Free tier.
+> **Note:** Azure Functions are **managed/integrated** inside the SWA - no separate Function App resource needed for the Free tier.
 
 ### Region
 | Setting | Value |
@@ -141,7 +141,7 @@ The script will:
 4. 🔨 Create Application Insights (`appi-navyascloudkitchen1-dev`)
 5. 🔨 Create Static Web App (`swa-navyascloudkitchen1-dev`)
 6. ⚙️ Configure App Settings (env vars) on SWA
-7. 📋 Print the **SWA Deployment Token** — **save this!**
+7. 📋 Print the **SWA Deployment Token** - **save this!**
 
 ---
 
@@ -157,7 +157,7 @@ cd ..
 node copy-assets.js
 
 # Step 3: Open index.html directly in browser
-# Images auto-detect file:// vs https:// — no server needed for frontend
+# Images auto-detect file:// vs https:// - no server needed for frontend
 start index.html
 ```
 
@@ -180,7 +180,7 @@ swa start ./ --api-location ./api
 
 ## 🚀 Deploy via Azure DevOps Pipeline (Recommended)
 
-This is the **recommended** approach — avoids SWA CLI binary issues on Windows.
+This is the **recommended** approach - avoids SWA CLI binary issues on Windows.
 
 ### Step 1: Push code to repo
 
@@ -258,7 +258,7 @@ These are configured on the SWA App Settings (not committed to code):
 | Variable Name | Description | Where to get |
 |---|---|---|
 | `RAZORPAY_KEY_ID` | Razorpay Public Key | [Razorpay Dashboard](https://dashboard.razorpay.com) → Settings → API Keys |
-| `RAZORPAY_KEY_SECRET` | Razorpay Secret Key | Same as above — **never expose in frontend** |
+| `RAZORPAY_KEY_SECRET` | Razorpay Secret Key | Same as above - **never expose in frontend** |
 | `AZURE_STORAGE_CONNECTION_STRING` | Table Storage connection | Azure Portal → Storage Account → Access Keys |
 
 ### Update secrets via Azure CLI:
@@ -279,7 +279,7 @@ Edit [`config.js`](./config.js):
 ```javascript
 const CONFIG = {
     WHATSAPP_NUMBER: "918686216633",  // Owner's WhatsApp (with country code)
-    RAZORPAY_KEY_ID: "rzp_live_XXXXXXXX",  // Public key only — safe in frontend
+    RAZORPAY_KEY_ID: "rzp_live_XXXXXXXX",  // Public key only - safe in frontend
     CURRENCY: "INR",
     DELIVERY_CHARGE: 50,
     FREE_DELIVERY_THRESHOLD: 500
@@ -293,8 +293,8 @@ const CONFIG = {
 ```
 navyaskitchen/
 │
-├── index.html              # Main app shell — single page
-├── style.css               # All styles — mobile-first, responsive
+├── index.html              # Main app shell - single page
+├── style.css               # All styles - mobile-first, responsive
 ├── app.js                  # Menu data, cart logic, payment flow
 ├── config.js               # App config (WhatsApp no., Razorpay key, thresholds)
 │
@@ -327,8 +327,8 @@ After deploying, verify the following:
 - [ ] All 9 product images load correctly
 - [ ] Hero banner image displays on mobile and desktop
 - [ ] Category filter pills work (All / Health Podulu / Traditional / Sweets)
-- [ ] Add to cart works — cart bar appears at bottom
-- [ ] Cart drawer opens — items and bill summary correct
+- [ ] Add to cart works - cart bar appears at bottom
+- [ ] Cart drawer opens - items and bill summary correct
 - [ ] Checkout form validates (name, phone, address, date)
 - [ ] Razorpay payment modal opens (test mode)
 - [ ] Success screen shows with WhatsApp share button

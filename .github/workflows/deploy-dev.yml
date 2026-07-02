@@ -2,7 +2,7 @@ name: Deploy · DEV
 
 # Navya's Cloud Kitchen is a vanilla HTML/CSS/JS site with Azure Functions
 # managed inside the Static Web App. Frontend and API ship together in a
-# single SWA deploy — there is no separate Function App, so this workflow
+# single SWA deploy - there is no separate Function App, so this workflow
 # replaces the frontend+backend split used in other repos.
 
 on:
@@ -55,7 +55,7 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_DEV }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: upload
-          # Vanilla static site — no build step. app_location is the repo
+          # Vanilla static site - no build step. app_location is the repo
           # root; skip_app_build tells the SWA action to ship files as-is.
           # Oryx handles `npm install` inside api/ during the build phase.
           app_location: '/'

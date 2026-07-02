@@ -1,5 +1,5 @@
 /* ============================================================
-   NAVYA'S KITCHEN — Warm Artisanal Editorial Redesign
+   NAVYA'S KITCHEN - Warm Artisanal Editorial Redesign
    Aesthetic: Food magazine editorial × handcrafted warmth
    ============================================================ */
 
@@ -755,8 +755,21 @@ a { color: inherit; text-decoration: none; }
     font-size: 0.82rem; line-height: 1.5;
     color: var(--ink-muted);
 }
+.pcard-allergens {
+    font-size: 0.72rem;
+    line-height: 1.5;
+    color: var(--terracotta);
+    padding: 6px 10px;
+    background: rgba(196, 101, 42, 0.06);
+    border-radius: 6px;
+    margin-top: 6px;
+}
+.pcard-allergens strong {
+    color: var(--terracotta);
+    font-weight: 700;
+}
 
-/* Size selector — 3-col grid, always 3 columns even on narrow phones */
+/* Size selector - 3-col grid, always 3 columns even on narrow phones */
 .pcard-sizes {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -831,7 +844,7 @@ a { color: inherit; text-decoration: none; }
 }
 .pcard-nudge:empty { display: none; }
 
-/* CTA — filled deep-green for stronger visual pull; swaps to a soft "added" pill on confirmation */
+/* CTA - filled deep-green for stronger visual pull; swaps to a soft "added" pill on confirmation */
 .pcard-cta {
     display: flex; align-items: center; justify-content: center;
     gap: 8px;
@@ -1063,15 +1076,38 @@ a { color: inherit; text-decoration: none; }
     font-size: 0.82rem;
     transition: color var(--t-fast);
 }
+.footer-contact a,
+.footer-contact span {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+.footer-contact a svg {
+    color: rgba(255,255,255,0.45);
+    transition: color var(--t-fast), transform var(--t-fast);
+}
 .footer-links a:hover,
 .footer-contact a:hover {
     color: #fff;
+}
+.footer-contact a:hover svg {
+    color: var(--saffron-light);
+    transform: translateY(-1px);
 }
 .footer-bottom {
     padding-top: var(--space-8);
     border-top: 1px solid rgba(255,255,255,0.08);
     font-size: 0.75rem;
     color: rgba(255,255,255,0.3);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-3);
+}
+.footer-fssai {
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.68rem;
 }
 
 /* ═══════════════════════════════════════════════════════════

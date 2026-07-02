@@ -3,12 +3,6 @@ const CONFIG = {
     // Phone number to receive order alerts on WhatsApp (with country code, no special characters)
     WHATSAPP_NUMBER: "918686216633",
 
-    // Razorpay Public Key ID (starts with rzp_test_ or rzp_live_)
-    RAZORPAY_KEY_ID: "rzp_test_XXXXXXXXXXXXXX",
-
-    // Currency for transactions
-    CURRENCY: "INR",
-
     // Delivery is handled by a third-party courier (Rapido/Porter). The
     // customer pays the courier directly at time of drop-off, so the site
     // does NOT collect delivery charges. The note below is what customers

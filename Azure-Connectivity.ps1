@@ -69,7 +69,7 @@ Write-Host "Clearing Azure CLI sessions..."
 az logout --only-show-errors 2>$null
 az account clear 2>$null
 # Wipe the binary credential/token caches so no stale PEM path survives across logins.
-# These are safe to delete — az login below re-creates them.
+# These are safe to delete - az login below re-creates them.
 Remove-Item "$env:USERPROFILE\.azure\service_principal_entries.bin" -Force -ErrorAction SilentlyContinue
 Remove-Item "$env:USERPROFILE\.azure\msal_token_cache.bin" -Force -ErrorAction SilentlyContinue
 

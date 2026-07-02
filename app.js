@@ -13,10 +13,10 @@ const MENU_ITEMS = [
         id: "moringa_leaves_podi",
         name: "Munagaku Podi",
         sub: "Moringa Leaves Powder",
-        category: "health_powders",
+        category: "everyday_podulu",
         tier: "Handcrafted",
-        benefit: "Superfood",
-        description: "Drumstick leaves slow-roasted with urad dal, red chilies & garlic. Iron-rich daily immunity booster.",
+        benefit: "Signature",
+        description: "Drumstick leaves slow-roasted with urad dal, red chilies & garlic. A treasured recipe for hot rice with ghee.",
         sizes: [
             { grams: 100, price: 199 },
             { grams: 250, price: 399, badge: "Most popular" },
@@ -28,10 +28,10 @@ const MENU_ITEMS = [
         id: "curry_leaves_podi",
         name: "Karivepaku Podi",
         sub: "Curry Leaves Powder",
-        category: "health_powders",
+        category: "everyday_podulu",
         tier: "Handcrafted",
-        benefit: "Hair Health",
-        description: "Fresh curry leaves hand-roasted with coriander seeds & dry chilies. Great for digestion & hair growth.",
+        benefit: "Traditional",
+        description: "Fresh curry leaves hand-roasted with coriander seeds & dry chilies. A treasured recipe passed down through generations.",
         sizes: [
             { grams: 100, price: 199 },
             { grams: 250, price: 399, badge: "Most popular" },
@@ -43,10 +43,10 @@ const MENU_ITEMS = [
         id: "flaxseed_garlic_podi",
         name: "Avise Ginjala Podi",
         sub: "Flaxseed Garlic Powder",
-        category: "health_powders",
+        category: "everyday_podulu",
         tier: "Everyday",
-        benefit: "Omega-3",
-        description: "Heart-healthy flaxseeds roasted with garlic & warming spices. Best mixed with curd rice.",
+        benefit: "Everyday Favourite",
+        description: "Flaxseeds slow-roasted with garlic & warming spices. Best mixed with curd rice or hot rice with ghee.",
         sizes: [
             { grams: 100, price: 129 },
             { grams: 250, price: 259, badge: "Most popular" },
@@ -90,8 +90,9 @@ const MENU_ITEMS = [
         sub: "Sesame Seeds Powder",
         category: "traditional_comfort",
         tier: "Signature",
-        benefit: "Calcium Rich",
-        description: "Rich roasted sesame seeds ground with mild spices. Mix into hot rice or vegetable stir-fries.",
+        benefit: "Signature",
+        description: "Roasted sesame seeds ground with mild spices. Mix into hot rice or vegetable stir-fries.",
+        allergens: "Contains sesame.",
         sizes: [
             { grams: 100, price: 159 },
             { grams: 250, price: 319, badge: "Most popular" },
@@ -105,7 +106,8 @@ const MENU_ITEMS = [
         sub: "Urad Dal Laddoos",
         category: "sweets",
         benefit: "Fan Favourite",
-        description: "Slow-roasted urad dal rolled with pure cow ghee & organic bellam jaggery. Melt-in-the-mouth!",
+        description: "Slow-roasted urad dal rolled with pure cow ghee & bellam jaggery. Melt-in-the-mouth.",
+        allergens: "Contains dairy (cow ghee).",
         price: 260,
         unitLabel: "Box of 6 pieces",
         image: IMG("sunni_undalu.png", "sunni_undalu_1780837017678.png")
@@ -115,19 +117,21 @@ const MENU_ITEMS = [
         name: "Nuvvula Undalu",
         sub: "Sesame Jaggery Laddoos",
         category: "sweets",
-        benefit: "Calcium Rich",
-        description: "Calcium-rich sesame seeds bound with cardamom-infused jaggery syrup. A traditional sweet bite.",
+        benefit: "Traditional",
+        description: "Roasted sesame seeds bound with cardamom-infused jaggery syrup. A traditional sweet bite.",
+        allergens: "Contains sesame.",
         price: 199,
         unitLabel: "Box of 10 pieces",
         image: IMG("nuvvula_undalu.png", "nuvvula_undalu_1780839294373.png")
     },
     {
-        id: "bellam_palli_chikki",
-        name: "Bellam Palli Chikki",
+        id: "bellam_palli_undalu",
+        name: "Bellam Palli Undalu",
         sub: "Peanut Jaggery Bites",
         category: "sweets",
         benefit: "Crunchy",
-        description: "Crunchy roasted peanuts set in cardamom-infused jaggery brittle. The perfect guilt-free snack.",
+        description: "Crunchy roasted peanuts set in cardamom-infused jaggery. A traditional festive treat.",
+        allergens: "Contains peanuts.",
         price: 120,
         unitLabel: "200g pack",
         image: IMG("palli_undalu.png", "palli_undalu_1780837062371.png")
@@ -136,7 +140,7 @@ const MENU_ITEMS = [
 
 const CATEGORIES = {
     all: { label: "All Items", icon: "🏠" },
-    health_powders: { label: "Health Podulu", icon: "🌿", iconType: "green" },
+    everyday_podulu: { label: "Everyday Podulu", icon: "🌿", iconType: "green" },
     traditional_comfort: { label: "Traditional Podulu", icon: "🌶️", iconType: "amber" },
     sweets: { label: "Sweets & Snacks", icon: "🍬", iconType: "red" }
 };
@@ -266,6 +270,7 @@ function buildPodiCard(item) {
             ${item.sub ? `<div class="pcard-sub">${item.sub}</div>` : ""}
         </div>
         <p class="pcard-desc">${item.description}</p>
+        ${item.allergens ? `<p class="pcard-allergens" aria-label="Allergen information"><strong>Allergen info:</strong> ${item.allergens}</p>` : ""}
 
         <div class="pcard-sizes" role="group" aria-label="Choose pack size">
             ${item.sizes.map((s, i) => {
@@ -365,6 +370,7 @@ function buildSweetCard(item) {
             ${item.sub ? `<div class="pcard-sub">${item.sub}</div>` : ""}
         </div>
         <p class="pcard-desc">${item.description}</p>
+        ${item.allergens ? `<p class="pcard-allergens" aria-label="Allergen information"><strong>Allergen info:</strong> ${item.allergens}</p>` : ""}
 
         <div class="pcard-main">
             <span class="pcard-main-price">₹${item.price}</span>
@@ -515,7 +521,7 @@ function setupCartEvents() {
     document.getElementById("navCartBtn").addEventListener("click", openDrawer);
     document.getElementById("closeDrawerBtn").addEventListener("click", closeDrawer);
     document.getElementById("drawerOverlay").addEventListener("click", closeDrawer);
-    document.getElementById("checkoutForm").addEventListener("submit", e => { e.preventDefault(); initiatePayment(); });
+    document.getElementById("checkoutForm").addEventListener("submit", e => { e.preventDefault(); submitOrderViaWhatsApp(); });
     document.getElementById("successCloseBtn").addEventListener("click", resetAfterOrder);
 }
 
@@ -599,8 +605,12 @@ function setupScrollReveal() {
     els.forEach(el => observer.observe(el));
 }
 
-/* ── Payment ──────────────────────────────────────────────── */
-async function initiatePayment() {
+/* ── Checkout ────────────────────────────────────────────────
+   WhatsApp-first flow. A payment gateway (PhonePe) will be wired
+   in later; until then the "Send Order via WhatsApp" button drops
+   the customer straight into a pre-filled WhatsApp chat with the
+   owner so the order can be confirmed and paid over UPI. */
+function submitOrderViaWhatsApp() {
     const name    = document.getElementById("custName").value.trim();
     const phone   = document.getElementById("custPhone").value.trim();
     const address = document.getElementById("custAddress").value.trim();
@@ -612,61 +622,8 @@ async function initiatePayment() {
     }
 
     const { total } = cartTotals();
-    const payBtn = document.getElementById("payBtn");
-    const payBtnText = document.getElementById("payBtnText");
-    payBtn.disabled = true;
-    payBtnText.textContent = "Opening payment...";
-
-    try {
-        const res = await fetch("/api/create-order", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ amount: total, customer: { name, phone } })
-        });
-
-        if (!res.ok) throw new Error("API error");
-
-        const order = await res.json();
-
-        const rzp = new Razorpay({
-            key: CONFIG.RAZORPAY_KEY_ID,
-            amount: order.amount,
-            currency: CONFIG.CURRENCY,
-            name: "Navya Cloud Kitchen",
-            description: "Homemade Delicacies - Next-Day Dispatch",
-            image: IMG("logo.png", "navyas_kitchen_logo_1780835858832.png"),
-            order_id: order.id,
-            theme: { color: "#e07b00" },
-            prefill: { name, contact: phone },
-            handler: async (response) => {
-                const vRes = await fetch("/api/verify-payment", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        razorpay_order_id: response.razorpay_order_id,
-                        razorpay_payment_id: response.razorpay_payment_id,
-                        razorpay_signature: response.razorpay_signature,
-                        orderDetails: { name, phone, address, deliveryDate: date, items: cart, totalAmount: total }
-                    })
-                });
-                const vData = await vRes.json();
-                if (vData.success) {
-                    showSuccess(vData.orderId || response.razorpay_payment_id, total, name, phone, address, date);
-                } else {
-                    alert("Payment received but verification failed. Please share your payment ID with us.");
-                }
-            }
-        });
-        rzp.open();
-
-    } catch {
-        // Demo fallback when running locally without API
-        const demoId = "DEMO_" + Math.random().toString(36).substr(2, 8).toUpperCase();
-        showSuccess(demoId, total, name, phone, address, date);
-    } finally {
-        payBtn.disabled = false;
-        payBtnText.innerHTML = `🔒 Pay Securely - ₹<span id="payBtnAmount">${total}</span>`;
-    }
+    const orderRef = "NCK-" + Date.now().toString(36).toUpperCase();
+    showSuccess(orderRef, total, name, phone, address, date);
 }
 
 /* ── Success Screen ───────────────────────────────────────── */
@@ -674,14 +631,14 @@ function showSuccess(orderId, total, name, phone, address, date) {
     closeDrawer();
 
     document.getElementById("successMessage").textContent =
-        `₹${total} received · Order Ref: ${orderId}`;
+        `Order ready to send · Ref: ${orderId}`;
 
     document.getElementById("successOrderCard").innerHTML = `
         <strong>👤 ${name}</strong><br>
         📱 ${phone}<br>
         📍 ${address}<br>
         🗓️ Delivery: ${date}<br>
-        💰 Total: ₹${total}
+        💰 Items Total: ₹${total}
     `;
 
     const lines = Object.values(cart).map(i => `• ${i.name} ×${i.qty} (₹${i.price * i.qty})`).join("\n");
