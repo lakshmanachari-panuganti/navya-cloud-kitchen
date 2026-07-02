@@ -27,6 +27,10 @@ $Location = "centralindia"
 # Standard Azure Naming Conventions
 $AppInsightsName = "appi-$BaseName-$Environment"
 $SwaName = "swa-$BaseName-$Environment"
+# Log Analytics workspace backs App Insights. Naming it explicitly + passing
+# it to `az monitor app-insights component create --workspace` prevents Azure
+# from auto-creating a "ai_appi-*_managed" system RG outside our convention.
+$LogAnalyticsWorkspaceName = "log-$BaseName-$Environment"
 
 # Note: Azure Storage Accounts ONLY allow lowercase letters and numbers (no hyphens). 
 # So 'st-navyaskitchen-dev' is invalid. We format it to 'stnavyaskitchendev'
@@ -83,14 +87,27 @@ az storage account create `
 Write-Host "Fetching Storage Connection String..."
 $StorageConnString = az storage account show-connection-string --name $StorageAccountName --resource-group $ResourceGroup --query connectionString --output tsv
 
-# 2. Create Application Insights (for API Monitoring)
-Write-Host "`n2. Creating Application Insights: $AppInsightsName ..."
+# 2. Create Log Analytics Workspace FIRST (backs App Insights)
+# Without an explicit --workspace, App Insights would auto-create one in
+# a system-managed RG named ai_<appi-name>_<guid>_managed, which lives
+# outside our naming convention. Pre-creating the LAW here keeps every
+# resource inside $ResourceGroup.
+Write-Host "`n2a. Creating Log Analytics Workspace: $LogAnalyticsWorkspaceName ..."
+$LawResourceId = az monitor log-analytics workspace create `
+    --resource-group $ResourceGroup `
+    --workspace-name $LogAnalyticsWorkspaceName `
+    --location $Location `
+    --query id -o tsv
+
+# 2b. Create Application Insights bound to the LAW above (for API Monitoring)
+Write-Host "`n2b. Creating Application Insights: $AppInsightsName ..."
 az monitor app-insights component create `
     --app $AppInsightsName `
     --location $Location `
     --kind web `
     --resource-group $ResourceGroup `
-    --application-type web | Out-Null
+    --application-type web `
+    --workspace $LawResourceId | Out-Null
 
 # 3. Create Azure Static Web App (Free Tier)
 Write-Host "`n3. Creating Static Web App (Free Tier): $SwaName ..."
