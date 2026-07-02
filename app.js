@@ -5,7 +5,7 @@ const IMG = (name, brainFile) => (location.protocol === "file:")
     : `images/${name}`;
 
 // Podulu carry a `tier` (Everyday / Signature / Handcrafted), a `benefit` tag,
-// and a `sizes` ladder with per-size explicit prices — the card only *displays*
+// and a `sizes` ladder with per-size explicit prices - the card only *displays*
 // prices, it never derives a size's price from a base.
 // Sweets are single-price and use `unitLabel` instead of `sizes`.
 const MENU_ITEMS = [
@@ -255,7 +255,7 @@ function buildPodiCard(item) {
     card.innerHTML = `
         <div class="pcard-img-wrap">
             <img src="${item.image}" alt="${item.name}" class="pcard-img" loading="lazy"
-                 onerror="this.src='https://placehold.co/420x240/faf5ec/1e5631?text=Navya%27s+Kitchen'">
+                 onerror="this.src='https://placehold.co/420x240/faf5ec/1e5631?text=Navya+Cloud+Kitchen+Online'">
         </div>
         <header class="pcard-tags">
             <span class="pcard-tier">${item.tier}</span>
@@ -354,7 +354,7 @@ function buildSweetCard(item) {
     card.innerHTML = `
         <div class="pcard-img-wrap">
             <img src="${item.image}" alt="${item.name}" class="pcard-img" loading="lazy"
-                 onerror="this.src='https://placehold.co/420x240/faf5ec/1e5631?text=Navya%27s+Kitchen'">
+                 onerror="this.src='https://placehold.co/420x240/faf5ec/1e5631?text=Navya+Cloud+Kitchen+Online'">
         </div>
         <header class="pcard-tags">
             <span class="pcard-tier">Sweet</span>
@@ -393,18 +393,18 @@ function buildSweetCard(item) {
 
 function buildNudge(item, selectedIdx, rate100) {
     const s = item.sizes[selectedIdx];
-    // Smallest — steer to the middle.
+    // Smallest - steer to the middle.
     if (selectedIdx === 0 && item.sizes[1]) {
         const next = item.sizes[1];
         const savedAtNext = Math.round(rate100 * next.grams / 100 - next.price);
         return `Go ${next.grams}g → 2.5× the podi for just 2× the price. You'd save ₹${savedAtNext}.`;
     }
-    // Largest — celebrate the value.
+    // Largest - celebrate the value.
     if (selectedIdx === item.sizes.length - 1) {
         const saved = Math.round(rate100 * s.grams / 100 - s.price);
-        return `Top value — you're saving ₹${saved} versus buying singles. Great pick for weekly stock.`;
+        return `Top value - you're saving ₹${saved} versus buying singles. Great pick for weekly stock.`;
     }
-    // Middle — steer to the top.
+    // Middle - steer to the top.
     const next = item.sizes[selectedIdx + 1];
     if (!next) return "";
     return `Go ${next.grams}g → double your stock for only ₹${next.price - s.price} more.`;
@@ -632,8 +632,8 @@ async function initiatePayment() {
             key: CONFIG.RAZORPAY_KEY_ID,
             amount: order.amount,
             currency: CONFIG.CURRENCY,
-            name: "Navya's Cloud Kitchen",
-            description: "Homemade Delicacies — Next-Day Dispatch",
+            name: "Navya Cloud Kitchen Online",
+            description: "Homemade Delicacies - Next-Day Dispatch",
             image: IMG("logo.png", "navyas_kitchen_logo_1780835858832.png"),
             order_id: order.id,
             theme: { color: "#e07b00" },
@@ -665,7 +665,7 @@ async function initiatePayment() {
         showSuccess(demoId, total, name, phone, address, date);
     } finally {
         payBtn.disabled = false;
-        payBtnText.innerHTML = `🔒 Pay Securely — ₹<span id="payBtnAmount">${total}</span>`;
+        payBtnText.innerHTML = `🔒 Pay Securely - ₹<span id="payBtnAmount">${total}</span>`;
     }
 }
 
@@ -686,10 +686,10 @@ function showSuccess(orderId, total, name, phone, address, date) {
 
     const lines = Object.values(cart).map(i => `• ${i.name} ×${i.qty} (₹${i.price * i.qty})`).join("\n");
     const msg = encodeURIComponent(
-        `*New Order — Navya's Cloud Kitchen*\n\n` +
+        `*New Order - Navya Cloud Kitchen Online*\n\n` +
         `*Ref:* ${orderId}\n*Name:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}\n*Date:* ${date}\n\n` +
         `*Items:*\n${lines}\n\n*Items Total: ₹${total}*\n` +
-        `_Courier extra — paid to Rapido/Porter at drop-off._\n\nThank you! 🙏`
+        `_Courier extra - paid to Rapido/Porter at drop-off._\n\nThank you! 🙏`
     );
 
     document.getElementById("whatsappShareBtn").onclick = () =>
