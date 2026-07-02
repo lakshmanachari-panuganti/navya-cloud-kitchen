@@ -22,7 +22,7 @@ const assets = [
     { src: 'curry_leaves_podi_1780837004093.png',         dest: 'curry_leaves_podi.png' },
     { src: 'kandi_podi_1780837030018.png',                dest: 'kandi_podi.png' },
     { src: 'sunni_undalu_1780837017678.png',              dest: 'sunni_undalu.png' },
-    { src: 'palli_chikki_1780837062371.png',              dest: 'palli_chikki.png' },
+    { src: 'palli_undalu_1780837062371.png',              dest: 'palli_undalu.png' },
     { src: 'flaxseed_garlic_podi_1780839254078.png',      dest: 'flaxseed_garlic_podi.png' },
     { src: 'vellulli_karampodi_1780839267768.png',        dest: 'vellulli_karampodi.png' },
     { src: 'nuvvula_podi_1780839280961.png',              dest: 'nuvvula_podi.png' },

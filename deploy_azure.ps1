@@ -2,10 +2,23 @@
 .SYNOPSIS
 Deploys the Azure Infrastructure for Navya's Cloud Kitchen.
 Requires Azure CLI (az) to be installed and logged in.
+
+Usage:
+    .\deploy_azure.ps1 -Environment prd
+    .\deploy_azure.ps1 -Environment dev
 #>
 
+param(
+    [ValidateSet('dev', 'prd')]
+    [string]$Environment = 'prd'
+)
+
+# Fail fast — the previous version piped errors to Out-Null which hid a
+# missing-resource-group failure and made it look like PRD was deployed
+# when it wasn't.
+$ErrorActionPreference = 'Stop'
+
 $BaseName = "navyascloudkitchen1"
-$Environment = "prd"
 $ResourceGroup = "rg-$BaseName-$Environment"
 
 # Central India is usually best for Indian-based cloud kitchens for lower latency
@@ -14,6 +27,10 @@ $Location = "centralindia"
 # Standard Azure Naming Conventions
 $AppInsightsName = "appi-$BaseName-$Environment"
 $SwaName = "swa-$BaseName-$Environment"
+# Log Analytics workspace backs App Insights. Naming it explicitly + passing
+# it to `az monitor app-insights component create --workspace` prevents Azure
+# from auto-creating a "ai_appi-*_managed" system RG outside our convention.
+$LogAnalyticsWorkspaceName = "log-$BaseName-$Environment"
 
 # Note: Azure Storage Accounts ONLY allow lowercase letters and numbers (no hyphens). 
 # So 'st-navyaskitchen-dev' is invalid. We format it to 'stnavyaskitchendev'
@@ -51,6 +68,13 @@ if ($swaExists) {
 
 Write-Host "Pre-flight checks passed. Names are available.`n" -ForegroundColor Green
 
+# 0. Create Resource Group (idempotent — az group create is a no-op if it
+# already exists with the same location). This step was missing from the
+# original script, which is why running it with $Environment = 'prd'
+# silently failed at the storage-account step.
+Write-Host "`n0. Ensuring Resource Group: $ResourceGroup ..."
+az group create --name $ResourceGroup --location $Location | Out-Null
+
 # 1. Create Azure Storage Account (for Table Storage Order tracking)
 Write-Host "`n1. Creating Storage Account: $StorageAccountName ..."
 az storage account create `
@@ -63,14 +87,27 @@ az storage account create `
 Write-Host "Fetching Storage Connection String..."
 $StorageConnString = az storage account show-connection-string --name $StorageAccountName --resource-group $ResourceGroup --query connectionString --output tsv
 
-# 2. Create Application Insights (for API Monitoring)
-Write-Host "`n2. Creating Application Insights: $AppInsightsName ..."
+# 2. Create Log Analytics Workspace FIRST (backs App Insights)
+# Without an explicit --workspace, App Insights would auto-create one in
+# a system-managed RG named ai_<appi-name>_<guid>_managed, which lives
+# outside our naming convention. Pre-creating the LAW here keeps every
+# resource inside $ResourceGroup.
+Write-Host "`n2a. Creating Log Analytics Workspace: $LogAnalyticsWorkspaceName ..."
+$LawResourceId = az monitor log-analytics workspace create `
+    --resource-group $ResourceGroup `
+    --workspace-name $LogAnalyticsWorkspaceName `
+    --location $Location `
+    --query id -o tsv
+
+# 2b. Create Application Insights bound to the LAW above (for API Monitoring)
+Write-Host "`n2b. Creating Application Insights: $AppInsightsName ..."
 az monitor app-insights component create `
     --app $AppInsightsName `
     --location $Location `
     --kind web `
     --resource-group $ResourceGroup `
-    --application-type web | Out-Null
+    --application-type web `
+    --workspace $LawResourceId | Out-Null
 
 # 3. Create Azure Static Web App (Free Tier)
 Write-Host "`n3. Creating Static Web App (Free Tier): $SwaName ..."

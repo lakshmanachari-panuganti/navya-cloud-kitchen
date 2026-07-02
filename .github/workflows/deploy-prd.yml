@@ -20,9 +20,6 @@ concurrency:
   group: deploy-prd
   cancel-in-progress: false
 
-env:
-  NODE_VERSION: '22'
-
 jobs:
   build-and-deploy:
     name: Build & Deploy - Prd
@@ -39,22 +36,6 @@ jobs:
           submodules: false
           lfs: false
 
-      - name: Use Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: npm
-          cache-dependency-path: api/package-lock.json
-
-      - name: Install API dependencies
-        working-directory: api
-        run: |
-          if [ -f package-lock.json ]; then
-            npm ci --omit=dev --no-audit --no-fund
-          else
-            npm install --omit=dev --no-audit --no-fund
-          fi
-
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
         with:
@@ -65,5 +46,4 @@ jobs:
           api_location: 'api'
           output_location: ''
           skip_app_build: true
-          skip_api_build: true
           production_branch: main

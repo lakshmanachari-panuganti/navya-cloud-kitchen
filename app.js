@@ -130,7 +130,7 @@ const MENU_ITEMS = [
         description: "Crunchy roasted peanuts set in cardamom-infused jaggery brittle. The perfect guilt-free snack.",
         price: 120,
         unitLabel: "200g pack",
-        image: IMG("palli_chikki.png", "palli_chikki_1780837062371.png")
+        image: IMG("palli_undalu.png", "palli_undalu_1780837062371.png")
     }
 ];
 
