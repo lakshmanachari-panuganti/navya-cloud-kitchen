@@ -1,0 +1,98 @@
+name: Deploy · DEV
+
+# Navya's Cloud Kitchen is a vanilla HTML/CSS/JS site with Azure Functions
+# managed inside the Static Web App. Frontend and API ship together in a
+# single SWA deploy — there is no separate Function App, so this workflow
+# replaces the frontend+backend split used in other repos.
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - 'index.html'
+      - 'style.css'
+      - 'app.js'
+      - 'config.js'
+      - 'images/**'
+      - 'api/**'
+      - '.github/workflows/deploy-dev.yml'
+  pull_request:
+    branches:
+      - develop
+    paths:
+      - 'index.html'
+      - 'style.css'
+      - 'app.js'
+      - 'config.js'
+      - 'images/**'
+      - 'api/**'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-dev-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Node 22 = current LTS ("Jod"). Node 20 entered Maintenance in Oct 2025.
+  # See https://endoflife.date/nodejs
+  NODE_VERSION: '22'
+
+jobs:
+  build-and-deploy:
+    name: Build & Deploy - Dev
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+          lfs: false
+
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: api/package-lock.json
+
+      - name: Install API dependencies
+        working-directory: api
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci --omit=dev --no-audit --no-fund
+          else
+            npm install --omit=dev --no-audit --no-fund
+          fi
+
+      - name: Deploy to Azure Static Web Apps
+        id: swa
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_DEV }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: upload
+          # Vanilla static site — no build output folder. app_location is the
+          # repo root; skip_app_build tells SWA to ship files as-is.
+          app_location: '/'
+          api_location: 'api'
+          output_location: ''
+          skip_app_build: true
+          # We ran `npm ci --omit=dev` above; skip Oryx's api build so it
+          # doesn't re-install and pull dev deps back in.
+          skip_api_build: true
+
+  close-preview:
+    name: Close PR Preview (DEV)
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close Preview
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_DEV }}
+          action: close

@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+api/node_modules/
+
+# Azure Functions local settings — contains connection strings + Razorpay keys
+local.settings.json
+api/local.settings.json
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE / local tooling
+.vscode/
+.idea/
+.claude/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+
+# Build / deploy artifacts
+dist/
+build/
+.deploy/
+*.zip
+
+# Playwright / QA local scratch
+test-results/
+playwright-report/

@@ -1,0 +1,13 @@
+{
+  "name": "navyas-kitchen-api",
+  "version": "1.0.0",
+  "description": "Serverless backend API functions for Navya's Cloud Kitchen Razorpay payments",
+  "main": "index.js",
+  "scripts": {
+    "start": "func start"
+  },
+  "dependencies": {
+    "@azure/data-tables": "^13.2.2",
+    "razorpay": "^2.9.2"
+  }
+}
