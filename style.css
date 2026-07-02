@@ -854,14 +854,6 @@ a { color: inherit; text-decoration: none; }
 }
 .pcard-cta-icon { width: 16px; height: 16px; }
 
-/* Delivery line */
-.pcard-delivery {
-    text-align: center;
-    font-size: 0.75rem;
-}
-.pcard-delivery-ok { color: var(--leaf-dark); font-weight: 600; }
-.pcard-delivery-muted { color: var(--ink-muted); }
-
 /* ═══════════════════════════════════════════════════════════
    QTY CONTROLS (drawer)
 ═══════════════════════════════════════════════════════════ */
@@ -1172,7 +1164,16 @@ a { color: inherit; text-decoration: none; }
 .bill-row { display: flex; justify-content: space-between; font-size: 0.88rem; color: var(--ink-muted); }
 .bill-divider { height: 1px; background: var(--border); }
 .bill-total { font-size: 1.05rem; font-weight: 700; color: var(--ink); }
-.free-delivery-hint { font-size: 0.75rem; color: var(--leaf-dark); font-weight: 600; text-align: center; }
+.courier-note {
+    margin-top: var(--space-3);
+    padding: var(--space-3);
+    background: var(--leaf-pale);
+    border-radius: 10px;
+    font-size: 0.78rem;
+    color: var(--ink);
+    line-height: 1.5;
+}
+.courier-note strong { color: var(--leaf-dark); }
 
 /* ═══════════════════════════════════════════════════════════
    CHECKOUT FORM

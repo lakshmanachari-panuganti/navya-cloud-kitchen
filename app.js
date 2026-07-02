@@ -296,15 +296,12 @@ function buildPodiCard(item) {
             ${CHECK_ICON_SVG}
             <span class="pcard-cta-label">Add to cart</span>
         </button>
-
-        <div class="pcard-delivery"></div>
     `;
 
     const priceEl   = card.querySelector(".pcard-main-price");
     const unitEl    = card.querySelector(".pcard-main-unit");
     const savingsEl = card.querySelector(".pcard-savings-slot");
     const nudgeEl   = card.querySelector(".pcard-nudge");
-    const delEl     = card.querySelector(".pcard-delivery");
     const sizeBtns  = card.querySelectorAll(".pcard-size");
     const ctaBtn    = card.querySelector(".pcard-cta");
     const ctaLabel  = ctaBtn.querySelector(".pcard-cta-label");
@@ -330,13 +327,6 @@ function buildPodiCard(item) {
             : "";
 
         nudgeEl.textContent = buildNudge(item, selectedIdx, rate100);
-
-        if (s.price >= CONFIG.FREE_DELIVERY_THRESHOLD) {
-            delEl.innerHTML = `<span class="pcard-delivery-ok">✓ Free delivery unlocked</span>`;
-        } else {
-            const gap = CONFIG.FREE_DELIVERY_THRESHOLD - s.price;
-            delEl.innerHTML = `<span class="pcard-delivery-muted">Add ₹${gap} more for free delivery</span>`;
-        }
     }
 
     card.querySelector(".pcard-sizes").addEventListener("click", e => {
@@ -386,17 +376,7 @@ function buildSweetCard(item) {
             ${CHECK_ICON_SVG}
             <span class="pcard-cta-label">Add to cart</span>
         </button>
-
-        <div class="pcard-delivery"></div>
     `;
-
-    const delEl = card.querySelector(".pcard-delivery");
-    if (item.price >= CONFIG.FREE_DELIVERY_THRESHOLD) {
-        delEl.innerHTML = `<span class="pcard-delivery-ok">✓ Free delivery unlocked</span>`;
-    } else {
-        const gap = CONFIG.FREE_DELIVERY_THRESHOLD - item.price;
-        delEl.innerHTML = `<span class="pcard-delivery-muted">Add ₹${gap} more for free delivery</span>`;
-    }
 
     const ctaBtn   = card.querySelector(".pcard-cta");
     const ctaLabel = ctaBtn.querySelector(".pcard-cta-label");
@@ -422,9 +402,7 @@ function buildNudge(item, selectedIdx, rate100) {
     // Largest — celebrate the value.
     if (selectedIdx === item.sizes.length - 1) {
         const saved = Math.round(rate100 * s.grams / 100 - s.price);
-        return s.price >= CONFIG.FREE_DELIVERY_THRESHOLD
-            ? `Top value — you're saving ₹${saved} versus buying singles, and delivery's on us.`
-            : `Top value — you're saving ₹${saved} versus buying singles. Great pick for weekly stock.`;
+        return `Top value — you're saving ₹${saved} versus buying singles. Great pick for weekly stock.`;
     }
     // Middle — steer to the top.
     const next = item.sizes[selectedIdx + 1];
@@ -501,8 +479,7 @@ function cartTotals() {
         itemCount += qty;
         subtotal += qty * price;
     });
-    const delivery = subtotal >= CONFIG.FREE_DELIVERY_THRESHOLD ? 0 : CONFIG.DELIVERY_CHARGE;
-    return { itemCount, subtotal, delivery, total: subtotal + delivery };
+    return { itemCount, subtotal, total: subtotal };
 }
 
 function updateCartBar() {
@@ -591,18 +568,10 @@ function refreshDrawerCartList() {
         });
     }
 
-    const { subtotal, delivery, total } = cartTotals();
+    const { subtotal, total } = cartTotals();
     document.getElementById("billSubtotal").textContent = `₹${subtotal}`;
-    document.getElementById("billDelivery").textContent = delivery === 0 ? "🎉 FREE" : `₹${delivery}`;
     document.getElementById("billGrandTotal").textContent = `₹${total}`;
     document.getElementById("payBtnAmount").textContent = total;
-
-    const hint = document.getElementById("freeDeliveryHint");
-    if (delivery > 0) {
-        hint.textContent = `Add ₹${CONFIG.FREE_DELIVERY_THRESHOLD - subtotal} more for FREE delivery!`;
-    } else {
-        hint.textContent = "🎉 You've unlocked free delivery!";
-    }
 }
 
 /* ── Scroll Nav ───────────────────────────────────────────── */
@@ -664,7 +633,7 @@ async function initiatePayment() {
             amount: order.amount,
             currency: CONFIG.CURRENCY,
             name: "Navya's Cloud Kitchen",
-            description: "Homemade Delicacies — Next-Day Delivery",
+            description: "Homemade Delicacies — Next-Day Dispatch",
             image: IMG("logo.png", "navyas_kitchen_logo_1780835858832.png"),
             order_id: order.id,
             theme: { color: "#e07b00" },
@@ -719,7 +688,8 @@ function showSuccess(orderId, total, name, phone, address, date) {
     const msg = encodeURIComponent(
         `*New Order — Navya's Cloud Kitchen*\n\n` +
         `*Ref:* ${orderId}\n*Name:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}\n*Date:* ${date}\n\n` +
-        `*Items:*\n${lines}\n\n*Total: ₹${total}*\n\nThank you! 🙏`
+        `*Items:*\n${lines}\n\n*Items Total: ₹${total}*\n` +
+        `_Courier extra — paid to Rapido/Porter at drop-off._\n\nThank you! 🙏`
     );
 
     document.getElementById("whatsappShareBtn").onclick = () =>
