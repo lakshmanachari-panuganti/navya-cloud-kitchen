@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Policies · Navya Cloud Kitchen Online</title>
+    <title>Policies · Navya Cloud Kitchen</title>
     <meta name="description"
-        content="Privacy, Terms, Refund and Delivery policies for Navya Cloud Kitchen Online - traditional homemade delicacies from Kukatpally, Hyderabad." />
+        content="Privacy, Terms, Refund and Delivery policies for Navya Cloud Kitchen - traditional homemade delicacies from Kukatpally, Hyderabad." />
     <link rel="icon" href="images/logo.png" type="image/png" />
     <link rel="stylesheet" href="style.css" />
     <style>
@@ -31,7 +31,7 @@
         }
 
         .policies-page h1 {
-            font-family: var(--font-serif);
+            font-family: var(--font-display);
             font-size: clamp(2rem, 5vw, 2.75rem);
             color: var(--ink);
             margin-bottom: var(--space-2);
@@ -50,7 +50,7 @@
         }
 
         .policies-page h2 {
-            font-family: var(--font-serif);
+            font-family: var(--font-display);
             font-size: 1.5rem;
             color: var(--ink);
             margin-bottom: var(--space-2);
@@ -109,18 +109,81 @@
             color: #fff;
             border-color: var(--leaf-dark);
         }
+
+        .policies-page .business-details {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-6);
+            margin-bottom: var(--space-8);
+            background: #fff;
+        }
+
+        .policies-page .business-details h3 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            color: var(--ink);
+            margin-bottom: var(--space-4);
+        }
+
+        .policies-page .business-details dl {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-3) var(--space-6);
+            margin: 0;
+        }
+
+        @media (min-width: 560px) {
+            .policies-page .business-details dl {
+                grid-template-columns: max-content 1fr;
+            }
+        }
+
+        .policies-page .business-details dt {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+            padding-top: var(--space-1);
+        }
+
+        .policies-page .business-details dd {
+            font-size: 0.92rem;
+            color: var(--ink);
+            line-height: 1.55;
+            margin: 0;
+        }
     </style>
 </head>
 
 <body>
     <main class="policies-page">
-        <a href="index.html" class="policies-back">← Back to Navya Cloud Kitchen Online</a>
+        <a href="index.html" class="policies-back">← Back to Navya Cloud Kitchen</a>
 
         <h1>Policies</h1>
         <p class="policies-lede">
-            Navya Cloud Kitchen Online is a home kitchen based in Kukatpally, Hyderabad. Everything below applies to orders
+            Navya Cloud Kitchen is a home kitchen based in Kukatpally, Hyderabad. Everything below applies to orders
             placed through this site or via WhatsApp.
         </p>
+
+        <div class="business-details">
+            <h3>Business Details</h3>
+            <dl>
+                <dt>Business Name</dt>
+                <dd>Navya Cloud Kitchen</dd>
+                <dt>Registered Address</dt>
+                <dd>
+                    Flat No. 502, Vilax Pride Apartment,<br>
+                    Amma Mess Road, Prashantinagar,<br>
+                    Kukatpally, Hyderabad, Telangana 500072,<br>
+                    India
+                </dd>
+                <dt>Email</dt>
+                <dd><a href="mailto:navya.cloudkitchen.online@gmail.com">navya.cloudkitchen.online@gmail.com</a></dd>
+                <dt>WhatsApp</dt>
+                <dd><a href="https://wa.me/918686216633">+91 86862 16633</a></dd>
+            </dl>
+        </div>
 
         <nav class="policies-toc">
             <a href="#privacy">Privacy Policy</a>
@@ -149,8 +212,10 @@
                 <li>We don't store payment card details - payment (when enabled) is handled directly by the gateway.</li>
             </ul>
             <p>
-                To have your data removed, message us on WhatsApp at
-                <a href="https://wa.me/918686216633">+91 86862 16633</a> and we'll do it the same day.
+                To have your data removed, contact us on WhatsApp at
+                <a href="https://wa.me/918686216633">+91 86862 16633</a> or email
+                <a href="mailto:navya.cloudkitchen.online@gmail.com">navya.cloudkitchen.online@gmail.com</a>
+                — we'll action it the same day.
             </p>
         </section>
 
@@ -158,7 +223,7 @@
             <h2>Terms &amp; Conditions</h2>
             <p class="policies-updated">Last updated: July 2026</p>
             <p>
-                By placing an order with Navya Cloud Kitchen Online, you agree to these terms:
+                By placing an order with Navya Cloud Kitchen, you agree to these terms:
             </p>
             <ul>
                 <li>
@@ -183,6 +248,11 @@
                 </li>
                 <li>
                     You must be 18+ to place an order that requires payment.
+                </li>
+                <li>
+                    <strong>Governing law &amp; jurisdiction:</strong> these terms are governed by the laws of the
+                    Republic of India. Any dispute arising out of or in connection with an order shall be subject to
+                    the exclusive jurisdiction of the courts at Hyderabad, Telangana.
                 </li>
             </ul>
             <p>
@@ -224,7 +294,7 @@
             <h2>Shipping &amp; Delivery Policy</h2>
             <p class="policies-updated">Last updated: July 2026</p>
             <p>
-                Navya Cloud Kitchen Online is a small home kitchen - we focus on the food, not on running a delivery fleet.
+                Navya Cloud Kitchen is a small home kitchen - we focus on the food, not on running a delivery fleet.
                 Every order ships via a third-party courier partner (Rapido, Porter, or similar), and
                 <strong>courier charges are paid directly to the courier at drop-off</strong>, not through this
                 site.
@@ -260,9 +330,12 @@
         </section>
 
         <p style="text-align:center; color: var(--ink-faint); font-size: 0.85rem; margin-top: var(--space-12);">
-            Questions? Message us anytime on
+            Questions? Reach us on
             <a href="https://wa.me/918686216633"
-                style="color: var(--leaf-dark); text-decoration: underline;">WhatsApp</a>.
+                style="color: var(--leaf-dark); text-decoration: underline;">WhatsApp</a>
+            or email
+            <a href="mailto:navya.cloudkitchen.online@gmail.com"
+                style="color: var(--leaf-dark); text-decoration: underline;">navya.cloudkitchen.online@gmail.com</a>.
         </p>
     </main>
 </body>
