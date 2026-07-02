@@ -2,10 +2,23 @@
 .SYNOPSIS
 Deploys the Azure Infrastructure for Navya's Cloud Kitchen.
 Requires Azure CLI (az) to be installed and logged in.
+
+Usage:
+    .\deploy_azure.ps1 -Environment prd
+    .\deploy_azure.ps1 -Environment dev
 #>
 
+param(
+    [ValidateSet('dev', 'prd')]
+    [string]$Environment = 'prd'
+)
+
+# Fail fast — the previous version piped errors to Out-Null which hid a
+# missing-resource-group failure and made it look like PRD was deployed
+# when it wasn't.
+$ErrorActionPreference = 'Stop'
+
 $BaseName = "navyascloudkitchen1"
-$Environment = "prd"
 $ResourceGroup = "rg-$BaseName-$Environment"
 
 # Central India is usually best for Indian-based cloud kitchens for lower latency
@@ -50,6 +63,13 @@ if ($swaExists) {
 }
 
 Write-Host "Pre-flight checks passed. Names are available.`n" -ForegroundColor Green
+
+# 0. Create Resource Group (idempotent — az group create is a no-op if it
+# already exists with the same location). This step was missing from the
+# original script, which is why running it with $Environment = 'prd'
+# silently failed at the storage-account step.
+Write-Host "`n0. Ensuring Resource Group: $ResourceGroup ..."
+az group create --name $ResourceGroup --location $Location | Out-Null
 
 # 1. Create Azure Storage Account (for Table Storage Order tracking)
 Write-Host "`n1. Creating Storage Account: $StorageAccountName ..."
