@@ -1022,7 +1022,10 @@ a { color: inherit; text-decoration: none; }
     margin-bottom: var(--space-10);
 }
 @media (min-width: 640px) {
-    .footer-grid { grid-template-columns: 2fr 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 960px) {
+    .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
 }
 .footer-brand { }
 .footer-logo-row {
