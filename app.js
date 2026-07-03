@@ -685,15 +685,8 @@ function refreshDrawerCartList() {
 /* ── Scroll Nav ───────────────────────────────────────────── */
 function setupScrollNav() {
     const nav = document.getElementById("topNav");
-    const mobileCta = document.getElementById("mobileOrderCta");
     window.addEventListener("scroll", () => {
         nav.classList.toggle("scrolled", window.scrollY > 60);
-        // Show sticky mobile CTA once scrolled past hero, hide if cart bar is active
-        if (mobileCta) {
-            const cartHasItems = Object.keys(cart).length > 0;
-            const pastHero = window.scrollY > 400;
-            mobileCta.classList.toggle("visible", pastHero && !cartHasItems);
-        }
     }, { passive: true });
 }
 
