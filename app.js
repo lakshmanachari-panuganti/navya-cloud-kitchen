@@ -139,6 +139,28 @@ const MENU_ITEMS = [
         price: 120,
         unitLabel: "200g pack",
         image: IMG("palli_undalu.png", "palli_undalu_1780837062371.png")
+    },
+    {
+        id: "podi_starter_box",
+        name: "Podi Starter Box",
+        sub: "3 × 100g podulu",
+        category: "bundles",
+        benefit: "Best for trying",
+        description: "Can't decide? Try our three most popular podulu — Karivepaku, Munagaku & Kandi — in convenient 100g jars.",
+        price: 449,
+        unitLabel: "3 jars × 100g",
+        image: IMG("curry_leaves_podi.png", "curry_leaves_podi_1780837004093.png")
+    },
+    {
+        id: "festival_sweet_box",
+        name: "Festival Sweet Box",
+        sub: "All 3 sweets combo",
+        category: "bundles",
+        benefit: "Gift-ready",
+        description: "The perfect festive gift — Sunni Undalu, Nuvvula Undalu & Palli Undalu together in one beautiful box.",
+        price: 499,
+        unitLabel: "3 sweet packs",
+        image: IMG("sunni_undalu.png", "sunni_undalu_1780837017678.png")
     }
 ];
 
@@ -146,7 +168,8 @@ const CATEGORIES = {
     all: { label: "All Items", icon: "🏠" },
     everyday_podulu: { label: "Everyday Podulu", icon: "🌿", iconType: "green" },
     traditional_comfort: { label: "Traditional Podulu", icon: "🌶️", iconType: "amber" },
-    sweets: { label: "Sweets & Snacks", icon: "🍬", iconType: "red" }
+    sweets: { label: "Sweets & Snacks", icon: "🍬", iconType: "red" },
+    bundles: { label: "Combo Packs", icon: "🎁", iconType: "amber" }
 };
 
 /* ── State ────────────────────────────────────────────────── */
@@ -177,11 +200,56 @@ document.addEventListener("DOMContentLoaded", () => {
 
     initDeliveryDate();
     renderCategoryPills("all");
+    showMenuSkeletons();
     renderMenu("all");
     setupCartEvents();
     setupScrollNav();
     setupScrollReveal();
+    initCountdown();
+
+    // Update checkout trust microcopy
+    const payNote = document.querySelector('.pay-note');
+    if (payNote) {
+        payNote.textContent = "Secure payment via PhonePe · UPI/Cards/NetBanking · Cooked fresh, dispatched next morning";
+    }
 });
+
+function showMenuSkeletons() {
+    const container = document.getElementById("menuContainer");
+    const skeletonHTML = Array(4).fill(`
+        <div class="skeleton-card">
+            <div class="skeleton-img"></div>
+            <div class="skeleton-text" style="width:60%"></div>
+            <div class="skeleton-text" style="width:40%"></div>
+            <div class="skeleton-text" style="width:80%"></div>
+        </div>
+    `).join('');
+    container.innerHTML = `<div class="menu-grid">${skeletonHTML}</div>`;
+}
+
+function initCountdown() {
+    const el = document.querySelector('.timing-text strong');
+    if (!el) return;
+
+    function update() {
+        const now = new Date();
+        const cutoff = new Date(now);
+        cutoff.setHours(18, 0, 0, 0);
+
+        if (now >= cutoff) {
+            el.textContent = "Orders open again tomorrow at 9 AM";
+            return;
+        }
+
+        const diff = cutoff - now;
+        const hours = Math.floor(diff / 3600000);
+        const mins = Math.floor((diff % 3600000) / 60000);
+        el.textContent = `Order cut-off in ${hours}h ${mins}m — tonight's batch`;
+    }
+
+    update();
+    setInterval(update, 60000);
+}
 
 function initDeliveryDate() {
     const el = document.getElementById("deliveryDate");
@@ -551,6 +619,9 @@ function openDrawer() {
     drawerOpen = true;
     refreshDrawerCartList();
 
+    // Abandoned checkout hook
+    sessionStorage.setItem('nk_checkout_started', Date.now());
+
     // GA4: begin_checkout event
     const { total } = cartTotals();
     const items = Object.values(cart).map(i => ({ item_name: i.name, price: i.price, quantity: i.qty }));
@@ -664,6 +735,7 @@ function submitOrderViaWhatsApp() {
 /* ── Success Screen ───────────────────────────────────────── */
 function showSuccess(orderId, total, name, phone, address, date) {
     closeDrawer();
+    sessionStorage.removeItem('nk_checkout_started');
 
     // GA4: purchase event
     const items = Object.values(cart).map(i => ({ item_name: i.name, price: i.price, quantity: i.qty }));
