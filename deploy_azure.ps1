@@ -139,4 +139,4 @@ Write-Host "SWA Deployment Token  : $SwaToken"
 Write-Host ""
 Write-Host "To deploy the application code, use the Azure Static Web Apps CLI (swa-cli):" -ForegroundColor Yellow
 Write-Host "1. npm install -g @azure/static-web-apps-cli"
-Write-Host "2. swa deploy ./ --api-location ./api --env production --deployment-token `"$SwaToken`""
+Write-Host "2. swa deploy ./frontend --api-location ./backend --env production --deployment-token `"$SwaToken`""
