@@ -209,6 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setupScrollNav();
     setupScrollReveal();
     initCountdown();
+    setupMobileNav();
 
     // Update checkout trust microcopy
     const payNote = document.querySelector('.pay-note');
@@ -228,6 +229,32 @@ function showMenuSkeletons() {
         </div>
     `).join('');
     container.innerHTML = `<div class="menu-grid">${skeletonHTML}</div>`;
+}
+
+/* ── Mobile Nav ───────────────────────────────────────────── */
+function setupMobileNav() {
+    const btn = document.getElementById("navHamburger");
+    const nav = document.getElementById("mobileNav");
+    const overlay = document.getElementById("mobileNavOverlay");
+    if (!btn || !nav || !overlay) return;
+
+    function toggle() {
+        const isOpen = nav.classList.toggle("is-open");
+        btn.classList.toggle("is-open", isOpen);
+        overlay.classList.toggle("is-open", isOpen);
+        btn.setAttribute("aria-expanded", String(isOpen));
+    }
+
+    function close() {
+        nav.classList.remove("is-open");
+        btn.classList.remove("is-open");
+        overlay.classList.remove("is-open");
+        btn.setAttribute("aria-expanded", "false");
+    }
+
+    btn.addEventListener("click", toggle);
+    overlay.addEventListener("click", close);
+    nav.querySelectorAll("a").forEach(a => a.addEventListener("click", close));
 }
 
 function initCountdown() {
