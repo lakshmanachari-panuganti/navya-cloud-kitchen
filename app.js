@@ -1,8 +1,12 @@
 // 1. Menu Data Structure
 // Image filenames map: local (brain folder) vs deployed (images/ folder)
+// Returns the WebP path for deployed, PNG brain-file path for local dev.
 const IMG = (name, brainFile) => (location.protocol === "file:")
     ? `file:///C:/Users/E092721/.gemini/antigravity/brain/4cc002e7-42a8-4f85-93d6-dac719940557/${brainFile}`
-    : `images/${name}`;
+    : `images/${name.replace('.png', '.webp')}`;
+
+// Returns the PNG fallback path (deployed only) for <picture> elements
+const IMG_PNG = (name) => `images/${name}`;
 
 // Podulu carry a `tier` (Everyday / Signature / Handcrafted), a `benefit` tag,
 // and a `sizes` ladder with per-size explicit prices - the card only *displays*
@@ -151,9 +155,17 @@ let drawerOpen = false;
 
 /* ── Init ─────────────────────────────────────────────────── */
 document.addEventListener("DOMContentLoaded", () => {
-    // Set runtime image paths (works both locally and deployed)
+    // Set runtime image paths — WebP with PNG fallback (works both locally and deployed)
     const logo = document.getElementById("navLogo");
-    if (logo) logo.src = IMG("logo.png", "navyas_kitchen_logo_1780835858832.png");
+    if (logo) {
+        logo.src = IMG("logo.png", "navyas_kitchen_logo_1780835858832.png");
+        if (location.protocol !== "file:") {
+            const logoSource = document.createElement('source');
+            logoSource.srcset = IMG("logo.png", "");
+            logoSource.type = 'image/webp';
+            logo.parentNode.insertBefore(logoSource, logo);
+        }
+    }
     const hero = document.getElementById("heroImg");
     if (hero) hero.src = IMG("hero.png", "navyas_hero_banner_1780838693861.png");
     const footerLogo = document.getElementById("footerLogo");
@@ -256,10 +268,15 @@ function buildPodiCard(item) {
     // Anchor rate for savings = the smallest (100g) price.
     const rate100 = item.sizes.find(s => s.grams === 100)?.price ?? item.sizes[0].price;
 
+    // Derive PNG fallback from the webp image path (deployed) or keep as-is (local)
+    const pngSrc = item.image.endsWith('.webp') ? item.image.replace('.webp', '.png') : item.image;
     card.innerHTML = `
         <div class="pcard-img-wrap">
-            <img src="${item.image}" alt="${item.name}" class="pcard-img" loading="lazy"
-                 onerror="this.src='https://placehold.co/420x240/faf5ec/1e5631?text=Navya+Cloud+Kitchen'">
+            <picture>
+                <source srcset="${item.image}" type="image/webp">
+                <img src="${pngSrc}" alt="${item.name}" class="pcard-img" loading="lazy"
+                     onerror="this.src='https://placehold.co/420x240/faf5ec/1e5631?text=Navya+Cloud+Kitchen'">
+            </picture>
         </div>
         <header class="pcard-tags">
             <span class="pcard-tier">${item.tier}</span>
@@ -356,10 +373,15 @@ function buildSweetCard(item) {
     card.className = "pcard pcard--single";
     card.dataset.productId = item.id;
 
+    // Derive PNG fallback from the webp image path (deployed) or keep as-is (local)
+    const pngSrcSweet = item.image.endsWith('.webp') ? item.image.replace('.webp', '.png') : item.image;
     card.innerHTML = `
         <div class="pcard-img-wrap">
-            <img src="${item.image}" alt="${item.name}" class="pcard-img" loading="lazy"
-                 onerror="this.src='https://placehold.co/420x240/faf5ec/1e5631?text=Navya+Cloud+Kitchen'">
+            <picture>
+                <source srcset="${item.image}" type="image/webp">
+                <img src="${pngSrcSweet}" alt="${item.name}" class="pcard-img" loading="lazy"
+                     onerror="this.src='https://placehold.co/420x240/faf5ec/1e5631?text=Navya+Cloud+Kitchen'">
+            </picture>
         </div>
         <header class="pcard-tags">
             <span class="pcard-tier">Sweet</span>
