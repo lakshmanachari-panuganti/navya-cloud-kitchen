@@ -336,9 +336,6 @@ function buildPodiCard(item) {
     // Default to the "Most popular" size; fall back to the middle cell.
     const popularIdx = item.sizes.findIndex(s => s.badge === "Most popular");
     let selectedIdx = popularIdx >= 0 ? popularIdx : Math.floor(item.sizes.length / 2);
-    // Anchor rate for savings = the smallest (100g) price.
-    const rate100 = item.sizes.find(s => s.grams === 100)?.price ?? item.sizes[0].price;
-
     // Derive PNG fallback from the webp image path (deployed) or keep as-is (local)
     const pngSrc = item.image.endsWith('.webp') ? item.image.replace('.webp', '.png') : item.image;
     card.innerHTML = `
@@ -376,14 +373,6 @@ function buildPodiCard(item) {
             }).join("")}
         </div>
 
-        <div class="pcard-main">
-            <span class="pcard-main-price"></span>
-            <span class="pcard-main-unit"></span>
-        </div>
-
-        <div class="pcard-savings-slot"></div>
-        <div class="pcard-nudge"></div>
-
         <button type="button" class="pcard-cta">
             ${CART_ICON_SVG}
             ${CHECK_ICON_SVG}
@@ -391,10 +380,6 @@ function buildPodiCard(item) {
         </button>
     `;
 
-    const priceEl   = card.querySelector(".pcard-main-price");
-    const unitEl    = card.querySelector(".pcard-main-unit");
-    const savingsEl = card.querySelector(".pcard-savings-slot");
-    const nudgeEl   = card.querySelector(".pcard-nudge");
     const sizeBtns  = card.querySelectorAll(".pcard-size");
     const ctaBtn    = card.querySelector(".pcard-cta");
     const ctaLabel  = ctaBtn.querySelector(".pcard-cta-label");
@@ -402,24 +387,11 @@ function buildPodiCard(item) {
     const ctaCheck  = ctaBtn.querySelector(".pcard-cta-check");
 
     function render() {
-        const s = item.sizes[selectedIdx];
-        const unitPer100 = Math.round(s.price / s.grams * 100);
-        const saved = Math.round(rate100 * s.grams / 100 - s.price);
-
         sizeBtns.forEach(btn => {
             const isSel = Number(btn.dataset.idx) === selectedIdx;
             btn.classList.toggle("is-selected", isSel);
             btn.setAttribute("aria-pressed", String(isSel));
         });
-
-        priceEl.textContent = `₹${s.price}`;
-        unitEl.textContent  = `₹${unitPer100} / 100g`;
-
-        savingsEl.innerHTML = saved > 0
-            ? `<span class="pcard-savings">You save ₹${saved}</span>`
-            : "";
-
-        nudgeEl.textContent = buildNudge(item, selectedIdx, rate100);
     }
 
     card.querySelector(".pcard-sizes").addEventListener("click", e => {
@@ -488,25 +460,6 @@ function buildSweetCard(item) {
     });
 
     return card;
-}
-
-function buildNudge(item, selectedIdx, rate100) {
-    const s = item.sizes[selectedIdx];
-    // Smallest - steer to the middle.
-    if (selectedIdx === 0 && item.sizes[1]) {
-        const next = item.sizes[1];
-        const savedAtNext = Math.round(rate100 * next.grams / 100 - next.price);
-        return `Go ${next.grams}g → 2.5× the podi for just 2× the price. You'd save ₹${savedAtNext}.`;
-    }
-    // Largest - celebrate the value.
-    if (selectedIdx === item.sizes.length - 1) {
-        const saved = Math.round(rate100 * s.grams / 100 - s.price);
-        return `Top value - you're saving ₹${saved} versus buying singles. Great pick for weekly stock.`;
-    }
-    // Middle - steer to the top.
-    const next = item.sizes[selectedIdx + 1];
-    if (!next) return "";
-    return `Go ${next.grams}g → double your stock for only ₹${next.price - s.price} more.`;
 }
 
 // Swap the CTA to a check + custom label for 1.4s, then restore.
