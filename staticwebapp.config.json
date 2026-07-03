@@ -1,0 +1,91 @@
+{
+  "trailingSlash": "never",
+  "routes": [
+    {
+      "route": "/policies",
+      "rewrite": "/policies.html"
+    },
+    {
+      "route": "/products/avise-ginjala-podi",
+      "rewrite": "/products/avise-ginjala-podi.html"
+    },
+    {
+      "route": "/products/bellam-palli-undalu",
+      "rewrite": "/products/bellam-palli-undalu.html"
+    },
+    {
+      "route": "/products/kandi-podi",
+      "rewrite": "/products/kandi-podi.html"
+    },
+    {
+      "route": "/products/karivepaku-podi",
+      "rewrite": "/products/karivepaku-podi.html"
+    },
+    {
+      "route": "/products/minapa-sunni-undalu",
+      "rewrite": "/products/minapa-sunni-undalu.html"
+    },
+    {
+      "route": "/products/munagaku-podi",
+      "rewrite": "/products/munagaku-podi.html"
+    },
+    {
+      "route": "/products/nuvvula-podi",
+      "rewrite": "/products/nuvvula-podi.html"
+    },
+    {
+      "route": "/products/nuvvula-undalu",
+      "rewrite": "/products/nuvvula-undalu.html"
+    },
+    {
+      "route": "/products/vellulli-karampodi",
+      "rewrite": "/products/vellulli-karampodi.html"
+    },
+    {
+      "route": "/blog/homemade-vs-store-bought-podi",
+      "rewrite": "/blog/homemade-vs-store-bought-podi.html"
+    },
+    {
+      "route": "/blog/kandi-podi-benefits-uses",
+      "rewrite": "/blog/kandi-podi-benefits-uses.html"
+    },
+    {
+      "route": "/blog/karivepaku-podi-curry-leaves-powder",
+      "rewrite": "/blog/karivepaku-podi-curry-leaves-powder.html"
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": [
+      "/api/*",
+      "/images/*",
+      "/products/*.html",
+      "/blog/*.html",
+      "*.css",
+      "*.js",
+      "*.png",
+      "*.jpg",
+      "*.jpeg",
+      "*.webp",
+      "*.svg",
+      "*.ico",
+      "*.json",
+      "*.xml",
+      "*.txt"
+    ]
+  },
+  "globalHeaders": {
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "camera=(), microphone=(), geolocation=()"
+  },
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/index.html"
+    }
+  },
+  "mimeTypes": {
+    ".webp": "image/webp"
+  }
+}
