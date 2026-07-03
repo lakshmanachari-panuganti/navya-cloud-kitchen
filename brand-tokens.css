@@ -1,0 +1,23 @@
+/* ============================================================
+   BRAND TOKENS — Single source of truth for Navya Cloud Kitchen
+   Import this BEFORE style.css so these values are available.
+   ============================================================ */
+:root {
+    /* ── Core palette ──────────────────────────────────────── */
+    --brand-green: #204C30;
+    --brand-gold: #C8912E;
+    --brand-cta: #B23A25;
+    --brand-cta-hover: #9A3020;
+    --brand-cream: #F8F4E8;
+    --brand-ink: #2A1810;
+
+    /* ── Extended (mapped to existing design tokens) ───────── */
+    --brand-terracotta: #c4652a;
+    --brand-terracotta-light: #d9844e;
+    --brand-saffron: #e8983c;
+    --brand-leaf: #3a6b35;
+    --brand-leaf-dark: #2a4f26;
+    --brand-leaf-pale: #e8f0e6;
+    --brand-surface: #faf7f2;
+    --brand-border: #e8dfd0;
+}

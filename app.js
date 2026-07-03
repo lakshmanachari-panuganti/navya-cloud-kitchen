@@ -550,6 +550,12 @@ function setupCartEvents() {
 function openDrawer() {
     drawerOpen = true;
     refreshDrawerCartList();
+
+    // GA4: begin_checkout event
+    const { total } = cartTotals();
+    const items = Object.values(cart).map(i => ({ item_name: i.name, price: i.price, quantity: i.qty }));
+    window.gtag?.('event', 'begin_checkout', { value: total, currency: 'INR', items: items });
+
     const overlay = document.getElementById("drawerOverlay");
     const drawer = document.getElementById("cartDrawer");
     overlay.style.display = "block";
@@ -651,6 +657,10 @@ function submitOrderViaWhatsApp() {
 /* ── Success Screen ───────────────────────────────────────── */
 function showSuccess(orderId, total, name, phone, address, date) {
     closeDrawer();
+
+    // GA4: purchase event
+    const items = Object.values(cart).map(i => ({ item_name: i.name, price: i.price, quantity: i.qty }));
+    window.gtag?.('event', 'purchase', { transaction_id: orderId, value: total, currency: 'INR', items: items });
 
     document.getElementById("successMessage").textContent =
         `Order ready to send · Ref: ${orderId}`;

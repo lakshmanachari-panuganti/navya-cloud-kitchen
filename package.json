@@ -1,5 +1,16 @@
 {
+  "name": "navyaskitchen",
+  "private": true,
+  "scripts": {
+    "lint": "eslint app.js config.js && htmlhint index.html policies.html",
+    "lint:fix": "eslint app.js config.js --fix",
+    "build": "echo 'Static site — no build step required' && npm run lint"
+  },
   "dependencies": {
     "sharp": "^0.35.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "htmlhint": "^1.1.4"
   }
 }
