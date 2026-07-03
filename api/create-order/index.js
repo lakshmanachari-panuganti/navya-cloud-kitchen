@@ -1,53 +1,79 @@
-const Razorpay = require('razorpay');
+"use strict";
+
+const { TableClient } = require("@azure/data-tables");
+const { computeAmountPaise } = require("../shared/products");
+const { createPayment } = require("../shared/paymentProvider");
+const crypto = require("crypto");
+
+const CONN_STR = process.env.AZURE_STORAGE_CONNECTION_STRING;
+const TABLE_NAME = "Orders";
 
 module.exports = async function (context, req) {
-    context.log('Processing create-order request.');
+  try {
+    const { cart, redirectUrl } = req.body || {};
 
-    const amount = req.body && req.body.amount;
-    const customer = req.body && req.body.customer;
-
-    if (!amount) {
-        context.res = {
-            status: 400,
-            body: { error: "Please provide a valid transaction amount" }
-        };
-        return;
+    if (!Array.isArray(cart) || cart.length === 0) {
+      context.res = { status: 400, body: { error: "Cart is empty" } };
+      return;
     }
 
-    // Read Key credentials from Application App Settings (Environment variables in Azure SWA/Functions)
-    const keyId = process.env.RAZORPAY_KEY_ID || "rzp_test_XXXXXXXXXXXXXX";
-    const keySecret = process.env.RAZORPAY_KEY_SECRET || "dummy_secret_do_not_use";
-
+    // Server-side price computation — never trust client totals
+    let amountPaise;
     try {
-        const instance = new Razorpay({
-            key_id: keyId,
-            key_secret: keySecret,
-        });
-
-        const options = {
-            amount: Math.round(amount * 100), // Amount in paise/cents
-            currency: "INR",
-            receipt: `receipt_nk_${Date.now()}`,
-            notes: {
-                customerName: customer ? customer.name : "NK Customer",
-                customerPhone: customer ? customer.phone : ""
-            }
-        };
-
-        const order = await instance.orders.create(options);
-
-        context.res = {
-            status: 200,
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: order
-        };
-    } catch (error) {
-        context.log.error('Error generating Razorpay Order ID:', error);
-        context.res = {
-            status: 500,
-            body: { error: "Internal payment processing error" }
-        };
+      amountPaise = computeAmountPaise(cart);
+    } catch (err) {
+      context.res = { status: 400, body: { error: err.message } };
+      return;
     }
+
+    // Generate unique order ID
+    const merchantOrderId = `NK-${Date.now()}-${crypto.randomBytes(4).toString("hex")}`;
+    const now = new Date();
+    const partitionKey = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, "0")}`;
+
+    // Write order to Azure Table Storage
+    const tableClient = TableClient.fromConnectionString(CONN_STR, TABLE_NAME);
+    await tableClient.createTable().catch(() => {}); // ignore if exists
+
+    await tableClient.createEntity({
+      partitionKey,
+      rowKey: merchantOrderId,
+      amountPaise,
+      cart: JSON.stringify(cart),
+      status: "PENDING",
+      createdAt: now.toISOString(),
+    });
+
+    // Build callback URL (same function app base)
+    const host = req.headers["x-forwarded-host"] || req.headers.host || "localhost";
+    const protocol = req.headers["x-forwarded-proto"] || "https";
+    const callbackUrl = `${protocol}://${host}/api/verify-payment`;
+
+    // Client redirect after payment (default to site root)
+    const clientRedirect = redirectUrl || `${protocol}://${host}/`;
+
+    // Initiate PhonePe payment
+    const result = await createPayment({
+      merchantOrderId,
+      amountPaise,
+      redirectUrl: clientRedirect,
+      callbackUrl,
+    });
+
+    context.res = {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+      body: {
+        orderId: merchantOrderId,
+        amountPaise,
+        redirectUrl: result.redirectUrl,
+      },
+    };
+  } catch (err) {
+    context.log.error("create-order error:", err);
+    context.res = {
+      status: 500,
+      body: { error: "Failed to create order. Please try again." },
+    };
+  }
 };
