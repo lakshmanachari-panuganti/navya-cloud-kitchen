@@ -21,3 +21,8 @@
     --brand-surface: #faf7f2;
     --brand-border: #e8dfd0;
 }
+
+/* ── Telugu webfont integration ───────────────────────────── */
+[lang="te"], .te {
+    font-family: "Noto Sans Telugu", "DM Sans", sans-serif;
+}
