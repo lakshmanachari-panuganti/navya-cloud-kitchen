@@ -295,20 +295,21 @@ a { color: inherit; text-decoration: none; }
     margin-top: var(--space-2);
 }
 .hero-cta-primary {
-    background: var(--terracotta);
+    background: var(--brand-cta, var(--terracotta));
     color: #fff;
     font-size: 0.9rem;
     font-weight: 700;
     padding: 14px 32px;
     border-radius: var(--r-full);
     letter-spacing: 0.02em;
-    box-shadow: 0 4px 20px rgba(196,101,42,0.4);
+    min-height: 44px;
+    box-shadow: 0 4px 20px rgba(178,58,37,0.35);
     transition: all var(--t-fast);
 }
 .hero-cta-primary:hover {
-    background: var(--terracotta-light);
+    background: var(--brand-cta-hover, var(--terracotta-light));
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(196,101,42,0.5);
+    box-shadow: 0 8px 30px rgba(178,58,37,0.45);
 }
 .hero-cta-ghost {
     font-size: 0.85rem;
@@ -996,20 +997,21 @@ a { color: inherit; text-decoration: none; }
     line-height: 1.7;
 }
 .final-cta-btn {
-    background: var(--terracotta);
+    background: var(--brand-cta, var(--terracotta));
     color: #fff;
     font-size: 0.95rem;
     font-weight: 700;
     padding: 16px 40px;
     border-radius: var(--r-full);
     letter-spacing: 0.02em;
-    box-shadow: 0 6px 28px rgba(196,101,42,0.4);
+    min-height: 44px;
+    box-shadow: 0 6px 28px rgba(178,58,37,0.35);
     transition: all var(--t-fast);
 }
 .final-cta-btn:hover {
-    background: var(--terracotta-light);
+    background: var(--brand-cta-hover, var(--terracotta-light));
     transform: translateY(-2px);
-    box-shadow: 0 10px 36px rgba(196,101,42,0.5);
+    box-shadow: 0 10px 36px rgba(178,58,37,0.45);
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -1297,3 +1299,47 @@ a { color: inherit; text-decoration: none; }
     transition: all var(--t-fast);
 }
 .ghost-btn:hover { border-color: var(--ink-faint); color: var(--ink); }
+
+/* ═══════════════════════════════════════════════════════════
+   STICKY MOBILE ORDER CTA
+   Shows on mobile viewports when user scrolls past the hero.
+   Hidden when the cart bar is visible (cart has items).
+═══════════════════════════════════════════════════════════ */
+.mobile-order-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 75;
+    padding: var(--space-3) var(--space-5) calc(var(--space-3) + env(safe-area-inset-bottom));
+    background: rgba(250, 247, 242, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border);
+    display: none;
+    transition: transform 0.3s var(--ease-out);
+}
+.mobile-order-cta.visible {
+    display: block;
+}
+.mobile-order-btn {
+    display: block;
+    width: 100%;
+    background: var(--brand-cta, #B23A25);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 14px 22px;
+    border-radius: 10px;
+    text-align: center;
+    min-height: 44px;
+    box-shadow: 0 4px 16px rgba(178, 58, 37, 0.3);
+    transition: background var(--t-fast);
+}
+.mobile-order-btn:hover {
+    background: var(--brand-cta-hover, #9A3020);
+}
+/* Hide on desktop */
+@media (min-width: 768px) {
+    .mobile-order-cta { display: none !important; }
+}

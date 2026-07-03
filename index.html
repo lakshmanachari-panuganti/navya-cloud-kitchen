@@ -2,9 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Navya Cloud Kitchen - Fresh & Homemade Delicacies</title>
-    <meta name="description" content="Homemade Curry Leaves Powder, Moringa Powder, Sunni Undalu and traditional homemade delicacies prepared fresh to order in Kukatpally, Hyderabad. Ships next day via Rapido / Porter.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navya Cloud Kitchen — Homemade Andhra Podulu & Sweets, Hyderabad</title>
+    <meta name="description" content="Traditional Andhra podulu & sweets, cooked fresh the night you order in Kukatpally, Hyderabad. Zero preservatives, made to order. Next-day delivery via Rapido/Porter.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Navya Cloud Kitchen — Homemade Andhra Podulu & Sweets">
+    <meta property="og:description" content="Traditional podulu & sweets, cooked fresh the night you order, in Hyderabad. Zero preservatives, made to order.">
+    <meta property="og:image" content="https://navyacloudkitchen.com/images/hero.webp">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://navyacloudkitchen.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Navya Cloud Kitchen — Homemade Andhra Podulu & Sweets">
+    <meta name="twitter:description" content="Traditional podulu & sweets, cooked fresh the night you order, in Hyderabad. Zero preservatives, made to order.">
+    <meta name="twitter:image" content="https://navyacloudkitchen.com/images/hero.webp">
     <meta name="theme-color" content="#1a0a00">
 
     <!-- Google Analytics 4 -->
@@ -90,21 +101,23 @@
         <div class="marquee-track">
             <span>Karivepaku Podi</span><span class="marquee-dot">✦</span>
             <span>Munagaku Podi</span><span class="marquee-dot">✦</span>
+            <span>Avise Ginjala Podi</span><span class="marquee-dot">✦</span>
             <span>Kandi Podi</span><span class="marquee-dot">✦</span>
-            <span>Sunni Undalu</span><span class="marquee-dot">✦</span>
-            <span>Nuvvula Podi</span><span class="marquee-dot">✦</span>
             <span>Vellulli Karampodi</span><span class="marquee-dot">✦</span>
-            <span>Palli Undalu</span><span class="marquee-dot">✦</span>
+            <span>Nuvvula Podi</span><span class="marquee-dot">✦</span>
+            <span>Sunni Undalu</span><span class="marquee-dot">✦</span>
             <span>Nuvvula Undalu</span><span class="marquee-dot">✦</span>
+            <span>Palli Undalu</span><span class="marquee-dot">✦</span>
             <!-- Duplicate for seamless loop -->
             <span>Karivepaku Podi</span><span class="marquee-dot">✦</span>
             <span>Munagaku Podi</span><span class="marquee-dot">✦</span>
+            <span>Avise Ginjala Podi</span><span class="marquee-dot">✦</span>
             <span>Kandi Podi</span><span class="marquee-dot">✦</span>
-            <span>Sunni Undalu</span><span class="marquee-dot">✦</span>
-            <span>Nuvvula Podi</span><span class="marquee-dot">✦</span>
             <span>Vellulli Karampodi</span><span class="marquee-dot">✦</span>
-            <span>Palli Undalu</span><span class="marquee-dot">✦</span>
+            <span>Nuvvula Podi</span><span class="marquee-dot">✦</span>
+            <span>Sunni Undalu</span><span class="marquee-dot">✦</span>
             <span>Nuvvula Undalu</span><span class="marquee-dot">✦</span>
+            <span>Palli Undalu</span><span class="marquee-dot">✦</span>
         </div>
     </div>
 
@@ -408,6 +421,38 @@
             <button class="ghost-btn" id="successCloseBtn">Continue Shopping</button>
         </div>
     </div>
+
+    <!-- Sticky Mobile Order CTA -->
+    <div class="mobile-order-cta" id="mobileOrderCta">
+        <button class="mobile-order-btn" onclick="document.getElementById('menuContainer').scrollIntoView({behavior:'smooth'})">
+            🛒 Order Now
+        </button>
+    </div>
+
+    <!-- LocalBusiness Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FoodEstablishment",
+        "name": "Navya Cloud Kitchen",
+        "servesCuisine": "Andhra, South Indian",
+        "image": "https://navyacloudkitchen.com/images/hero.webp",
+        "url": "https://navyacloudkitchen.com",
+        "telephone": "+918686216633",
+        "email": "navya.cloudkitchen.online@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Flat No. 502, Vilax Pride Apartment, Amma Mess Road, Prashantinagar",
+            "addressLocality": "Kukatpally, Hyderabad",
+            "addressRegion": "Telangana",
+            "postalCode": "500072",
+            "addressCountry": "IN"
+        },
+        "sameAs": ["https://www.instagram.com/navya.cloudkitchen.online"],
+        "openingHours": "Mo-Su 09:00-18:00",
+        "priceRange": "₹₹"
+    }
+    </script>
 
     <script src="config.js"></script>
     <script src="app.js"></script>

@@ -283,7 +283,7 @@ function buildPodiCard(item) {
             <span class="pcard-benefit">${item.benefit}</span>
         </header>
         <div class="pcard-heading">
-            <h3 class="pcard-name">${item.name}</h3>
+            <h3 class="pcard-name" lang="te">${item.name}</h3>
             ${item.sub ? `<div class="pcard-sub">${item.sub}</div>` : ""}
         </div>
         <p class="pcard-desc">${item.description}</p>
@@ -388,7 +388,7 @@ function buildSweetCard(item) {
             <span class="pcard-benefit">${item.benefit}</span>
         </header>
         <div class="pcard-heading">
-            <h3 class="pcard-name">${item.name}</h3>
+            <h3 class="pcard-name" lang="te">${item.name}</h3>
             ${item.sub ? `<div class="pcard-sub">${item.sub}</div>` : ""}
         </div>
         <p class="pcard-desc">${item.description}</p>
@@ -611,8 +611,15 @@ function refreshDrawerCartList() {
 /* ── Scroll Nav ───────────────────────────────────────────── */
 function setupScrollNav() {
     const nav = document.getElementById("topNav");
+    const mobileCta = document.getElementById("mobileOrderCta");
     window.addEventListener("scroll", () => {
         nav.classList.toggle("scrolled", window.scrollY > 60);
+        // Show sticky mobile CTA once scrolled past hero, hide if cart bar is active
+        if (mobileCta) {
+            const cartHasItems = Object.keys(cart).length > 0;
+            const pastHero = window.scrollY > 400;
+            mobileCta.classList.toggle("visible", pastHero && !cartHasItems);
+        }
     }, { passive: true });
 }
 
