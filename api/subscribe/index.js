@@ -12,8 +12,8 @@ module.exports = async function (context, req) {
   try {
     const { name, whatsapp, consent } = req.body || {};
 
-    if (!consent) {
-      context.res = { status: 400, body: { error: "Consent is required" } };
+    if (consent !== true) {
+      context.res = { status: 400, body: { error: "Explicit consent (true) is required" } };
       return;
     }
 

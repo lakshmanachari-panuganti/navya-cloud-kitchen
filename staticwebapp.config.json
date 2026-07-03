@@ -80,11 +80,6 @@
     "Referrer-Policy": "strict-origin-when-cross-origin",
     "Permissions-Policy": "camera=(), microphone=(), geolocation=()"
   },
-  "responseOverrides": {
-    "404": {
-      "rewrite": "/index.html"
-    }
-  },
   "mimeTypes": {
     ".webp": "image/webp"
   }

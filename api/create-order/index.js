@@ -7,13 +7,25 @@ const crypto = require("crypto");
 
 const CONN_STR = process.env.AZURE_STORAGE_CONNECTION_STRING;
 const TABLE_NAME = "Orders";
+const MAX_CART_ITEMS = 50;
 
 module.exports = async function (context, req) {
+  if (!CONN_STR) {
+    context.log.error("AZURE_STORAGE_CONNECTION_STRING is not configured");
+    context.res = { status: 500, body: { error: "Server configuration error" } };
+    return;
+  }
+
   try {
     const { cart, redirectUrl } = req.body || {};
 
     if (!Array.isArray(cart) || cart.length === 0) {
       context.res = { status: 400, body: { error: "Cart is empty" } };
+      return;
+    }
+
+    if (cart.length > MAX_CART_ITEMS) {
+      context.res = { status: 400, body: { error: "Cart exceeds maximum item limit" } };
       return;
     }
 

@@ -91,10 +91,12 @@ function verifyWebhook(rawBody, signature) {
     .update(rawBody)
     .digest("base64");
 
-  return crypto.timingSafeEqual(
-    Buffer.from(expected, "utf8"),
-    Buffer.from(signature || "", "utf8")
-  );
+  // Guard: timingSafeEqual throws if buffers differ in length
+  const expectedBuf = Buffer.from(expected, "utf8");
+  const signatureBuf = Buffer.from(signature || "", "utf8");
+  if (expectedBuf.length !== signatureBuf.length) return false;
+
+  return crypto.timingSafeEqual(expectedBuf, signatureBuf);
 }
 
 /**

@@ -9,23 +9,33 @@ on:
   push:
     branches:
       - develop
+      - ai-driven1
     paths:
       - 'index.html'
       - 'style.css'
       - 'app.js'
       - 'config.js'
+      - 'brand-tokens.css'
+      - 'staticwebapp.config.json'
       - 'images/**'
+      - 'products/**'
+      - 'blog/**'
       - 'api/**'
       - '.github/workflows/deploy-dev.yml'
   pull_request:
     branches:
       - develop
+      - ai-driven1
     paths:
       - 'index.html'
       - 'style.css'
       - 'app.js'
       - 'config.js'
+      - 'brand-tokens.css'
+      - 'staticwebapp.config.json'
       - 'images/**'
+      - 'products/**'
+      - 'blog/**'
       - 'api/**'
   workflow_dispatch:
 

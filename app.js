@@ -201,7 +201,10 @@ document.addEventListener("DOMContentLoaded", () => {
     initDeliveryDate();
     renderCategoryPills("all");
     showMenuSkeletons();
-    renderMenu("all");
+    // Defer render to next frame so skeletons are visible on slow connections
+    requestAnimationFrame(() => {
+        renderMenu("all");
+    });
     setupCartEvents();
     setupScrollNav();
     setupScrollReveal();

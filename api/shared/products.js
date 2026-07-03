@@ -14,6 +14,9 @@ const PRODUCTS = {
   minapa_sunnundalu: { type: "sweet", price: 260 },
   nuvvula_undalu: { type: "sweet", price: 199 },
   bellam_palli_undalu: { type: "sweet", price: 120 },
+  // Bundle / combo products
+  podi_starter_box: { type: "sweet", price: 449 },
+  festival_sweet_box: { type: "sweet", price: 499 },
 };
 
 /**
