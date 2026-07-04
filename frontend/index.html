@@ -63,35 +63,66 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-bg-grain"></div>
-        <div class="hero-image-wrap">
-            <picture>
-                <source srcset="images/hero.webp" type="image/webp">
-                <img id="heroImg"
-                 alt="4 Fresh Indian Spice Powders - Curry Leaves, Moringa, Kandi Podi, Chilli Karam"
-                 class="hero-img"
-                 onerror="this.style.display='none'">
-            </picture>
-        </div>
-        <div class="hero-content">
-            <div class="hero-overline reveal-up">From our kitchen to yours</div>
-            <h1 class="hero-title">
-                <span class="reveal-up" style="--d:0.1s">Taste the</span><br>
-                <em class="reveal-up" style="--d:0.25s">Real Flavour</em><br>
-                <span class="reveal-up" style="--d:0.4s">of Home</span>
-            </h1>
-            <p class="hero-desc reveal-up" style="--d:0.55s">Traditional Podulu & Sweets, crafted fresh every night with love. Zero preservatives. 100% homemade.</p>
-            <div class="hero-actions reveal-up" style="--d:0.7s">
-                <button class="hero-cta-primary" onclick="document.getElementById('menuContainer').scrollIntoView({behavior:'smooth'})">
-                    Order Now
-                </button>
-                <a class="hero-cta-ghost" href="#story">Our Story</a>
+    <section class="hero" aria-labelledby="heroTitle">
+        <div class="hero-frame">
+            <div class="hero-bg">
+                <picture>
+                    <img src="images/hero_bg.png"
+                         alt=""
+                         class="hero-bg-img"
+                         loading="eager"
+                         fetchpriority="high"
+                         onerror="this.style.display='none'">
+                </picture>
+                <div class="hero-overlay" aria-hidden="true"></div>
+                <div class="hero-vignette" aria-hidden="true"></div>
             </div>
-            <div class="hero-trust reveal-up" style="--d:0.85s">
-                <div class="trust-pill"><span class="trust-icon">🌿</span> Zero Preservatives</div>
-                <div class="trust-pill"><span class="trust-icon">🫙</span> Made to Order</div>
-                <div class="trust-pill"><span class="trust-icon">🚚</span> Next-Day Dispatch</div>
+            <div class="hero-content">
+                <div class="hero-overline reveal-up">From our kitchen to yours</div>
+                <h1 class="hero-title" id="heroTitle">
+                    <span class="reveal-up" style="--d:0.1s">Taste the</span>
+                    <em class="reveal-up" style="--d:0.25s">Real Flavour</em>
+                    <span class="reveal-up" style="--d:0.4s">of Home</span>
+                </h1>
+                <p class="hero-desc reveal-up" style="--d:0.55s">Traditional Podulu &amp; Sweets, crafted fresh every night with love.<br>Zero preservatives. 100% homemade.</p>
+                <div class="hero-actions reveal-up" style="--d:0.7s">
+                    <button class="hero-cta-primary" onclick="document.getElementById('menuContainer').scrollIntoView({behavior:'smooth'})" aria-label="Browse the menu and order now">
+                        Order Now
+                    </button>
+                    <a class="hero-cta-ghost" href="#story" aria-label="Read our story">Our Story</a>
+                </div>
+                <div class="hero-features reveal-up" style="--d:0.85s" role="list">
+                    <div class="feature-card" role="listitem">
+                        <span class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2c-4 6 2 8 0 14"/>
+                                <path d="M20 8c-6 2-8 8-14 8"/>
+                                <path d="M4 8c6 2 8 8 14 8"/>
+                            </svg>
+                        </span>
+                        <span class="feature-text">Zero<br>Preservatives</span>
+                    </div>
+                    <div class="feature-card" role="listitem">
+                        <span class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="6" y="3" width="12" height="18" rx="2"/>
+                                <path d="M9 8h6M9 12h6M9 16h4"/>
+                            </svg>
+                        </span>
+                        <span class="feature-text">Made<br>to Order</span>
+                    </div>
+                    <div class="feature-card" role="listitem">
+                        <span class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 8h11v9H1z"/>
+                                <path d="M12 12h6l3 3v2h-9z"/>
+                                <circle cx="5.5" cy="17.5" r="1.8"/>
+                                <circle cx="16.5" cy="17.5" r="1.8"/>
+                            </svg>
+                        </span>
+                        <span class="feature-text">Next-Day<br>Dispatch</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
