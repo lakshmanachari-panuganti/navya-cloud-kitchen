@@ -6,7 +6,7 @@
   "title": "Oversized image: 2079 KB (limit 781.25 KB)",
   "description": "",
   "page": "home",
-  "url": "http://localhost:8123/images/hero_bg.png",
+  "url": "http://localhost:8123/images/hero_bg_desktop.png",
   "selector": "",
   "expected": "",
   "actual": "",

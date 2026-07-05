@@ -1554,7 +1554,7 @@
 
 **Category:** performance  
 **Page:** home  
-**URL:** http://localhost:8123/images/hero_bg.png  
+**URL:** http://localhost:8123/images/hero_bg_desktop.png  
 **Device:** chromium-desktop  
 **Browser:** chromium
 
