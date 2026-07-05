@@ -1,0 +1,20 @@
+{
+  "id": "9aea51a97306",
+  "timestamp": "2026-07-05T11:47:22.535Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "Missing twitter:image meta tag",
+  "description": "",
+  "page": "products/avise-ginjala-podi",
+  "url": "/products/avise-ginjala-podi.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross seo › meta: products/avise-ginjala-podi",
+  "evidence": [],
+  "extra": null
+}

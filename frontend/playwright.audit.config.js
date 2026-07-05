@@ -128,20 +128,19 @@ module.exports = defineConfig({
             },
         },
 
-        // ── Aggregator: runs *after* every browser project, single worker ──
+        // ── Aggregator: runs *after* the browser projects.
+        //   Only chromium-desktop is a hard dependency; other browsers are
+        //   opportunistic (findings on disk still get aggregated). This keeps
+        //   `npm run audit:chromium` a valid fast lane while `npm run audit`
+        //   still runs the full matrix (all projects in the sweep list will
+        //   naturally finish before the report project starts because they
+        //   are declared earlier in this array).
         {
             name: 'report',
             grep: /@report/,
             testMatch: /99-.*\.spec\.js$/,
             fullyParallel: false,
-            dependencies: [
-                'chromium-desktop',
-                'firefox-desktop',
-                'webkit-desktop',
-                'tablet',
-                'mobile-chrome',
-                'mobile-safari',
-            ],
+            dependencies: ['chromium-desktop'],
             use: {
                 ...devices['Desktop Chrome'],
                 ...commonUse,

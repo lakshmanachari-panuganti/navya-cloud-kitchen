@@ -1,0 +1,20 @@
+{
+  "id": "c73447c90236",
+  "timestamp": "2026-07-05T11:47:25.874Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "<title> is 74 characters (recommended ≤65)",
+  "description": "",
+  "page": "products/bellam-palli-undalu",
+  "url": "/products/bellam-palli-undalu.html",
+  "selector": "",
+  "expected": "",
+  "actual": "Buy Bellam Palli Undalu Online — Homemade, Hyderabad | Navya Cloud Kitchen",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross seo › meta: products/bellam-palli-undalu",
+  "evidence": [],
+  "extra": null
+}

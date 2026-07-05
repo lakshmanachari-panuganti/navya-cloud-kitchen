@@ -1,0 +1,20 @@
+{
+  "id": "af75fc73d6ad",
+  "timestamp": "2026-07-05T11:47:50.174Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "Missing twitter:title meta tag",
+  "description": "",
+  "page": "products/nuvvula-undalu",
+  "url": "/products/nuvvula-undalu.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross seo › meta: products/nuvvula-undalu",
+  "evidence": [],
+  "extra": null
+}

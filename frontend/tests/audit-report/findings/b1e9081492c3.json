@@ -1,0 +1,20 @@
+{
+  "id": "b1e9081492c3",
+  "timestamp": "2026-07-05T11:47:29.293Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "Missing twitter:title meta tag",
+  "description": "",
+  "page": "products/kandi-podi",
+  "url": "/products/kandi-podi.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross seo › meta: products/kandi-podi",
+  "evidence": [],
+  "extra": null
+}

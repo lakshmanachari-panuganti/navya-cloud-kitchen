@@ -1,0 +1,20 @@
+{
+  "id": "277bbb1cda68",
+  "timestamp": "2026-07-05T11:47:48.952Z",
+  "severity": "low",
+  "category": "performance",
+  "title": "Image 512px wide but rendered at 40px",
+  "description": "",
+  "page": "home",
+  "url": "/index.html",
+  "selector": "",
+  "expected": "",
+  "actual": "http://localhost:8123/images/logo.webp",
+  "remediation": "Serve smaller variants via <picture> or srcset for the actual displayed size.",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@cross images › images: home",
+  "evidence": [],
+  "extra": null
+}

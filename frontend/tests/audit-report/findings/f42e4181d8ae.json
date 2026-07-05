@@ -1,0 +1,20 @@
+{
+  "id": "f42e4181d8ae",
+  "timestamp": "2026-07-05T11:47:49.014Z",
+  "severity": "low",
+  "category": "performance",
+  "title": "Image 1024px wide but rendered at 294px",
+  "description": "",
+  "page": "home",
+  "url": "/index.html",
+  "selector": "",
+  "expected": "",
+  "actual": "http://localhost:8123/images/sunni_undalu.webp",
+  "remediation": "Serve smaller variants via <picture> or srcset for the actual displayed size.",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@cross images › images: home",
+  "evidence": [],
+  "extra": null
+}

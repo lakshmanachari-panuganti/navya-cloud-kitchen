@@ -1,0 +1,26 @@
+{
+  "id": "6c5c0d14de7a",
+  "timestamp": "2026-07-05T11:46:03.794Z",
+  "severity": "medium",
+  "category": "accessibility",
+  "title": "[a11y heading-order] Heading levels should only increase by one",
+  "description": "Ensure the order of headings is semantically correct",
+  "page": "policies",
+  "url": "/policies.html",
+  "selector": ".business-details > h3",
+  "expected": "",
+  "actual": "Fix any of the following:\n  Heading order invalid",
+  "remediation": "https://dequeuniversity.com/rules/axe/4.12/heading-order?application=playwright",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@desktop @responsive accessibility › axe: policies",
+  "evidence": [],
+  "extra": {
+    "impact": "moderate",
+    "tags": [
+      "cat.semantics",
+      "best-practice"
+    ]
+  }
+}

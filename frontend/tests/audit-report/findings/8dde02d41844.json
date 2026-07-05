@@ -1,0 +1,20 @@
+{
+  "id": "8dde02d41844",
+  "timestamp": "2026-07-05T11:48:43.546Z",
+  "severity": "low",
+  "category": "security",
+  "title": "Missing response header: permissions-policy",
+  "description": "No Permissions-Policy declared.",
+  "page": "products/vellulli-karampodi",
+  "url": "/products/vellulli-karampodi.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross security posture › headers: products/vellulli-karampodi",
+  "evidence": [],
+  "extra": null
+}
