@@ -12,6 +12,7 @@
 const { defineConfig, devices } = require('@playwright/test');
 
 module.exports = defineConfig({
+    globalSetup: './tests/global-setup.js',
     testDir: './tests',
     // Only pick up the screenshot spec here. The audit suite has its own
     // config (playwright.audit.config.js) with a different reporter set.

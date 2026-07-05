@@ -10,8 +10,15 @@
  */
 const { test, expect } = require('@playwright/test');
 const path = require('path');
+const { setupFontRoutes } = require('./utils/font-routes');
 
 const OUT_ROOT = path.join(__dirname, 'screenshots');
+
+// Serve locally-cached Google Fonts in every test so screenshots show the
+// correct typefaces even without CDN access (CI / offline runs).
+test.beforeEach(async ({ context }) => {
+    await setupFontRoutes(context);
+});
 
 /**
  * Primary routes. Paths are relative to the base URL.

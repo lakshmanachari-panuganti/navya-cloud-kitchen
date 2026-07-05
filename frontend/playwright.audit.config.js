@@ -47,6 +47,7 @@ const commonUse = {
 };
 
 module.exports = defineConfig({
+    globalSetup: './tests/global-setup.js',
     testDir: './tests/audit',
     testMatch: /.*\.spec\.js$/,
     fullyParallel: true,

@@ -14,6 +14,7 @@
  */
 const base = require('@playwright/test');
 const { recordFinding, captureEvidence, contextFrom } = require('../utils/findings');
+const { setupFontRoutes } = require('../../utils/font-routes');
 
 /**
  * @typedef {object} AuditFixtures
@@ -24,6 +25,12 @@ const { recordFinding, captureEvidence, contextFrom } = require('../utils/findin
  */
 
 exports.test = base.test.extend(/** @type {any} */({
+    // Auto-use fixture: serves locally-cached Google Fonts for every test.
+    _fontRoutes: [async ({ context }, use) => {
+        await setupFontRoutes(context);
+        await use();
+    }, { auto: true }],
+
     consoleLog: async ({ page }, use) => {
         const consoleLog = { errors: [], warnings: [], logs: [] };
         page.on('console', (msg) => {

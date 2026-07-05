@@ -11,7 +11,8 @@
     "audit": "playwright test --config=playwright.audit.config.js",
     "audit:chromium": "playwright test --config=playwright.audit.config.js --project=chromium-desktop --project=report",
     "audit:report": "playwright test --config=playwright.audit.config.js --project=report",
-    "audit:clean": "node -e \"const fs=require('fs'),p=require('path');const d=p.join('tests','audit-report');if(fs.existsSync(d))fs.rmSync(d,{recursive:true,force:true});console.log('cleaned',d);\""
+    "audit:clean": "node -e \"const fs=require('fs'),p=require('path');const d=p.join('tests','audit-report');if(fs.existsSync(d))fs.rmSync(d,{recursive:true,force:true});console.log('cleaned',d);\"",
+    "fonts:download": "node tests/global-setup.js"
   },
   "dependencies": {
     "sharp": "^0.35.3"
