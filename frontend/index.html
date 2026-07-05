@@ -9,13 +9,13 @@
     <!-- Open Graph -->
     <meta property="og:title" content="Navya Cloud Kitchen — Homemade Andhra Podulu & Sweets">
     <meta property="og:description" content="Traditional podulu & sweets, cooked fresh the night you order, in Hyderabad. Zero preservatives, made to order.">
-    <meta property="og:image" content="https://navyacloudkitchen.com/images/hero.webp">
+    <meta property="og:image" content="https://navyacloudkitchen.com/images/hero_bg_desktop.png">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://navyacloudkitchen.com">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Navya Cloud Kitchen — Homemade Andhra Podulu & Sweets">
     <meta name="twitter:description" content="Traditional podulu & sweets, cooked fresh the night you order, in Hyderabad. Zero preservatives, made to order.">
-    <meta name="twitter:image" content="https://navyacloudkitchen.com/images/hero.webp">
+    <meta name="twitter:image" content="https://navyacloudkitchen.com/images/hero_bg_desktop.png">
     <meta name="theme-color" content="#1a0a00">
 
     <!-- Google Analytics 4 -->
@@ -51,12 +51,30 @@
                 </div>
             </a>
             <nav class="nav-links" id="navLinks" aria-label="Primary">
+                <div class="nav-dropdown">
+                    <a href="#menuContainer" class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+                        Products
+                        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                    </a>
+                    <div class="nav-dropdown-menu" role="menu">
+                        <a href="#menuContainer" role="menuitem">Podulu</a>
+                        <a href="#menuContainer" role="menuitem">Pickles</a>
+                        <a href="#menuContainer" role="menuitem">Sweets</a>
+                        <a href="#menuContainer" role="menuitem">Combo Packs</a>
+                        <a href="#menuContainer" role="menuitem">Gift Boxes</a>
+                    </div>
+                </div>
                 <a href="#story">Our Story</a>
-                <a href="#menuContainer">Menu</a>
-                <a href="#reviews">Reviews</a>
                 <a href="#contact">Contact Us</a>
             </nav>
             <div class="nav-actions">
+                <a href="#account" class="nav-icon-btn nav-account-btn" id="navAccountBtn" aria-label="Sign in or account">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span class="nav-account-label" id="navAccountLabel">Sign In / Account</span>
+                </a>
                 <button class="nav-icon-btn nav-cart-btn" id="navCartBtn" aria-label="View cart">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <circle cx="9" cy="20" r="1.5"/>
@@ -65,13 +83,6 @@
                     </svg>
                     <span class="nav-cart-badge" id="navCartBadge" aria-live="polite">0</span>
                 </button>
-                <a href="#account" class="nav-icon-btn nav-account-btn" id="navAccountBtn" aria-label="Sign in or account">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                        <circle cx="12" cy="7" r="4"/>
-                    </svg>
-                    <span class="nav-account-label" id="navAccountLabel">Sign In</span>
-                </a>
                 <button class="nav-icon-btn nav-menu-btn" id="navMenuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
                     <span class="menu-bar"></span>
                     <span class="menu-bar"></span>
@@ -199,7 +210,7 @@
             <div class="hero-bg">
                 <picture>
                     <source media="(max-width: 899px)" srcset="images/hero_bg_mobile.png">
-                    <img src="images/hero_bg.png"
+                    <img src="images/hero_bg_desktop.png"
                          alt=""
                          class="hero-bg-img"
                          loading="eager"
@@ -596,7 +607,7 @@
         "@type": "FoodEstablishment",
         "name": "Navya Cloud Kitchen",
         "servesCuisine": "Andhra, South Indian",
-        "image": "https://navyacloudkitchen.com/images/hero.webp",
+        "image": "https://navyacloudkitchen.com/images/hero_bg_desktop.png",
         "url": "https://navyacloudkitchen.com",
         "telephone": "+918686216633",
         "email": "navya.cloudkitchen.online@gmail.com",

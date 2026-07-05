@@ -181,12 +181,15 @@ button:focus-visible, a:focus-visible {
     box-shadow: 0 1px 20px rgba(26, 16, 8, 0.08);
 }
 .nav-inner {
-    display: flex; align-items: center; justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
     gap: var(--space-4);
     padding: var(--space-3) var(--space-5);
     max-width: 1240px; margin: 0 auto;
     height: var(--nav-h);
 }
+.nav-links { justify-self: center; }
 
 /* Brand */
 .nav-brand { display: flex; align-items: center; gap: var(--space-3); min-width: 0; }
@@ -255,8 +258,67 @@ button:focus-visible, a:focus-visible {
 .top-nav.scrolled .nav-links a:hover { color: var(--ink); }
 .top-nav.scrolled .nav-links a::after { background: var(--terracotta); }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
     .nav-links { display: flex; }
+}
+
+/* Desktop products dropdown */
+.nav-dropdown { position: relative; }
+.nav-dropdown-trigger {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 0;
+    cursor: pointer;
+}
+.nav-dropdown-trigger svg { transition: transform var(--t-mid); }
+.nav-dropdown-menu {
+    position: absolute; top: calc(100% + 12px); left: 50%;
+    transform: translateX(-50%) translateY(-4px);
+    min-width: 180px;
+    background: rgba(10, 20, 15, 0.96);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--r-md);
+    padding: 6px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    opacity: 0; visibility: hidden;
+    transition: opacity var(--t-mid), visibility var(--t-mid), transform var(--t-mid);
+    z-index: 10;
+}
+.nav-dropdown-menu a {
+    display: block;
+    padding: 10px 14px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.86rem;
+    font-weight: 500;
+    border-radius: var(--r-sm);
+    transition: background var(--t-fast), color var(--t-fast);
+}
+.nav-dropdown-menu a::after { content: none; }
+.nav-dropdown-menu a:hover {
+    background: rgba(244, 181, 42, 0.14);
+    color: #fff;
+}
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown:hover .nav-dropdown-trigger svg,
+.nav-dropdown:focus-within .nav-dropdown-trigger svg {
+    transform: rotate(180deg);
+}
+.top-nav.scrolled .nav-dropdown-menu {
+    background: rgba(255, 255, 255, 0.98);
+    border-color: var(--border);
+}
+.top-nav.scrolled .nav-dropdown-menu a {
+    color: var(--ink-secondary);
+}
+.top-nav.scrolled .nav-dropdown-menu a:hover {
+    background: rgba(196, 101, 42, 0.08);
+    color: var(--terracotta);
 }
 
 /* Actions cluster: cart + account + hamburger */
@@ -302,22 +364,22 @@ button:focus-visible, a:focus-visible {
     border-color: rgba(196, 101, 42, 0.35);
 }
 
-/* Cart badge */
+/* Cart badge — always visible with a gold pill showing item count */
 .nav-cart-btn { padding: 0; width: 44px; }
-.nav-cart-btn:not(.has-items) .nav-cart-badge { display: none; }
 .nav-cart-badge {
-    position: absolute; top: -3px; right: -3px;
+    position: absolute; top: -4px; right: -6px;
     background: var(--hero-gold); color: #1a1008;
-    font-size: 0.62rem; font-weight: 800;
+    font-size: 0.66rem; font-weight: 800;
     min-width: 20px; height: 20px; padding: 0 6px;
     border-radius: var(--r-full);
     display: flex; align-items: center; justify-content: center;
-    border: 2px solid transparent;
+    border: 2px solid var(--hero-bg);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
     transition: background var(--t-mid), border-color var(--t-mid), color var(--t-mid);
 }
 .top-nav.scrolled .nav-cart-badge {
-    background: var(--terracotta);
-    color: #fff;
+    background: var(--hero-gold);
+    color: #1a1008;
     border-color: var(--bg);
 }
 
@@ -363,21 +425,27 @@ button:focus-visible, a:focus-visible {
 }
 @media (max-width: 899px) {
     .nav-links { display: none !important; }
-    /* Account icon lives inside the slide-in menu on mobile to keep the
-       header uncluttered and stop the actions row from overflowing. */
-    .nav-account-btn { display: none; }
-    .nav-actions { gap: 4px; }
+    /* Compact mobile actions row: cart + account (icon only) + hamburger.
+       Reducing each icon-btn to 40px and dropping the gap keeps the row
+       inside a 390px viewport alongside the brand mark. */
+    .nav-account-label { display: none; }
+    .nav-account-btn { width: 40px; padding: 0; }
+    .nav-cart-btn, .nav-menu-btn, .nav-icon-btn { width: 40px; min-width: 40px; height: 40px; }
+    .nav-actions { gap: 2px; }
     .nav-inner { gap: var(--space-2); padding-left: var(--space-4); padding-right: var(--space-4); }
-    .nav-brand-text { display: none; }
 }
 
 /* Brand text visibility */
 .nav-brand { text-decoration: none; min-width: 0; }
 .nav-brand-text { min-width: 0; overflow: hidden; }
 .nav-title, .nav-sub { white-space: nowrap; }
-@media (max-width: 420px) {
-    .nav-sub { display: none; }
-    .nav-title { font-size: 1rem; }
+@media (max-width: 899px) {
+    .nav-logo { width: 36px; height: 36px; }
+    .nav-title { font-size: 0.92rem; }
+    .nav-sub { font-size: 0.5rem; letter-spacing: 0.12em; }
+}
+@media (max-width: 380px) {
+    .nav-brand-text { display: none; }
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -742,12 +810,23 @@ body.menu-open {
     object-fit: cover;
     object-position: center right;
     display: block;
-    transform: scale(1);
     animation: heroImgFade 1.2s var(--ease-out) both;
 }
+/* hero_bg_desktop.png has the bowls on the LEFT; mirror on desktop so
+   the plate lands under the right column while the content column keeps
+   the empty dark side. On mobile the portrait bg is composed correctly
+   and doesn't need flipping. Applied to the wrapping picture so the
+   fade-in animation on the img stays independent of the flip. */
+@media (min-width: 900px) {
+    .hero-bg > picture {
+        display: block;
+        width: 100%; height: 100%;
+        transform: scaleX(-1);
+    }
+}
 @keyframes heroImgFade {
-    from { opacity: 0; transform: scale(1.04); }
-    to   { opacity: 1; transform: scale(1); }
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 /* Left-to-right dark green gradient for text readability */
 .hero-overlay {
@@ -1020,7 +1099,7 @@ body.menu-open {
 /* ─── Mobile: immersive single-screen hero ─── */
 @media (max-width: 899px) {
     /* Reset desktop framing — full bleed, no margin, no rounded corner */
-    .hero { padding: 0; margin-top: calc(-1 * var(--nav-h, 68px)); }
+    .hero { padding: 0; margin-top: calc(-1 * var(--nav-h, 64px)); }
     .hero-frame {
         min-height: 100vh;
         min-height: 100svh;
@@ -1033,38 +1112,41 @@ body.menu-open {
     .hero-bg-img {
         object-position: center bottom;
     }
-    /* Content occupies the upper 50% area; badges at bottom (space-between) */
+    /* Content spans the full viewport height with content stacked at top
+       and trust cards pinned at bottom via margin-top: auto. */
     .hero-content {
         width: 100%;
         max-width: none;
-        padding: calc(var(--nav-h, 68px) + var(--space-6)) var(--space-5) var(--space-8);
-        gap: var(--space-4);
+        padding: calc(var(--nav-h, 64px) + var(--space-4)) var(--space-5) var(--space-5);
+        gap: var(--space-3);
         justify-content: flex-start;
         min-height: 100vh;
         min-height: 100svh;
     }
-    /* Reading-order overlay: darker top, softer middle, deeper bottom for card legibility */
+    /* Reading-order overlay: darker top so the title/desc sit cleanly on
+       the dark green, subtle in the middle so the bowls stay visible,
+       then a soft dark base so the trust card block reads well. */
     .hero-overlay {
         background: linear-gradient(
             180deg,
-            rgba(6, 21, 13, 0.92) 0%,
-            rgba(6, 21, 13, 0.78) 20%,
-            rgba(6, 21, 13, 0.45) 42%,
-            rgba(6, 21, 13, 0.25) 60%,
-            rgba(6, 21, 13, 0.55) 82%,
-            rgba(6, 21, 13, 0.88) 100%
+            rgba(6, 21, 13, 0.94) 0%,
+            rgba(6, 21, 13, 0.72) 22%,
+            rgba(6, 21, 13, 0.35) 45%,
+            rgba(6, 21, 13, 0.15) 60%,
+            rgba(6, 21, 13, 0.35) 80%,
+            rgba(6, 21, 13, 0.70) 100%
         );
     }
-    .hero-vignette { opacity: 0.7; }
+    .hero-vignette { opacity: 0.55; }
     /* Feather taller on mobile so the fade into the next section feels smooth */
-    .hero-feather { height: 160px; }
+    .hero-feather { height: 120px; }
 }
 
 /* ─── Small mobile ─── */
 @media (max-width: 639px) {
-    .hero-title { font-size: clamp(2.4rem, 11vw, 3.4rem); }
-    .hero-desc { font-size: 0.95rem; max-width: 100%; }
-    .hero-actions { gap: var(--space-3); }
+    .hero-title { font-size: clamp(2.1rem, 10vw, 3rem); line-height: 1.05; }
+    .hero-desc { font-size: 0.9rem; max-width: 100%; line-height: 1.55; }
+    .hero-actions { gap: 10px; margin-top: 2px; }
     .hero-cta-primary,
     .hero-cta-ghost {
         flex: 1;
@@ -1072,6 +1154,7 @@ body.menu-open {
         padding-left: var(--space-4);
         padding-right: var(--space-4);
         min-height: 48px;
+        font-size: 0.9rem;
     }
     /* Trust badges: single premium card with 3 rows [icon | title | description] */
     .hero-features {
@@ -1090,31 +1173,31 @@ body.menu-open {
     }
     .feature-card {
         display: grid;
-        grid-template-columns: 40px minmax(0, 1fr) minmax(0, 1.15fr);
+        grid-template-columns: 36px minmax(0, 0.92fr) minmax(0, 1.15fr);
         align-items: center;
-        gap: 14px;
+        gap: 10px;
         background: transparent;
         border: none;
         border-radius: 0;
-        padding: 13px 10px;
+        padding: 12px 8px;
         backdrop-filter: none;
         border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     }
     .feature-card:last-child { border-bottom: none; }
     .feature-card:hover { transform: none; box-shadow: none; background: transparent; }
     .feature-icon {
-        width: 40px; height: 40px; border-radius: var(--r-full);
+        width: 36px; height: 36px; border-radius: var(--r-full);
         background: rgba(244, 181, 42, 0.10);
         border-color: rgba(244, 181, 42, 0.22);
     }
-    .feature-icon svg { width: 18px; height: 18px; }
+    .feature-icon svg { width: 16px; height: 16px; }
     .feature-title {
-        font-size: 0.88rem;
+        font-size: 0.84rem;
         font-weight: 700;
         color: #fff;
         line-height: 1.2;
         letter-spacing: 0;
-        padding-right: 12px;
+        padding-right: 10px;
         border-right: 1px solid rgba(255, 255, 255, 0.10);
         min-height: 1.5em;
         align-self: center;
@@ -1122,11 +1205,13 @@ body.menu-open {
     .feature-title br { display: inline; }
     .feature-desc {
         display: block;
-        font-size: 0.78rem;
+        font-size: 0.74rem;
         font-weight: 400;
         color: rgba(255, 255, 255, 0.72);
         line-height: 1.35;
         letter-spacing: 0.005em;
+        word-break: break-word;
+        overflow-wrap: anywhere;
     }
 }
 

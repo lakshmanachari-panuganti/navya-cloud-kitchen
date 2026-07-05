@@ -189,8 +189,6 @@ document.addEventListener("DOMContentLoaded", () => {
             logo.parentNode.insertBefore(logoSource, logo);
         }
     }
-    const hero = document.getElementById("heroImg");
-    if (hero) hero.src = IMG("hero.png", "navyas_hero_banner_1780838693861.png");
     const footerLogo = document.getElementById("footerLogo");
     if (footerLogo) footerLogo.src = IMG("logo.png", "navyas_kitchen_logo_1780835858832.png");
 
