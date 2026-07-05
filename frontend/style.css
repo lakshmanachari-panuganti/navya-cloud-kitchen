@@ -1145,8 +1145,10 @@ body.menu-open {
 /* ─── Small mobile ─── */
 @media (max-width: 639px) {
     .hero-title { font-size: clamp(2.1rem, 10vw, 3rem); line-height: 1.05; }
-    .hero-desc { font-size: 0.9rem; max-width: 100%; line-height: 1.55; }
-    .hero-actions { gap: 10px; margin-top: 2px; }
+    /* Description is hidden on mobile — the imagery + trust cards carry
+       enough context. Buttons + cards float up into the freed space. */
+    .hero-desc { display: none; }
+    .hero-actions { gap: 10px; margin-top: var(--space-4); }
     .hero-cta-primary,
     .hero-cta-ghost {
         flex: 1;
