@@ -1,0 +1,20 @@
+{
+  "id": "da36177c9d1c",
+  "timestamp": "2026-07-05T06:32:05.383Z",
+  "severity": "low",
+  "category": "accessibility",
+  "title": "Touch target below 32×32 on mobile: A",
+  "description": "",
+  "page": "products/bellam-palli-undalu",
+  "url": "/products/bellam-palli-undalu.html",
+  "selector": "a",
+  "expected": "",
+  "actual": "412×26",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "mobile-chrome",
+  "spec": "@responsive visual regression + overflow › visual: products/bellam-palli-undalu",
+  "evidence": [],
+  "extra": null
+}

@@ -1,0 +1,20 @@
+{
+  "id": "a85bb85895e4",
+  "timestamp": "2026-07-05T06:28:18.884Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "Missing twitter:title meta tag",
+  "description": "",
+  "page": "blog/homemade-vs-store-bought-podi",
+  "url": "/blog/homemade-vs-store-bought-podi.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "desktop",
+  "spec": "@chromium-only @cross seo › meta: blog/homemade-vs-store-bought-podi",
+  "evidence": [],
+  "extra": null
+}

@@ -1,0 +1,25 @@
+{
+  "id": "d01b0ea0d693",
+  "timestamp": "2026-07-05T06:21:04.783Z",
+  "severity": "info",
+  "category": "link-integrity",
+  "title": "Found 2 distinct external link target(s)",
+  "description": "",
+  "page": "",
+  "url": "",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "mobile",
+  "spec": "@chromium-only @cross discovery › crawl navigation and record any discovered internal pages",
+  "evidence": [],
+  "extra": {
+    "externalLinks": [
+      "https://instagram.com/navya.cloudkitchen.online",
+      "https://wa.me/918686216633"
+    ]
+  }
+}

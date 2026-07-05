@@ -1,0 +1,20 @@
+{
+  "id": "d3b550416aea",
+  "timestamp": "2026-07-05T06:30:27.154Z",
+  "severity": "medium",
+  "category": "accessibility",
+  "title": "Heading level skipped: h2 → h4",
+  "description": "",
+  "page": "home",
+  "url": "/index.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "mobile",
+  "spec": "@desktop @responsive accessibility › axe: home",
+  "evidence": [],
+  "extra": null
+}

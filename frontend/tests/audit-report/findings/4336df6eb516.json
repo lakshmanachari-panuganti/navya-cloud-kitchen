@@ -1,0 +1,20 @@
+{
+  "id": "4336df6eb516",
+  "timestamp": "2026-07-05T06:28:26.090Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "No <link rel=\"icon\"> declared",
+  "description": "",
+  "page": "blog/karivepaku-podi-curry-leaves-powder",
+  "url": "/blog/karivepaku-podi-curry-leaves-powder.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "desktop",
+  "spec": "@chromium-only @cross seo › meta: blog/karivepaku-podi-curry-leaves-powder",
+  "evidence": [],
+  "extra": null
+}

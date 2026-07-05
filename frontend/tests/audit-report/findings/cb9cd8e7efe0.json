@@ -1,0 +1,20 @@
+{
+  "id": "cb9cd8e7efe0",
+  "timestamp": "2026-07-05T06:30:53.367Z",
+  "severity": "medium",
+  "category": "performance",
+  "title": "Oversized image: 1740 KB (limit 781.25 KB)",
+  "description": "",
+  "page": "home",
+  "url": "http://localhost:8123/images/hero_bg_mobile.png",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "mobile",
+  "spec": "@cross console & network › console+network: home",
+  "evidence": [],
+  "extra": null
+}

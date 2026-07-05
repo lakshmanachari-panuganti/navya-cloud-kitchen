@@ -1,0 +1,20 @@
+{
+  "id": "646c18cf6e73",
+  "timestamp": "2026-07-05T06:32:05.499Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "Missing twitter:title meta tag",
+  "description": "",
+  "page": "products/karivepaku-podi",
+  "url": "/products/karivepaku-podi.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "mobile",
+  "spec": "@chromium-only @cross seo › meta: products/karivepaku-podi",
+  "evidence": [],
+  "extra": null
+}

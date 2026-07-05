@@ -1,0 +1,20 @@
+{
+  "id": "6690616f337e",
+  "timestamp": "2026-07-05T06:26:08.676Z",
+  "severity": "medium",
+  "category": "functional",
+  "title": "Cart did not reset after successful order close",
+  "description": "",
+  "page": "home",
+  "url": "",
+  "selector": "",
+  "expected": "0",
+  "actual": "1",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "desktop",
+  "spec": "@desktop @cross cart & checkout › successful checkout renders success screen and clears cart on close",
+  "evidence": [],
+  "extra": null
+}

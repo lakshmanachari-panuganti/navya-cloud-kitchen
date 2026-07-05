@@ -1,0 +1,34 @@
+{
+  "id": "f6cebbcb8d7c",
+  "timestamp": "2026-07-05T06:26:48.748Z",
+  "severity": "high",
+  "category": "accessibility",
+  "title": "[a11y color-contrast] Elements must meet minimum color contrast ratio thresholds",
+  "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+  "page": "home",
+  "url": "/index.html",
+  "selector": "article[data-product-id=\"nuvvula_undalu\"] > .pcard-allergens[aria-label=\"Allergen information\"] > strong",
+  "expected": "",
+  "actual": "Fix any of the following:\n  Element has insufficient color contrast of 3.73 (foreground color: #c4652a, background color: #fbf6f2, font size: 8.6pt (11.52px), font weight: bold). Expected contrast ratio of 4.5:1",
+  "remediation": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=playwright",
+  "steps": [],
+  "browser": "chromium",
+  "device": "desktop",
+  "spec": "@desktop @responsive accessibility › axe: home",
+  "evidence": [],
+  "extra": {
+    "impact": "serious",
+    "tags": [
+      "cat.color",
+      "wcag2aa",
+      "wcag143",
+      "TTv5",
+      "TT13.c",
+      "EN-301-549",
+      "EN-9.1.4.3",
+      "ACT",
+      "RGAAv4",
+      "RGAA-3.2.1"
+    ]
+  }
+}

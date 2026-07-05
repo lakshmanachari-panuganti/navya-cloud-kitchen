@@ -1,0 +1,20 @@
+{
+  "id": "fa718ac46588",
+  "timestamp": "2026-07-05T06:28:18.797Z",
+  "severity": "low",
+  "category": "content",
+  "title": "License marked \"Applied for\" in customer-visible copy",
+  "description": "",
+  "page": "home",
+  "url": "/index.html",
+  "selector": "",
+  "expected": "",
+  "actual": "Applied for",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "desktop",
+  "spec": "@chromium-only @cross content › content: home",
+  "evidence": [],
+  "extra": null
+}

@@ -1,0 +1,20 @@
+{
+  "id": "17b801688d8e",
+  "timestamp": "2026-07-05T06:32:01.062Z",
+  "severity": "low",
+  "category": "performance",
+  "title": "Image 1024px wide but rendered at 308px",
+  "description": "",
+  "page": "home",
+  "url": "/index.html",
+  "selector": "",
+  "expected": "",
+  "actual": "http://localhost:8123/images/moringa_podi.webp",
+  "remediation": "Serve smaller variants via <picture> or srcset for the actual displayed size.",
+  "steps": [],
+  "browser": "chromium",
+  "device": "mobile",
+  "spec": "@cross images › images: home",
+  "evidence": [],
+  "extra": null
+}

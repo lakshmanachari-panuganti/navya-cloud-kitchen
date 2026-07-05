@@ -1,0 +1,20 @@
+{
+  "id": "d2a19bc9d327",
+  "timestamp": "2026-07-05T06:28:22.843Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "No <link rel=\"icon\"> declared",
+  "description": "",
+  "page": "blog/kandi-podi-benefits-uses",
+  "url": "/blog/kandi-podi-benefits-uses.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "desktop",
+  "spec": "@chromium-only @cross seo › meta: blog/kandi-podi-benefits-uses",
+  "evidence": [],
+  "extra": null
+}

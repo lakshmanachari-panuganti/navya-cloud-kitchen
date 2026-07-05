@@ -1,0 +1,20 @@
+{
+  "id": "57792bddf56e",
+  "timestamp": "2026-07-05T06:35:35.238Z",
+  "severity": "critical",
+  "category": "functional",
+  "title": "Route \"/blog/kandi-podi-benefits-uses.html\" failed to load",
+  "description": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8123/blog/kandi-podi-benefits-uses.html\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8123/blog/kandi-podi-benefits-uses.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+  "page": "blog/kandi-podi-benefits-uses",
+  "url": "/blog/kandi-podi-benefits-uses.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "Verify the file exists and the static server serves this path.",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross discovery › every seed route returns a successful response",
+  "evidence": [],
+  "extra": null
+}

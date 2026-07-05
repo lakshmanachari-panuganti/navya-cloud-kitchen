@@ -1,0 +1,20 @@
+{
+  "id": "4292fa2c6792",
+  "timestamp": "2026-07-05T06:27:04.798Z",
+  "severity": "high",
+  "category": "network",
+  "title": "Request failed: net::ERR_ABORTED",
+  "description": "",
+  "page": "home",
+  "url": "https://www.google-analytics.com/g/collect?v=2&tid=G-XXXXXXXXXX&gtm=45je6710h2za200&_p=1783232821522&gcd=13l3l3l3l1l1&npa=0&dma=0&are=1&cid=1205032896.1783232823&frm=0&pscdl=noapi&rcb=5&sr=1440x900&uaa=x86&uab=64&uafvl=HeadlessChrome%3B149.0.7827.55%7CChromium%3B149.0.7827.55%7CNot)A%253BBrand%3B24.0.0.0&uam=&uamb=0&uap=Windows&uapv=10.0&uaw=0&ul=en-us&_s=1&tag_exp=115938465~115938468~118897920~118897930~119027224~119576881~119576885~119576891~119576895~119773332&sid=1783232822&sct=1&seg=0&dl=http%3A%2F%2Flocalhost%2Findex.html&dt=Navya%20Cloud%20Kitchen%20%E2%80%94%20Homemade%20Andhra%20Podulu%20%26%20Sweets%2C%20Hyderabad&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=1840",
+  "selector": "",
+  "expected": "",
+  "actual": "POST ERR fetch",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "desktop",
+  "spec": "@cross console & network › console+network: home",
+  "evidence": [],
+  "extra": null
+}

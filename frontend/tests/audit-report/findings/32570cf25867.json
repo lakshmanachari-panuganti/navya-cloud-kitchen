@@ -1,0 +1,20 @@
+{
+  "id": "32570cf25867",
+  "timestamp": "2026-07-05T06:27:29.972Z",
+  "severity": "medium",
+  "category": "seo",
+  "title": "Missing <link rel=\"canonical\">",
+  "description": "",
+  "page": "home",
+  "url": "/index.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "desktop",
+  "spec": "@chromium-only @cross seo › meta: home",
+  "evidence": [],
+  "extra": null
+}

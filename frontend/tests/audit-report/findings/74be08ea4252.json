@@ -1,0 +1,20 @@
+{
+  "id": "74be08ea4252",
+  "timestamp": "2026-07-05T06:27:52.580Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "Missing twitter:image meta tag",
+  "description": "",
+  "page": "products/karivepaku-podi",
+  "url": "/products/karivepaku-podi.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "desktop",
+  "spec": "@chromium-only @cross seo › meta: products/karivepaku-podi",
+  "evidence": [],
+  "extra": null
+}

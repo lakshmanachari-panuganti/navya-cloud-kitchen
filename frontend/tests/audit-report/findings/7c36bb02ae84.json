@@ -1,0 +1,20 @@
+{
+  "id": "7c36bb02ae84",
+  "timestamp": "2026-07-05T06:32:10.649Z",
+  "severity": "low",
+  "category": "accessibility",
+  "title": "Touch target below 32×32 on mobile: A",
+  "description": "",
+  "page": "products/kandi-podi",
+  "url": "/products/kandi-podi.html",
+  "selector": "a",
+  "expected": "",
+  "actual": "412×26",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "mobile-chrome",
+  "spec": "@responsive visual regression + overflow › visual: products/kandi-podi",
+  "evidence": [],
+  "extra": null
+}

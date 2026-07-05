@@ -1,0 +1,20 @@
+{
+  "id": "68625930eb3f",
+  "timestamp": "2026-07-05T06:27:55.880Z",
+  "severity": "low",
+  "category": "performance",
+  "title": "Image 1024px wide but rendered at 294px",
+  "description": "",
+  "page": "home",
+  "url": "/index.html",
+  "selector": "",
+  "expected": "",
+  "actual": "http://localhost:8123/images/vellulli_karampodi.webp",
+  "remediation": "Serve smaller variants via <picture> or srcset for the actual displayed size.",
+  "steps": [],
+  "browser": "chromium",
+  "device": "desktop",
+  "spec": "@cross images › images: home",
+  "evidence": [],
+  "extra": null
+}

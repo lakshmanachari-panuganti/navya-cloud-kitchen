@@ -1,0 +1,20 @@
+{
+  "id": "f2264a14e864",
+  "timestamp": "2026-07-05T06:27:47.768Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "No <link rel=\"icon\"> declared",
+  "description": "",
+  "page": "products/kandi-podi",
+  "url": "/products/kandi-podi.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "desktop",
+  "spec": "@chromium-only @cross seo › meta: products/kandi-podi",
+  "evidence": [],
+  "extra": null
+}

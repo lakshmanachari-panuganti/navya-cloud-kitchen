@@ -37,3 +37,5 @@ build/
 # Playwright / QA local scratch
 test-results/
 playwright-report/
+# Screenshot outputs — regenerate with `npm run screenshots`
+frontend/tests/screenshots/

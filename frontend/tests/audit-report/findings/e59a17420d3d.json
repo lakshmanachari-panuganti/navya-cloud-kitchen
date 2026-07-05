@@ -1,0 +1,20 @@
+{
+  "id": "e59a17420d3d",
+  "timestamp": "2026-07-05T06:32:22.018Z",
+  "severity": "low",
+  "category": "accessibility",
+  "title": "Touch target below 32×32 on mobile: A",
+  "description": "",
+  "page": "products/munagaku-podi",
+  "url": "/products/munagaku-podi.html",
+  "selector": "a",
+  "expected": "",
+  "actual": "40×17",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "mobile-chrome",
+  "spec": "@responsive visual regression + overflow › visual: products/munagaku-podi",
+  "evidence": [],
+  "extra": null
+}

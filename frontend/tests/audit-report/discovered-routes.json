@@ -1,0 +1,152 @@
+{
+  "seeded": [
+    {
+      "slug": "home",
+      "path": "/index.html",
+      "kind": "landing"
+    },
+    {
+      "slug": "policies",
+      "path": "/policies.html",
+      "kind": "legal"
+    },
+    {
+      "slug": "products/avise-ginjala-podi",
+      "path": "/products/avise-ginjala-podi.html",
+      "kind": "product"
+    },
+    {
+      "slug": "products/bellam-palli-undalu",
+      "path": "/products/bellam-palli-undalu.html",
+      "kind": "product"
+    },
+    {
+      "slug": "products/kandi-podi",
+      "path": "/products/kandi-podi.html",
+      "kind": "product"
+    },
+    {
+      "slug": "products/karivepaku-podi",
+      "path": "/products/karivepaku-podi.html",
+      "kind": "product"
+    },
+    {
+      "slug": "products/minapa-sunni-undalu",
+      "path": "/products/minapa-sunni-undalu.html",
+      "kind": "product"
+    },
+    {
+      "slug": "products/munagaku-podi",
+      "path": "/products/munagaku-podi.html",
+      "kind": "product"
+    },
+    {
+      "slug": "products/nuvvula-podi",
+      "path": "/products/nuvvula-podi.html",
+      "kind": "product"
+    },
+    {
+      "slug": "products/nuvvula-undalu",
+      "path": "/products/nuvvula-undalu.html",
+      "kind": "product"
+    },
+    {
+      "slug": "products/vellulli-karampodi",
+      "path": "/products/vellulli-karampodi.html",
+      "kind": "product"
+    },
+    {
+      "slug": "blog/homemade-vs-store-bought-podi",
+      "path": "/blog/homemade-vs-store-bought-podi.html",
+      "kind": "blog"
+    },
+    {
+      "slug": "blog/kandi-podi-benefits-uses",
+      "path": "/blog/kandi-podi-benefits-uses.html",
+      "kind": "blog"
+    },
+    {
+      "slug": "blog/karivepaku-podi-curry-leaves-powder",
+      "path": "/blog/karivepaku-podi-curry-leaves-powder.html",
+      "kind": "blog"
+    }
+  ],
+  "discovered": [
+    {
+      "slug": "home",
+      "path": "/index.html",
+      "kind": "landing"
+    },
+    {
+      "slug": "policies",
+      "path": "/policies.html",
+      "kind": "legal"
+    },
+    {
+      "slug": "products/avise-ginjala-podi",
+      "path": "/products/avise-ginjala-podi.html",
+      "kind": "product"
+    },
+    {
+      "slug": "products/bellam-palli-undalu",
+      "path": "/products/bellam-palli-undalu.html",
+      "kind": "product"
+    },
+    {
+      "slug": "products/kandi-podi",
+      "path": "/products/kandi-podi.html",
+      "kind": "product"
+    },
+    {
+      "slug": "products/karivepaku-podi",
+      "path": "/products/karivepaku-podi.html",
+      "kind": "product"
+    },
+    {
+      "slug": "products/minapa-sunni-undalu",
+      "path": "/products/minapa-sunni-undalu.html",
+      "kind": "product"
+    },
+    {
+      "slug": "products/munagaku-podi",
+      "path": "/products/munagaku-podi.html",
+      "kind": "product"
+    },
+    {
+      "slug": "products/nuvvula-podi",
+      "path": "/products/nuvvula-podi.html",
+      "kind": "product"
+    },
+    {
+      "slug": "products/nuvvula-undalu",
+      "path": "/products/nuvvula-undalu.html",
+      "kind": "product"
+    },
+    {
+      "slug": "products/vellulli-karampodi",
+      "path": "/products/vellulli-karampodi.html",
+      "kind": "product"
+    },
+    {
+      "slug": "blog/homemade-vs-store-bought-podi",
+      "path": "/blog/homemade-vs-store-bought-podi.html",
+      "kind": "blog"
+    },
+    {
+      "slug": "blog/kandi-podi-benefits-uses",
+      "path": "/blog/kandi-podi-benefits-uses.html",
+      "kind": "blog"
+    },
+    {
+      "slug": "blog/karivepaku-podi-curry-leaves-powder",
+      "path": "/blog/karivepaku-podi-curry-leaves-powder.html",
+      "kind": "blog"
+    }
+  ],
+  "extras": [],
+  "externalLinks": [
+    "https://instagram.com/navya.cloudkitchen.online",
+    "https://wa.me/918686216633"
+  ],
+  "generatedAt": "2026-07-05T06:20:47.568Z"
+}

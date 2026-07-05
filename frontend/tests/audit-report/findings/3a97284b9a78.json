@@ -1,0 +1,20 @@
+{
+  "id": "3a97284b9a78",
+  "timestamp": "2026-07-05T06:30:53.374Z",
+  "severity": "medium",
+  "category": "performance",
+  "title": "Oversized script: 403 KB (limit 195.3125 KB)",
+  "description": "",
+  "page": "home",
+  "url": "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "mobile",
+  "spec": "@cross console & network › console+network: home",
+  "evidence": [],
+  "extra": null
+}

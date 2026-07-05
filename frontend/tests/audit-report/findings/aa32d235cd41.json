@@ -1,0 +1,26 @@
+{
+  "id": "aa32d235cd41",
+  "timestamp": "2026-07-05T06:31:36.871Z",
+  "severity": "medium",
+  "category": "accessibility",
+  "title": "[a11y landmark-one-main] Document should have one main landmark",
+  "description": "Ensure the document has a main landmark",
+  "page": "blog/kandi-podi-benefits-uses",
+  "url": "/blog/kandi-podi-benefits-uses.html",
+  "selector": "html",
+  "expected": "",
+  "actual": "Fix all of the following:\n  Document does not have a main landmark",
+  "remediation": "https://dequeuniversity.com/rules/axe/4.12/landmark-one-main?application=playwright",
+  "steps": [],
+  "browser": "chromium",
+  "device": "mobile-chrome",
+  "spec": "@desktop @responsive accessibility › axe: blog/kandi-podi-benefits-uses",
+  "evidence": [],
+  "extra": {
+    "impact": "moderate",
+    "tags": [
+      "cat.semantics",
+      "best-practice"
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "b46744c7cc4a",
+  "timestamp": "2026-07-05T06:30:47.548Z",
+  "severity": "medium",
+  "category": "accessibility",
+  "title": "[a11y landmark-one-main] Document should have one main landmark",
+  "description": "Ensure the document has a main landmark",
+  "page": "blog/karivepaku-podi-curry-leaves-powder",
+  "url": "/blog/karivepaku-podi-curry-leaves-powder.html",
+  "selector": "html",
+  "expected": "",
+  "actual": "Fix all of the following:\n  Document does not have a main landmark",
+  "remediation": "https://dequeuniversity.com/rules/axe/4.12/landmark-one-main?application=playwright",
+  "steps": [],
+  "browser": "chromium",
+  "device": "mobile",
+  "spec": "@desktop @responsive accessibility › axe: blog/karivepaku-podi-curry-leaves-powder",
+  "evidence": [],
+  "extra": {
+    "impact": "moderate",
+    "tags": [
+      "cat.semantics",
+      "best-practice"
+    ]
+  }
+}

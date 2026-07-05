@@ -1,0 +1,20 @@
+{
+  "id": "8447a6e1f8b7",
+  "timestamp": "2026-07-05T06:28:18.775Z",
+  "severity": "low",
+  "category": "content",
+  "title": "The word \"placeholder\" appears in visible copy",
+  "description": "",
+  "page": "home",
+  "url": "/index.html",
+  "selector": "",
+  "expected": "",
+  "actual": "placeholder",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "desktop",
+  "spec": "@chromium-only @cross content › content: home",
+  "evidence": [],
+  "extra": null
+}

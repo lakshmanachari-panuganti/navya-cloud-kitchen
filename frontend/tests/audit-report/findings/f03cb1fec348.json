@@ -1,0 +1,20 @@
+{
+  "id": "f03cb1fec348",
+  "timestamp": "2026-07-05T06:35:28.129Z",
+  "severity": "critical",
+  "category": "functional",
+  "title": "Route \"/products/minapa-sunni-undalu.html\" failed to load",
+  "description": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8123/products/minapa-sunni-undalu.html\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8123/products/minapa-sunni-undalu.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+  "page": "products/minapa-sunni-undalu",
+  "url": "/products/minapa-sunni-undalu.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "Verify the file exists and the static server serves this path.",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross discovery › every seed route returns a successful response",
+  "evidence": [],
+  "extra": null
+}

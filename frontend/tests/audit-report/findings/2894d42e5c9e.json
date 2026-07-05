@@ -1,0 +1,20 @@
+{
+  "id": "2894d42e5c9e",
+  "timestamp": "2026-07-05T06:32:46.393Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "Meta description length 173 outside recommended 50–160",
+  "description": "",
+  "page": "blog/homemade-vs-store-bought-podi",
+  "url": "/blog/homemade-vs-store-bought-podi.html",
+  "selector": "",
+  "expected": "",
+  "actual": "A detailed comparison of homemade vs store-bought podi powders — freshness, preservatives, taste, and shelf life. Learn how to tell quality podi and why small-batch matters.",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "mobile",
+  "spec": "@chromium-only @cross seo › meta: blog/homemade-vs-store-bought-podi",
+  "evidence": [],
+  "extra": null
+}

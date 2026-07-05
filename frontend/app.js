@@ -208,6 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setupCartEvents();
     setupScrollNav();
     setupScrollReveal();
+    setupMobileMenu();
     initCountdown();
 
     // Update checkout trust microcopy
@@ -539,15 +540,22 @@ function updateCartBar() {
     const bar = document.getElementById("stickyCartBar");
     const navBtn = document.getElementById("navCartBtn");
     const navBadge = document.getElementById("navCartBadge");
+    const mmCartLink = document.getElementById("mmCartLink");
+    const mmCartCount = document.getElementById("mmCartCount");
 
     if (itemCount > 0) {
         bar.style.display = "flex";
-        navBtn.style.display = "flex";
+        navBtn.classList.add("has-items");
         navBadge.textContent = itemCount;
+        if (mmCartLink) mmCartLink.classList.add("has-items");
+        if (mmCartCount) mmCartCount.textContent = itemCount;
     } else {
         bar.style.display = "none";
-        navBtn.style.display = "none";
+        navBtn.classList.remove("has-items");
+        if (mmCartLink) mmCartLink.classList.remove("has-items");
     }
+    // Cart button stays visible at all times; only the badge toggles
+    navBtn.style.display = "";
 
     document.getElementById("cartBarCount").textContent = `${itemCount} item${itemCount !== 1 ? "s" : ""}`;
     document.getElementById("cartBarTotal").textContent = `₹${total}`;
@@ -641,6 +649,116 @@ function setupScrollNav() {
     window.addEventListener("scroll", () => {
         nav.classList.toggle("scrolled", window.scrollY > 60);
     }, { passive: true });
+}
+
+/* ── Mobile Menu ──────────────────────────────────────────── */
+function setupMobileMenu() {
+    const menuBtn = document.getElementById("navMenuBtn");
+    const menu = document.getElementById("mobileMenu");
+    const overlay = document.getElementById("mobileMenuOverlay");
+    const closeBtn = document.getElementById("mobileMenuClose");
+    if (!menuBtn || !menu || !overlay) return;
+
+    let lastFocused = null;
+
+    const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    const trapFocus = (e) => {
+        if (e.key !== "Tab" || !menu.classList.contains("is-open")) return;
+        const focusables = menu.querySelectorAll(focusableSelector);
+        if (!focusables.length) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault(); last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault(); first.focus();
+        }
+    };
+
+    const openMenu = () => {
+        lastFocused = document.activeElement;
+        overlay.hidden = false;
+        menu.setAttribute("aria-hidden", "false");
+        // Next frame so transition applies
+        requestAnimationFrame(() => {
+            menu.classList.add("is-open");
+            overlay.classList.add("is-open");
+        });
+        menuBtn.setAttribute("aria-expanded", "true");
+        document.body.classList.add("menu-open");
+        // Focus the close button for immediate keyboard control
+        setTimeout(() => closeBtn && closeBtn.focus(), 100);
+        document.addEventListener("keydown", handleKeydown);
+    };
+
+    const closeMenu = () => {
+        menu.classList.remove("is-open");
+        overlay.classList.remove("is-open");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menu.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("menu-open");
+        document.removeEventListener("keydown", handleKeydown);
+        // Wait for CSS transition before hiding overlay so it fades out
+        setTimeout(() => {
+            if (!menu.classList.contains("is-open")) overlay.hidden = true;
+        }, 420);
+        if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
+    };
+
+    const handleKeydown = (e) => {
+        if (e.key === "Escape") { closeMenu(); return; }
+        trapFocus(e);
+    };
+
+    menuBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const isOpen = menu.classList.contains("is-open");
+        isOpen ? closeMenu() : openMenu();
+    });
+    closeBtn && closeBtn.addEventListener("click", closeMenu);
+    overlay.addEventListener("click", closeMenu);
+
+    // Auto-close on link tap
+    menu.querySelectorAll("[data-close-menu]").forEach(el => {
+        el.addEventListener("click", () => {
+            // Small delay so the anchor navigation kicks in before we hide
+            setTimeout(closeMenu, 50);
+        });
+    });
+
+    // Cart link inside menu opens the cart drawer
+    const mmCartLink = document.getElementById("mmCartLink");
+    if (mmCartLink) {
+        mmCartLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            closeMenu();
+            setTimeout(openDrawer, 300);
+        });
+    }
+
+    // Products accordion (supports future multiple accordions on the same page)
+    menu.querySelectorAll("[data-mm-accordion]").forEach(acc => {
+        const trigger = acc.querySelector(".mm-accordion-trigger");
+        const panelId = trigger.getAttribute("aria-controls");
+        const panel = document.getElementById(panelId);
+        if (!trigger || !panel) return;
+        trigger.addEventListener("click", () => {
+            const expanded = trigger.getAttribute("aria-expanded") === "true";
+            trigger.setAttribute("aria-expanded", String(!expanded));
+            panel.hidden = expanded;
+        });
+    });
+
+    // Close menu if viewport grows past mobile breakpoint (avoids stuck-open state on rotate)
+    const desktopMQ = window.matchMedia("(min-width: 900px)");
+    const onMQChange = (e) => {
+        if (e.matches && menu.classList.contains("is-open")) closeMenu();
+    };
+    if (typeof desktopMQ.addEventListener === "function") {
+        desktopMQ.addEventListener("change", onMQChange);
+    } else {
+        desktopMQ.addListener(onMQChange);
+    }
 }
 
 /* ── Scroll Reveal ────────────────────────────────────────── */

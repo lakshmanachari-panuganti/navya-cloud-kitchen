@@ -1,0 +1,20 @@
+{
+  "id": "99d4a15a4985",
+  "timestamp": "2026-07-05T06:31:57.697Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "Missing twitter:image meta tag",
+  "description": "",
+  "page": "products/kandi-podi",
+  "url": "/products/kandi-podi.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "mobile",
+  "spec": "@chromium-only @cross seo › meta: products/kandi-podi",
+  "evidence": [],
+  "extra": null
+}

@@ -1,0 +1,20 @@
+{
+  "id": "cb445e84fe4d",
+  "timestamp": "2026-07-05T06:35:34.936Z",
+  "severity": "critical",
+  "category": "functional",
+  "title": "Route \"/blog/homemade-vs-store-bought-podi.html\" failed to load",
+  "description": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8123/blog/homemade-vs-store-bought-podi.html\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8123/blog/homemade-vs-store-bought-podi.html\", waiting until \"domcontentloaded\"\u001b[22m\n",
+  "page": "blog/homemade-vs-store-bought-podi",
+  "url": "/blog/homemade-vs-store-bought-podi.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "Verify the file exists and the static server serves this path.",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross discovery › every seed route returns a successful response",
+  "evidence": [],
+  "extra": null
+}

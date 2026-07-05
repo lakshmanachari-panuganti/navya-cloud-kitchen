@@ -1,0 +1,20 @@
+{
+  "id": "c32e7bb56735",
+  "timestamp": "2026-07-05T06:31:50.465Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "Missing twitter:card meta tag",
+  "description": "",
+  "page": "products/bellam-palli-undalu",
+  "url": "/products/bellam-palli-undalu.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "mobile",
+  "spec": "@chromium-only @cross seo › meta: products/bellam-palli-undalu",
+  "evidence": [],
+  "extra": null
+}

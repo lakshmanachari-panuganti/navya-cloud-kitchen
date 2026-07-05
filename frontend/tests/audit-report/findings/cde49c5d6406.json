@@ -1,0 +1,20 @@
+{
+  "id": "cde49c5d6406",
+  "timestamp": "2026-07-05T06:27:04.818Z",
+  "severity": "medium",
+  "category": "performance",
+  "title": "Oversized image: 2079 KB (limit 781.25 KB)",
+  "description": "",
+  "page": "home",
+  "url": "http://localhost:8123/images/hero_bg.png",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "desktop",
+  "spec": "@cross console & network › console+network: home",
+  "evidence": [],
+  "extra": null
+}

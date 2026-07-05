@@ -1,0 +1,28 @@
+{
+  "id": "6e6288e818cb",
+  "timestamp": "2026-07-05T06:26:48.881Z",
+  "severity": "medium",
+  "category": "accessibility",
+  "title": "[a11y region] All page content should be contained by landmarks",
+  "description": "Ensure all page content is contained by landmarks",
+  "page": "home",
+  "url": "/index.html",
+  "selector": ".step-card.scroll-reveal:nth-child(1)",
+  "expected": "",
+  "actual": "Fix any of the following:\n  Some page content is not contained by landmarks",
+  "remediation": "https://dequeuniversity.com/rules/axe/4.12/region?application=playwright",
+  "steps": [],
+  "browser": "chromium",
+  "device": "desktop",
+  "spec": "@desktop @responsive accessibility › axe: home",
+  "evidence": [],
+  "extra": {
+    "impact": "moderate",
+    "tags": [
+      "cat.keyboard",
+      "best-practice",
+      "RGAAv4",
+      "RGAA-9.2.1"
+    ]
+  }
+}

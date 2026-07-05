@@ -1,0 +1,20 @@
+{
+  "id": "0cbe4077246b",
+  "timestamp": "2026-07-05T06:32:05.483Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "<title> is 70 characters (recommended ≤65)",
+  "description": "",
+  "page": "products/karivepaku-podi",
+  "url": "/products/karivepaku-podi.html",
+  "selector": "",
+  "expected": "",
+  "actual": "Buy Karivepaku Podi Online — Homemade, Hyderabad | Navya Cloud Kitchen",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "mobile",
+  "spec": "@chromium-only @cross seo › meta: products/karivepaku-podi",
+  "evidence": [],
+  "extra": null
+}

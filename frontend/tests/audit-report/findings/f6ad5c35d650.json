@@ -1,0 +1,20 @@
+{
+  "id": "f6ad5c35d650",
+  "timestamp": "2026-07-05T06:32:25.284Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "Missing twitter:card meta tag",
+  "description": "",
+  "page": "products/nuvvula-podi",
+  "url": "/products/nuvvula-podi.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "mobile",
+  "spec": "@chromium-only @cross seo › meta: products/nuvvula-podi",
+  "evidence": [],
+  "extra": null
+}

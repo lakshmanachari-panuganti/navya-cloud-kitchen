@@ -1,0 +1,20 @@
+{
+  "id": "7cdc2e599d98",
+  "timestamp": "2026-07-05T06:28:02.472Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "Missing twitter:title meta tag",
+  "description": "",
+  "page": "products/munagaku-podi",
+  "url": "/products/munagaku-podi.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "desktop",
+  "spec": "@chromium-only @cross seo › meta: products/munagaku-podi",
+  "evidence": [],
+  "extra": null
+}

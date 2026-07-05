@@ -1,0 +1,28 @@
+{
+  "id": "9f5eda519bc3",
+  "timestamp": "2026-07-05T06:27:04.584Z",
+  "severity": "medium",
+  "category": "accessibility",
+  "title": "[a11y region] All page content should be contained by landmarks",
+  "description": "Ensure all page content is contained by landmarks",
+  "page": "blog/kandi-podi-benefits-uses",
+  "url": "/blog/kandi-podi-benefits-uses.html",
+  "selector": "article",
+  "expected": "",
+  "actual": "Fix any of the following:\n  Some page content is not contained by landmarks",
+  "remediation": "https://dequeuniversity.com/rules/axe/4.12/region?application=playwright",
+  "steps": [],
+  "browser": "chromium",
+  "device": "desktop",
+  "spec": "@desktop @responsive accessibility › axe: blog/kandi-podi-benefits-uses",
+  "evidence": [],
+  "extra": {
+    "impact": "moderate",
+    "tags": [
+      "cat.keyboard",
+      "best-practice",
+      "RGAAv4",
+      "RGAA-9.2.1"
+    ]
+  }
+}

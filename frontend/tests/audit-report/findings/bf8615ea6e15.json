@@ -1,0 +1,20 @@
+{
+  "id": "bf8615ea6e15",
+  "timestamp": "2026-07-05T06:28:26.068Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "<title> is 67 characters (recommended ≤65)",
+  "description": "",
+  "page": "blog/karivepaku-podi-curry-leaves-powder",
+  "url": "/blog/karivepaku-podi-curry-leaves-powder.html",
+  "selector": "",
+  "expected": "",
+  "actual": "Karivepaku Podi (Curry Leaves Powder): The Andhra Kitchen Essential",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "desktop",
+  "spec": "@chromium-only @cross seo › meta: blog/karivepaku-podi-curry-leaves-powder",
+  "evidence": [],
+  "extra": null
+}

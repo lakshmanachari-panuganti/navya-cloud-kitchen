@@ -1,0 +1,20 @@
+{
+  "id": "d3c38815427c",
+  "timestamp": "2026-07-05T06:32:26.852Z",
+  "severity": "low",
+  "category": "accessibility",
+  "title": "Touch target below 32×32 on mobile: A",
+  "description": "",
+  "page": "products/vellulli-karampodi",
+  "url": "/products/vellulli-karampodi.html",
+  "selector": "a",
+  "expected": "",
+  "actual": "40×17",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "mobile-chrome",
+  "spec": "@responsive visual regression + overflow › visual: products/vellulli-karampodi",
+  "evidence": [],
+  "extra": null
+}
