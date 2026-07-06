@@ -217,7 +217,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setupScrollNav();
     setupScrollReveal();
     setupMobileMenu();
-    initCountdown();
 
     // Update checkout trust microcopy
     const payNote = document.querySelector('.pay-note');
@@ -237,30 +236,6 @@ function showMenuSkeletons() {
         </div>
     `).join('');
     container.innerHTML = `<section class="menu-section"><div class="menu-grid">${skeletonHTML}</div></section>`;
-}
-
-function initCountdown() {
-    const el = document.querySelector('.timing-text strong');
-    if (!el) return;
-
-    function update() {
-        const now = new Date();
-        const cutoff = new Date(now);
-        cutoff.setHours(18, 0, 0, 0);
-
-        if (now >= cutoff) {
-            el.textContent = "Orders open again tomorrow at 9 AM";
-            return;
-        }
-
-        const diff = cutoff - now;
-        const hours = Math.floor(diff / 3600000);
-        const mins = Math.floor((diff % 3600000) / 60000);
-        el.textContent = `Order cut-off in ${hours}h ${mins}m — tonight's batch`;
-    }
-
-    update();
-    setInterval(update, 60000);
 }
 
 function initDeliveryDate() {
