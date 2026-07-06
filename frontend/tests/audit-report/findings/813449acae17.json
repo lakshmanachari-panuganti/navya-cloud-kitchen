@@ -1,0 +1,20 @@
+{
+  "id": "813449acae17",
+  "timestamp": "2026-07-05T11:48:43.468Z",
+  "severity": "medium",
+  "category": "security",
+  "title": "Missing response header: x-frame-options",
+  "description": "Missing X-Frame-Options / frame-ancestors CSP — clickjacking risk.",
+  "page": "products/avise-ginjala-podi",
+  "url": "/products/avise-ginjala-podi.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross security posture › headers: products/avise-ginjala-podi",
+  "evidence": [],
+  "extra": null
+}

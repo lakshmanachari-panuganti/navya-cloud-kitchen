@@ -1,0 +1,20 @@
+{
+  "id": "aeb34c9a4058",
+  "timestamp": "2026-07-05T11:48:43.530Z",
+  "severity": "low",
+  "category": "security",
+  "title": "Missing response header: permissions-policy",
+  "description": "No Permissions-Policy declared.",
+  "page": "products/nuvvula-undalu",
+  "url": "/products/nuvvula-undalu.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross security posture › headers: products/nuvvula-undalu",
+  "evidence": [],
+  "extra": null
+}

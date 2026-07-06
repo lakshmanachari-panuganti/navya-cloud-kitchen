@@ -1,0 +1,20 @@
+{
+  "id": "545d2198c4e5",
+  "timestamp": "2026-07-05T11:47:12.872Z",
+  "severity": "medium",
+  "category": "seo",
+  "title": "Missing <link rel=\"canonical\">",
+  "description": "",
+  "page": "home",
+  "url": "/index.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross seo › meta: home",
+  "evidence": [],
+  "extra": null
+}

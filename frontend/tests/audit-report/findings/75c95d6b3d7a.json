@@ -1,0 +1,20 @@
+{
+  "id": "75c95d6b3d7a",
+  "timestamp": "2026-07-05T11:47:15.425Z",
+  "severity": "medium",
+  "category": "link-integrity",
+  "title": "Fragment link \"#track\" points to nonexistent id",
+  "description": "",
+  "page": "home",
+  "url": "/index.html",
+  "selector": "",
+  "expected": "",
+  "actual": "text=\"Track Order\"",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross links › links: home",
+  "evidence": [],
+  "extra": null
+}

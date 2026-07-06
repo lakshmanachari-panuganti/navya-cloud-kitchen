@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1 — Munagaku Podi Carousel | Navya Cloud Kitchen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ─── Design Tokens ─────────────────────────────────── */
+        :root {
+            --bg: #080808;
+            --surface: #111111;
+            --surface2: #181818;
+            --border: #252525;
+            --gold: #c9a84c;
+            --gold-bright: #e8c96a;
+            --gold-dim: rgba(201,168,76,0.15);
+            --green: #2d6a4f;
+            --cream: #f5efe6;
+            --muted: #7a7a7a;
+            --white: #ffffff;
+            --serif: 'Playfair Display', Georgia, serif;
+            --sans: 'DM Sans', system-ui, sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: var(--bg);
+            color: var(--cream);
+            font-family: var(--sans);
+            min-height: 100vh;
+            padding: 0 0 60px;
+        }
+
+        /* ─── Top Header ──────────────────────────────────────── */
+        .page-header {
+            background: linear-gradient(180deg, #0e0e0e 0%, #080808 100%);
+            border-bottom: 1px solid var(--border);
+            padding: 24px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand-lockup {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-logo {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1.5px solid var(--gold);
+        }
+
+        .brand-name {
+            font-family: var(--serif);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--gold-bright);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .brand-tagline {
+            font-size: 0.72rem;
+            color: var(--muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .page-badge {
+            background: var(--gold-dim);
+            border: 1px solid rgba(201,168,76,0.3);
+            color: var(--gold-bright);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ─── Main Layout ─────────────────────────────────────── */
+        .main {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 48px 24px 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+        }
+
+        @media (min-width: 1000px) {
+            .main {
+                grid-template-columns: 440px 1fr;
+                align-items: start;
+            }
+        }
+
+        /* ─── Phone Mockup ────────────────────────────────────── */
+        .phone-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .phone {
+            width: 100%;
+            max-width: 400px;
+            background: #000;
+            border-radius: 38px;
+            border: 10px solid #1a1a1a;
+            box-shadow:
+                0 0 0 1px #2a2a2a,
+                0 40px 80px rgba(0,0,0,0.9),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+            overflow: hidden;
+        }
+
+        /* Instagram-style post header inside phone */
+        .post-header {
+            background: #000;
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #111;
+        }
+
+        .post-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1.5px solid var(--gold);
+            object-fit: cover;
+            background: #111;
+        }
+
+        .post-username {
+            font-weight: 700;
+            font-size: 0.82rem;
+            color: #fff;
+            line-height: 1.1;
+        }
+
+        .post-location {
+            font-size: 0.65rem;
+            color: #888;
+        }
+
+        .post-more {
+            margin-left: auto;
+            color: #fff;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        /* Slide Carousel — strict 1:1 */
+        .carousel-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            background: #0a0a0a;
+        }
+
+        .carousel-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            flex-shrink: 0;
+        }
+
+        /* Dark scrim so text overlays are readable */
+        .slide-scrim {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                160deg,
+                rgba(0,0,0,0.55) 0%,
+                rgba(0,0,0,0.1) 50%,
+                rgba(0,0,0,0.6) 100%
+            );
+        }
+
+        /* Slide text overlay — top-left */
+        .slide-text {
+            position: absolute;
+            top: 22px;
+            left: 20px;
+            right: 20px;
+            z-index: 2;
+        }
+
+        .slide-headline {
+            font-family: var(--serif);
+            font-size: clamp(1.1rem, 4.5vw, 1.55rem);
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.25;
+            text-shadow: 0 2px 16px rgba(0,0,0,0.8);
+            border-left: 3px solid var(--gold-bright);
+            padding-left: 10px;
+        }
+
+        /* Brand footer strip — bottom 15% of every photo slide */
+        .slide-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 15%;
+            background: rgba(8,8,8,0.96);
+            border-top: 1px solid rgba(201,168,76,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 14px;
+            z-index: 3;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .footer-logo {
+            height: 22px;
+            width: auto;
+            opacity: 0.95;
+        }
+
+        .footer-name {
+            font-family: var(--serif);
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--gold-bright);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .footer-handle {
+            font-size: 0.65rem;
+            color: #888;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .footer-handle::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--gold);
+        }
+
+        /* Special slides — pure designed (no photo bg) */
+
+        /* Slide 6: Quote */
+        .quote-slide-inner {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, #141414 0%, #070707 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .quote-border-box {
+            border: 1px solid rgba(201,168,76,0.25);
+            border-radius: 12px;
+            padding: 28px 22px;
+            width: 100%;
+            height: 83%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 10px;
+        }
+
+        .quote-logo {
+            height: 38px;
+            width: auto;
+            margin-bottom: 4px;
+        }
+
+        .quote-mark {
+            font-family: var(--serif);
+            font-size: 3.5rem;
+            color: var(--gold);
+            line-height: 0.7;
+        }
+
+        .quote-body {
+            font-family: var(--serif);
+            font-size: clamp(0.85rem, 3vw, 1.05rem);
+            font-style: italic;
+            color: var(--cream);
+            line-height: 1.55;
+        }
+
+        .quote-author {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--gold-bright);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 4px;
+        }
+
+        /* Slide 7: Order */
+        .order-slide-inner {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 30%, #131313 0%, #060606 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 18px 18px 0;
+            height: 85%;
+            justify-content: space-between;
+        }
+
+        .order-logo {
+            height: 46px;
+            width: auto;
+        }
+
+        .order-heading {
+            text-align: center;
+        }
+
+        .order-title {
+            font-family: var(--serif);
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            color: var(--gold-bright);
+            font-weight: 700;
+        }
+
+        .order-sub {
+            font-size: 0.62rem;
+            color: var(--muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .order-list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .order-row {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(201,168,76,0.12);
+            border-radius: 8px;
+            padding: 9px 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .order-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--gold);
+            display: block;
+        }
+
+        .order-row-label {
+            font-size: 0.55rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .order-row-value {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.1;
+        }
+
+        .order-slogan {
+            font-family: var(--serif);
+            font-size: 0.72rem;
+            font-style: italic;
+            color: rgba(201,168,76,0.6);
+        }
+
+        /* Nav arrows */
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.65);
+            border: 1px solid rgba(201,168,76,0.25);
+            color: var(--gold-bright);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 0.7rem;
+            transition: all 0.18s;
+        }
+
+        .nav-arrow:hover {
+            background: rgba(0,0,0,0.9);
+            border-color: var(--gold);
+        }
+
+        .nav-prev { left: 8px; }
+        .nav-next { right: 8px; }
+
+        /* IG actions bar */
+        .post-actions {
+            background: #000;
+            padding: 11px 14px 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .actions-left { display: flex; gap: 14px; font-size: 1.2rem; }
+
+        /* Dots */
+        .dots {
+            background: #000;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 4px 0 14px;
+        }
+
+        .dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #333;
+            transition: background 0.2s;
+        }
+
+        .dot.on { background: var(--gold); }
+
+        /* ─── Right Panel ──────────────────────────────────── */
+        .panel {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .panel-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 26px;
+        }
+
+        .card-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .campaign-title {
+            font-family: var(--serif);
+            font-size: 1.75rem;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        .campaign-hook {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--gold-bright);
+            border-left: 2px solid var(--gold);
+            padding-left: 14px;
+            margin-bottom: 20px;
+        }
+
+        /* Product info chips */
+        .info-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .chip {
+            background: var(--gold-dim);
+            border: 1px solid rgba(201,168,76,0.2);
+            color: var(--gold-bright);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Caption */
+        .caption-box {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 16px;
+            font-size: 0.88rem;
+            color: var(--cream);
+            line-height: 1.7;
+            white-space: pre-wrap;
+            max-height: 220px;
+            overflow-y: auto;
+        }
+
+        .caption-box::-webkit-scrollbar { width: 4px; }
+        .caption-box::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+        /* Buttons */
+        .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 22px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.82rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.18s;
+            border: none;
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: #000;
+        }
+
+        .btn-gold:hover { background: var(--gold-bright); box-shadow: 0 0 20px rgba(201,168,76,0.4); }
+
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--cream);
+        }
+
+        .btn-ghost:hover { border-color: var(--gold); color: var(--gold-bright); }
+
+        /* Setup path box */
+        .path-box {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-family: monospace;
+            font-size: 0.78rem;
+            color: var(--gold-bright);
+            word-break: break-all;
+        }
+
+        .path-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .copy-btn {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            color: var(--cream);
+            padding: 4px 10px;
+            font-size: 0.7rem;
+            border-radius: 5px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover { background: var(--gold); color: #000; border-color: var(--gold); }
+
+        /* Slide thumbnail strip */
+        .thumb-strip {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .thumb {
+            flex: 1;
+            min-width: 70px;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .thumb.active { border-color: var(--gold); }
+
+        .thumb-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: #111;
+        }
+
+        .thumb-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.75);
+            font-size: 0.55rem;
+            font-weight: 700;
+            text-align: center;
+            padding: 3px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--gold);
+            color: #000;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ── Top Brand Header ── -->
+    <header class="page-header">
+        <div class="brand-lockup">
+            <picture>
+                <source srcset="../../images/logo.webp" type="image/webp">
+                <img class="brand-logo" id="hdrLogo" src="../../images/logo.png" alt="Navya Cloud Kitchen">
+            </picture>
+            <div>
+                <div class="brand-name">Navya Cloud Kitchen</div>
+                <div class="brand-tagline">Fresh, Healthy &amp; Traditional</div>
+            </div>
+        </div>
+        <div class="page-badge">Day 1 · Carousel Kit</div>
+    </header>
+
+    <main class="main">
+
+        <!-- ── LEFT: Phone Mockup ── -->
+        <div class="phone-wrap">
+            <div class="phone">
+
+                <!-- IG Post Header -->
+                <div class="post-header">
+                    <picture>
+                        <source srcset="../../images/logo.webp" type="image/webp">
+                        <img class="post-avatar" id="postAvatar" src="../../images/logo.png" alt="Navya">
+                    </picture>
+                    <div>
+                        <div class="post-username">navya.cloudkitchen.online</div>
+                        <div class="post-location">Kukatpally, Hyderabad</div>
+                    </div>
+                    <div class="post-more">···</div>
+                </div>
+
+                <!-- Carousel -->
+                <div class="carousel-wrap">
+                    <button class="nav-arrow nav-prev" onclick="go(-1)">◀</button>
+                    <button class="nav-arrow nav-next" onclick="go(1)">▶</button>
+
+                    <div class="carousel-track" id="track">
+
+                        <!-- SLIDE 1: Hero -->
+                        <div class="slide" id="s1">
+                            <div class="slide-scrim"></div>
+                            <div class="slide-text">
+                                <div class="slide-headline">₹199 for the podi your body & soul both crave</div>
+                            </div>
+                            <div class="slide-footer">
+                                <div class="footer-brand">
+                                    <picture>
+                                        <source srcset="../../images/logo.webp" type="image/webp">
+                                        <img class="footer-logo logo-img" src="../../images/logo.png" alt="">
+                                    </picture>
+                                    <span class="footer-name">Navya</span>
+                                </div>
+                                <div class="footer-handle">@navya.cloudkitchen.online</div>
+                            </div>
+                        </div>
+
+                        <!-- SLIDE 2: Ingredients -->
+                        <div class="slide" id="s2">
+                            <div class="slide-scrim"></div>
+                            <div class="slide-text">
+                                <div class="slide-headline">4 ingredients. Zero shortcuts.</div>
+                            </div>
+                            <div class="slide-footer">
+                                <div class="footer-brand">
+                                    <picture>
+                                        <source srcset="../../images/logo.webp" type="image/webp">
+                                        <img class="footer-logo logo-img" src="../../images/logo.png" alt="">
+                                    </picture>
+                                    <span class="footer-name">Navya</span>
+                                </div>
+                                <div class="footer-handle">@navya.cloudkitchen.online</div>
+                            </div>
+                        </div>
+
+                        <!-- SLIDE 3: Process -->
+                        <div class="slide" id="s3">
+                            <div class="slide-scrim"></div>
+                            <div class="slide-text">
+                                <div class="slide-headline">Slow roasted. Never rushed.</div>
+                            </div>
+                            <div class="slide-footer">
+                                <div class="footer-brand">
+                                    <picture>
+                                        <source srcset="../../images/logo.webp" type="image/webp">
+                                        <img class="footer-logo logo-img" src="../../images/logo.png" alt="">
+                                    </picture>
+                                    <span class="footer-name">Navya</span>
+                                </div>
+                                <div class="footer-handle">@navya.cloudkitchen.online</div>
+                            </div>
+                        </div>
+
+                        <!-- SLIDE 4: The Bite -->
+                        <div class="slide" id="s4">
+                            <div class="slide-scrim"></div>
+                            <div class="slide-text">
+                                <div class="slide-headline">This is what comfort tastes like.</div>
+                            </div>
+                            <div class="slide-footer">
+                                <div class="footer-brand">
+                                    <picture>
+                                        <source srcset="../../images/logo.webp" type="image/webp">
+                                        <img class="footer-logo logo-img" src="../../images/logo.png" alt="">
+                                    </picture>
+                                    <span class="footer-name">Navya</span>
+                                </div>
+                                <div class="footer-handle">@navya.cloudkitchen.online</div>
+                            </div>
+                        </div>
+
+                        <!-- SLIDE 5: Sizes -->
+                        <div class="slide" id="s5">
+                            <div class="slide-scrim"></div>
+                            <div class="slide-text">
+                                <div class="slide-headline">Pick your size. Never run out.</div>
+                            </div>
+                            <div class="slide-footer">
+                                <div class="footer-brand">
+                                    <picture>
+                                        <source srcset="../../images/logo.webp" type="image/webp">
+                                        <img class="footer-logo logo-img" src="../../images/logo.png" alt="">
+                                    </picture>
+                                    <span class="footer-name">Navya</span>
+                                </div>
+                                <div class="footer-handle">@navya.cloudkitchen.online</div>
+                            </div>
+                        </div>
+
+                        <!-- SLIDE 6: Quote -->
+                        <div class="slide">
+                            <div class="quote-slide-inner">
+                                <div class="quote-border-box">
+                                    <picture>
+                                        <source srcset="../../images/logo.webp" type="image/webp">
+                                        <img class="quote-logo logo-img" src="../../images/logo.png" alt="Navya Cloud Kitchen">
+                                    </picture>
+                                    <div class="quote-mark">"</div>
+                                    <div class="quote-body">I never thought a podi could remind me of my ammamma's kitchen so vividly. One spoon and I was back home.</div>
+                                    <div class="quote-author">— Priya V., Hyderabad</div>
+                                </div>
+                            </div>
+                            <div class="slide-footer">
+                                <div class="footer-brand">
+                                    <picture>
+                                        <source srcset="../../images/logo.webp" type="image/webp">
+                                        <img class="footer-logo logo-img" src="../../images/logo.png" alt="">
+                                    </picture>
+                                    <span class="footer-name">Navya</span>
+                                </div>
+                                <div class="footer-handle">@navya.cloudkitchen.online</div>
+                            </div>
+                        </div>
+
+                        <!-- SLIDE 7: Order -->
+                        <div class="slide">
+                            <div class="order-slide-inner">
+                                <picture>
+                                    <source srcset="../../images/logo.webp" type="image/webp">
+                                    <img class="order-logo logo-img" src="../../images/logo.png" alt="Navya Cloud Kitchen">
+                                </picture>
+                                <div class="order-heading">
+                                    <div class="order-title">Munagaku Podi</div>
+                                    <div class="order-sub">Moringa Leaves Powder · Hand Roasted</div>
+                                </div>
+                                <div class="order-list">
+                                    <div class="order-row">
+                                        <div class="order-icon">
+                                            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.437.002 9.861-4.416 9.864-9.852.002-2.632-1.02-5.107-2.88-6.97C16.395 1.95 13.914.928 11.28.928c-5.436 0-9.86 4.418-9.863 9.854-.001 1.558.423 3.082 1.229 4.42l-.979 3.578 3.673-.96c1.378.815 2.87 1.226 4.317 1.228zm10.741-7.234c-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.011c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/></svg>
+                                        </div>
+                                        <div>
+                                            <div class="order-row-label">WhatsApp Order</div>
+                                            <div class="order-row-value">+91 8686 21 6633</div>
+                                        </div>
+                                    </div>
+                                    <div class="order-row">
+                                        <div class="order-icon">
+                                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.53c-.26-.81-1-1.4-1.9-1.4h-1v-3c0-.55-.45-1-1-1h-6v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.4z"/></svg>
+                                        </div>
+                                        <div>
+                                            <div class="order-row-label">Website &amp; Menu</div>
+                                            <div class="order-row-value">navya.cloudkitchen.online</div>
+                                        </div>
+                                    </div>
+                                    <div class="order-row">
+                                        <div class="order-icon">
+                                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                                        </div>
+                                        <div>
+                                            <div class="order-row-label">Follow on Instagram</div>
+                                            <div class="order-row-value">@navya.cloudkitchen.online</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="order-slogan">Fresh, Healthy &amp; Traditional</div>
+                            </div>
+                            <div class="slide-footer">
+                                <div class="footer-brand">
+                                    <picture>
+                                        <source srcset="../../images/logo.webp" type="image/webp">
+                                        <img class="footer-logo logo-img" src="../../images/logo.png" alt="">
+                                    </picture>
+                                    <span class="footer-name">Navya</span>
+                                </div>
+                                <div class="footer-handle">@navya.cloudkitchen.online</div>
+                            </div>
+                        </div>
+
+                    </div><!-- /track -->
+                </div><!-- /carousel-wrap -->
+
+                <!-- IG Action Icons -->
+                <div class="post-actions">
+                    <div class="actions-left">
+                        <span>❤️</span><span>💬</span><span>✈️</span>
+                    </div>
+                    <span>🔖</span>
+                </div>
+
+                <!-- Dots -->
+                <div class="dots" id="dots">
+                    <div class="dot on"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+
+            </div><!-- /phone -->
+
+            <!-- Download button -->
+            <button class="btn btn-gold" onclick="exportSlide()" style="margin-top:4px;">
+                💾 Download 1080×1080 Post
+            </button>
+            <div style="font-size:0.72rem; color:var(--muted); text-align:center;">
+                Downloads current slide as Instagram-ready PNG
+            </div>
+        </div>
+
+        <!-- ── RIGHT: Campaign Panel ── -->
+        <div class="panel">
+
+            <!-- Campaign card -->
+            <div class="panel-card">
+                <div class="card-label">Day 1 — Munagaku Podi</div>
+                <div class="campaign-title">Moringa Leaves Powder<br><em style="font-size:1.2rem; color:var(--gold);">The Superfood Podi</em></div>
+                <div class="campaign-hook">"The podi that does good for your body and your soul."</div>
+                <div class="info-row">
+                    <span class="chip">₹199 / 100g</span>
+                    <span class="chip">₹399 / 250g ⭐</span>
+                    <span class="chip">₹699 / 500g</span>
+                    <span class="chip">🌿 Zero Preservatives</span>
+                    <span class="chip">🔥 Made to Order</span>
+                </div>
+            </div>
+
+            <!-- Slide thumbnail strip -->
+            <div class="panel-card">
+                <div class="card-label">Slides — Click to Jump</div>
+                <div class="thumb-strip" id="thumbStrip"></div>
+            </div>
+
+            <!-- Caption -->
+            <div class="panel-card">
+                <div class="card-label">Instagram Caption</div>
+                <div class="caption-box" id="captionBox">Some greens are eaten. Some are felt.
+
+Munagaku Podi is what happens when fresh drumstick leaves are slow-roasted with urad dal, garlic, and dry red chilies — then ground into the podi your body quietly thanks you for.
+
+Stir into hot rice with a generous spoon of ghee. That's it. That's the meal.
+
+100g · 250g · 500g — starting at ₹199.
+Order via WhatsApp → +91 8686 21 6633
+Menu → navya.cloudkitchen.online
+
+Tag someone who needs more green in their rice 🌿
+
+#NavyaCloudKitchen #MunagakuPodi #MoringaPowder #HyderabadFoodies #AndhraFood #HomemadePodi #DrumstickLeaves #TeluguFood #KukatpallyDiaries #HomeMadeWithLove #HealthyEating #SuperfoodIndia</div>
+                <div class="btn-row">
+                    <button class="btn btn-gold" onclick="copyCaption()">📋 Copy Caption</button>
+                    <button class="btn btn-ghost" onclick="copyHashtags()">🏷 Copy Hashtags</button>
+                </div>
+            </div>
+
+            <!-- Setup Instructions -->
+            <div class="panel-card">
+                <div class="card-label">📂 Image Files</div>
+                <p style="font-size:0.82rem; color:var(--muted); margin-bottom:14px;">Copy freshly generated images from your brain directory to this folder:</p>
+
+                <p style="font-size:0.75rem; color:var(--muted); margin-bottom:5px;">SOURCE:</p>
+                <div class="path-row">
+                    <div class="path-box" style="flex:1;">C:\Users\E092721\.gemini\antigravity\brain\2fd5edfe-d32f-43fa-ae09-e3e73f151cbe</div>
+                    <button class="copy-btn" onclick="copyPath('C:\\Users\\E092721\\.gemini\\antigravity\\brain\\2fd5edfe-d32f-43fa-ae09-e3e73f151cbe')">Copy</button>
+                </div>
+
+                <p style="font-size:0.75rem; color:var(--muted); margin: 14px 0 5px;">DESTINATION:</p>
+                <div class="path-row">
+                    <div class="path-box" style="flex:1;">C:\repos\navyaskitchen\social_media\day1</div>
+                    <button class="copy-btn" onclick="copyPath('C:\\repos\\navyaskitchen\\social_media\\day1')">Copy</button>
+                </div>
+
+                <p style="font-size:0.75rem; color:var(--muted); margin: 14px 0 5px;">RENAME TO:</p>
+                <div style="font-family: monospace; font-size: 0.75rem; color: var(--gold-bright); background: var(--bg); border-radius:8px; padding:12px; line-height:1.9;">
+                    munagaku_hero_*.png → munagaku_hero.png<br>
+                    munagaku_ingredients_*.png → munagaku_ingredients.png<br>
+                    munagaku_process_*.png → munagaku_process.png<br>
+                    munagaku_bite_*.png → munagaku_bite.png<br>
+                    munagaku_sizes_*.png → munagaku_sizes.png
+                </div>
+            </div>
+
+        </div><!-- /panel -->
+    </main>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        /* ─── Image Paths ─────────────────────────────── */
+        const BRAIN = 'file:///C:/Users/E092721/.gemini/antigravity/brain/2fd5edfe-d32f-43fa-ae09-e3e73f151cbe/';
+        const LOGO_REL = '../../images/logo.webp';
+        const LOGO_ABS = BRAIN + 'navyas_kitchen_logo_1780835858832.png';
+
+        const SLIDES = [
+            { id: 's1', rel: 'munagaku_hero.png',        abs: BRAIN + 'munagaku_hero_1783015152245.png',        label: 'Hero' },
+            { id: 's2', rel: 'munagaku_ingredients.png', abs: BRAIN + 'munagaku_ingredients_1783015176150.png', label: 'Ingredients' },
+            { id: 's3', rel: 'munagaku_process.png',     abs: BRAIN + 'munagaku_process_1783015215594.png',     label: 'Process' },
+            { id: 's4', rel: 'munagaku_bite.png',        abs: BRAIN + 'munagaku_bite_1783015259470.png',        label: 'Bite' },
+            { id: 's5', rel: 'munagaku_sizes.png',       abs: BRAIN + 'munagaku_sizes_1783015289821.png',       label: 'Sizes' },
+        ];
+
+        /* ─── Load photos with fallback ──────────────── */
+        const imgCache = {};
+        const logoEl   = new Image();
+
+        function loadImg(rel, abs, onLoad) {
+            const i = new Image();
+            i.crossOrigin = 'anonymous';
+            i.onload  = () => onLoad(i, rel);
+            i.onerror = () => {
+                const j = new Image();
+                j.crossOrigin = 'anonymous';
+                j.onload  = () => onLoad(j, abs);
+                j.onerror = () => {};
+                j.src = abs;
+            };
+            i.src = rel;
+        }
+
+        function init() {
+            /* Logo */
+            loadImg(LOGO_REL, LOGO_ABS, (img, src) => {
+                logoEl.src = src;
+                logoEl.crossOrigin = 'anonymous';
+                document.querySelectorAll('.logo-img').forEach(el => el.src = src);
+                document.getElementById('postAvatar').src = src;
+                document.getElementById('hdrLogo').src = src;
+            });
+
+            /* Slide photos */
+            SLIDES.forEach(s => {
+                const el = document.getElementById(s.id);
+                if (!el) return;
+                loadImg(s.rel, s.abs, (img, src) => {
+                    imgCache[s.id] = img;
+                    el.style.backgroundImage = `url('${src}')`;
+                });
+                buildThumb(s);
+            });
+        }
+
+        /* ─── Thumbnails ──────────────────────────────── */
+        function buildThumb(s) {
+            const strip = document.getElementById('thumbStrip');
+            const div = document.createElement('div');
+            div.className = 'thumb' + (s.id === 's1' ? ' active' : '');
+            div.dataset.slideid = s.id;
+            div.innerHTML = `<div class="thumb-img" style="background:#111;background-size:cover;background-position:center;"></div>
+                             <div class="thumb-label">${s.label}</div>`;
+            div.onclick = () => {
+                const idx = SLIDES.findIndex(x => x.id === s.id);
+                jumpTo(idx);
+            };
+            strip.appendChild(div);
+
+            // Lazy load thumbnail image
+            loadImg(s.rel, s.abs, (img, src) => {
+                div.querySelector('.thumb-img').style.backgroundImage = `url('${src}')`;
+            });
+        }
+
+        /* ─── Carousel ────────────────────────────────── */
+        let cur = 0;
+        const TOTAL = 7;
+
+        function go(dir) {
+            cur = (cur + dir + TOTAL) % TOTAL;
+            render();
+        }
+
+        function jumpTo(idx) {
+            cur = idx;
+            render();
+        }
+
+        function render() {
+            document.getElementById('track').style.transform = `translateX(-${cur * 100}%)`;
+            document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('on', i === cur));
+            document.querySelectorAll('.thumb').forEach((t,i) => t.classList.toggle('active', i === cur));
+        }
+
+        /* ─── Canvas Export ───────────────────────────── */
+        async function exportSlide() {
+            await document.fonts.ready;
+            showToast('Generating post…');
+
+            const canvas = document.createElement('canvas');
+            canvas.width = canvas.height = 1080;
+            const ctx = canvas.getContext('2d');
+
+            if (cur < 5) {
+                const s = SLIDES[cur];
+                const photo = imgCache[s.id];
+                if (photo && photo.naturalWidth) {
+                    ctx.drawImage(photo, 0, 0, 1080, 1080);
+                } else {
+                    ctx.fillStyle = '#111';
+                    ctx.fillRect(0, 0, 1080, 1080);
+                }
+                // Gradient scrim
+                const scrim = ctx.createLinearGradient(0, 0, 0, 1080);
+                scrim.addColorStop(0,   'rgba(0,0,0,0.55)');
+                scrim.addColorStop(0.4, 'rgba(0,0,0,0.05)');
+                scrim.addColorStop(1,   'rgba(0,0,0,0.70)');
+                ctx.fillStyle = scrim;
+                ctx.fillRect(0, 0, 1080, 1080);
+
+                // Gold accent bar
+                ctx.fillStyle = '#c9a84c';
+                ctx.fillRect(60, 70, 6, 130);
+
+                // Headline
+                ctx.shadowColor = 'rgba(0,0,0,0.9)';
+                ctx.shadowBlur = 20;
+                ctx.fillStyle = '#f5efe6';
+                ctx.font = "bold 56px 'Playfair Display', Georgia, serif";
+                ctx.textAlign = 'left';
+                const headlines = [
+                    ['₹199 for the podi your', 'body & soul both crave'],
+                    ['4 ingredients.', 'Zero shortcuts.'],
+                    ['Slow roasted.', 'Never rushed.'],
+                    ['This is what comfort', 'tastes like.'],
+                    ['Pick your size.', 'Never run out.'],
+                ];
+                (headlines[cur] || []).forEach((line, i) => ctx.fillText(line, 80, 130 + i * 68));
+                ctx.shadowBlur = 0;
+                drawFooter(ctx, 1080);
+
+            } else if (cur === 5) {
+                drawGrad(ctx, 1080);
+                ctx.strokeStyle = 'rgba(201,168,76,0.3)';
+                ctx.lineWidth = 2;
+                ctx.strokeRect(50, 50, 980, 870);
+                if (logoEl.naturalWidth) ctx.drawImage(logoEl, 490, 90, 100, 100);
+                ctx.font = "italic 150px 'Playfair Display', serif";
+                ctx.fillStyle = '#c9a84c';
+                ctx.textAlign = 'center';
+                ctx.fillText('"', 540, 310);
+                ctx.font = "italic 38px 'Playfair Display', serif";
+                ctx.fillStyle = '#f5efe6';
+                ['I never thought a podi could remind', 'me of my ammamma's kitchen so vividly.', 'One spoon and I was back home.'].forEach((l,i) => ctx.fillText(l, 540, 390+i*54));
+                ctx.font = "bold 24px 'DM Sans', sans-serif";
+                ctx.fillStyle = '#c9a84c';
+                ctx.fillText('— PRIYA V., HYDERABAD', 540, 570);
+                drawFooter(ctx, 1080);
+
+            } else {
+                drawGrad(ctx, 1080);
+                if (logoEl.naturalWidth) ctx.drawImage(logoEl, 480, 70, 120, 120);
+                ctx.font = "bold 46px 'Playfair Display', serif";
+                ctx.fillStyle = '#c9a84c';
+                ctx.textAlign = 'center';
+                ctx.fillText('Munagaku Podi', 540, 250);
+                ctx.font = "20px 'DM Sans', sans-serif";
+                ctx.fillStyle = '#888';
+                ctx.fillText('MORINGA LEAVES POWDER · HAND ROASTED', 540, 290);
+                const rows = [
+                    { icon: '💬', label: 'ORDER VIA WHATSAPP', val: '+91 8686 21 6633' },
+                    { icon: '🌐', label: 'WEBSITE & MENU',     val: 'navya.cloudkitchen.online' },
+                    { icon: '📸', label: 'INSTAGRAM',          val: '@navya.cloudkitchen.online' },
+                ];
+                let ry = 340;
+                rows.forEach(r => {
+                    ctx.fillStyle = 'rgba(255,255,255,0.03)';
+                    ctx.strokeStyle = 'rgba(201,168,76,0.12)';
+                    ctx.lineWidth = 1;
+                    ctx.beginPath(); ctx.roundRect(130, ry, 820, 100, 12); ctx.fill(); ctx.stroke();
+                    ctx.font = '38px serif'; ctx.textAlign = 'left'; ctx.fillText(r.icon, 175, ry+64);
+                    ctx.font = "bold 16px 'DM Sans'"; ctx.fillStyle = '#888'; ctx.fillText(r.label, 250, ry+40);
+                    ctx.font = "bold 28px 'DM Sans'"; ctx.fillStyle = '#fff'; ctx.fillText(r.val, 250, ry+76);
+                    ctx.textAlign = 'center'; ry += 120;
+                });
+                ctx.font = "italic 26px 'Playfair Display', serif";
+                ctx.fillStyle = 'rgba(201,168,76,0.6)';
+                ctx.fillText('Fresh, Healthy & Traditional', 540, ry+30);
+                drawFooter(ctx, 1080);
+            }
+
+            const link = document.createElement('a');
+            link.download = `navya_munagaku_slide${cur+1}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+            showToast(`Slide ${cur+1} saved!`);
+        }
+
+        function drawFooter(ctx, w) {
+            const fy = 918, fh = 162;
+            ctx.fillStyle = 'rgba(8,8,8,0.97)'; ctx.fillRect(0, fy, w, fh);
+            ctx.fillStyle = '#c9a84c'; ctx.fillRect(0, fy, w, 1.5);
+            if (logoEl.naturalWidth) ctx.drawImage(logoEl, 58, fy+(fh-62)/2, 62, 62);
+            ctx.font = "bold 22px 'Playfair Display', serif"; ctx.fillStyle = '#c9a84c'; ctx.textAlign = 'left';
+            ctx.fillText('NAVYA CLOUD KITCHEN', 138, fy+fh/2+8);
+            ctx.font = "500 20px 'DM Sans', sans-serif"; ctx.fillStyle = '#666'; ctx.textAlign = 'right';
+            ctx.fillText('@navya.cloudkitchen.online', w-58, fy+fh/2+8);
+        }
+
+        function drawGrad(ctx, s) {
+            const g = ctx.createRadialGradient(s/2,s/2,0,s/2,s/2,s);
+            g.addColorStop(0, '#141414'); g.addColorStop(1, '#060606');
+            ctx.fillStyle = g; ctx.fillRect(0,0,s,s);
+        }
+
+        /* ─── Clipboard utils ────────────────────────── */
+        function copyCaption() {
+            navigator.clipboard.writeText(document.getElementById('captionBox').innerText)
+                .then(() => showToast('Caption copied!'));
+        }
+
+        function copyHashtags() {
+            const tags = '#NavyaCloudKitchen #MunagakuPodi #MoringaPowder #HyderabadFoodies #AndhraFood #HomemadePodi #DrumstickLeaves #TeluguFood #KukatpallyDiaries #HomeMadeWithLove #HealthyEating #SuperfoodIndia';
+            navigator.clipboard.writeText(tags).then(() => showToast('Hashtags copied!'));
+        }
+
+        function copyPath(p) {
+            navigator.clipboard.writeText(p).then(() => showToast('Path copied!'));
+        }
+
+        /* ─── Toast ──────────────────────────────────── */
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.classList.add('show');
+            clearTimeout(t._tid);
+            t._tid = setTimeout(() => t.classList.remove('show'), 2400);
+        }
+
+        init();
+    </script>
+</body>
+</html>

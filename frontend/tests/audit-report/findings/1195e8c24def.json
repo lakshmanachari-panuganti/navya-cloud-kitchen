@@ -1,0 +1,20 @@
+{
+  "id": "1195e8c24def",
+  "timestamp": "2026-07-05T11:48:43.592Z",
+  "severity": "low",
+  "category": "security",
+  "title": "Missing response header: referrer-policy",
+  "description": "No Referrer-Policy declared.",
+  "page": "blog/homemade-vs-store-bought-podi",
+  "url": "/blog/homemade-vs-store-bought-podi.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross security posture › headers: blog/homemade-vs-store-bought-podi",
+  "evidence": [],
+  "extra": null
+}

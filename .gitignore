@@ -1,10 +1,11 @@
 # Dependencies
 node_modules/
-api/node_modules/
+frontend/node_modules/
+backend/node_modules/
 
-# Azure Functions local settings - contains connection strings + Razorpay keys
+# Azure Functions local settings - contains connection strings + PhonePe keys
 local.settings.json
-api/local.settings.json
+backend/local.settings.json
 
 # Environment files
 .env
@@ -36,3 +37,7 @@ build/
 # Playwright / QA local scratch
 test-results/
 playwright-report/
+# Screenshot outputs — regenerate with `npm run screenshots`
+frontend/tests/screenshots/
+# Google Fonts local cache — populated by global-setup / `npm run fonts:download`
+frontend/tests/fonts/

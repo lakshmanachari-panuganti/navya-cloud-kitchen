@@ -1,0 +1,20 @@
+{
+  "id": "b12c5cb66a6b",
+  "timestamp": "2026-07-05T11:48:43.391Z",
+  "severity": "low",
+  "category": "security",
+  "title": "Missing response header: referrer-policy",
+  "description": "No Referrer-Policy declared.",
+  "page": "products/munagaku-podi",
+  "url": "/products/munagaku-podi.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross security posture › headers: products/munagaku-podi",
+  "evidence": [],
+  "extra": null
+}

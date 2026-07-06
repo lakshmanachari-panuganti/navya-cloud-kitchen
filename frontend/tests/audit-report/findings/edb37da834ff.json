@@ -1,0 +1,20 @@
+{
+  "id": "edb37da834ff",
+  "timestamp": "2026-07-05T11:47:45.952Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "Missing twitter:title meta tag",
+  "description": "",
+  "page": "products/nuvvula-podi",
+  "url": "/products/nuvvula-podi.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross seo › meta: products/nuvvula-podi",
+  "evidence": [],
+  "extra": null
+}

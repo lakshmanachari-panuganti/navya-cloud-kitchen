@@ -1,0 +1,20 @@
+{
+  "id": "623d71ae921b",
+  "timestamp": "2026-07-05T11:47:37.522Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "Missing twitter:title meta tag",
+  "description": "",
+  "page": "products/minapa-sunni-undalu",
+  "url": "/products/minapa-sunni-undalu.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross seo › meta: products/minapa-sunni-undalu",
+  "evidence": [],
+  "extra": null
+}

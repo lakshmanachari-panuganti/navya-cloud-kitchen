@@ -1,0 +1,20 @@
+{
+  "id": "b0c4458b9be3",
+  "timestamp": "2026-07-05T11:46:03.886Z",
+  "severity": "medium",
+  "category": "accessibility",
+  "title": "Heading level skipped: h1 → h3",
+  "description": "",
+  "page": "policies",
+  "url": "/policies.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@desktop @responsive accessibility › axe: policies",
+  "evidence": [],
+  "extra": null
+}

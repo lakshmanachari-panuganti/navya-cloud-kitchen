@@ -1,0 +1,20 @@
+{
+  "id": "e8562e1f1db9",
+  "timestamp": "2026-07-05T11:47:50.163Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "Meta description length 163 outside recommended 50–160",
+  "description": "",
+  "page": "products/nuvvula-undalu",
+  "url": "/products/nuvvula-undalu.html",
+  "selector": "",
+  "expected": "",
+  "actual": "Order Nuvvula Undalu (Sesame Jaggery Laddoos) online. Roasted sesame seeds bound with cardamom-infused jaggery syrup. Homemade in Hyderabad by Navya Cloud Kitchen.",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross seo › meta: products/nuvvula-undalu",
+  "evidence": [],
+  "extra": null
+}
