@@ -1,6 +1,6 @@
 # Navya Cloud Kitchen — 10-Day Instagram Carousel Campaign
 
-**Brand:** Navya Cloud Kitchen · Kukatpally, Hyderabad
+**Brand:** Navya Cloud Kitchen · Neredmet, Hyderabad
 **Website:** https://navya.cloudkitchen.online
 **Instagram:** [@navya.cloudkitchen.online](https://instagram.com/navya.cloudkitchen.online)
 **WhatsApp:** +91 8686 21 6633
@@ -79,7 +79,7 @@ Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 >
 > Tag the friend who eats podi-annam thrice a week 🌾
 >
-> #NavyaCloudKitchen #KandiPodi #HyderabadFoodies #AndhraFood #HomemadePodi #KukatpallyDiaries #TeluguFood #HomeMadeWithLove
+> #NavyaCloudKitchen #KandiPodi #HyderabadFoodies #AndhraFood #HomemadePodi #NeredmetDiaries #TeluguFood #HomeMadeWithLove
 
 **Gemini prompt:**
 > Editorial food photography, warm natural window light, top-down 45° angle. A pool of steaming white basmati rice on a hammered brass thali, glossy melted ghee shining in the center, a copper spoon lifting golden-brown Kandi Podi (lentil powder) sprinkled across the rice. Rustic wooden background with jute placemat. Colour palette: warm gold, cream, brown, charcoal. Shallow depth of field, food-magazine styling in the mood of Bon Appétit meets Deccan tradition. Leave the bottom 15% of the frame as a plain dark-charcoal band with subtle grain texture — reserved space for a brand footer strip. High resolution, photorealistic, no text or logos in the image.
@@ -362,7 +362,7 @@ Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 >
 > Tag a friend who needs to know 🌾
 >
-> #StarterTrio #NavyaCloudKitchen #HyderabadFoodies #AndhraFood #HomemadePodi #KukatpallyDiaries
+> #StarterTrio #NavyaCloudKitchen #HyderabadFoodies #AndhraFood #HomemadePodi #NeredmetDiaries
 
 **Gemini prompt:**
 > Overhead editorial flat-lay on a warm cream linen cloth. Three small identical craft-brown paper pouches sealed with jute twine, arranged in a gentle arc — each labelled area left blank (space for later overlay). One pouch is deep gold-brown (Kandi Podi), one dark green (Karivepaku Podi), one deep olive (Munagaku Podi). Around them: a sprig of fresh curry leaves, a few moringa leaves, three dried red chilies, a small brass spoon. Palette: earthy browns, forest and olive greens, cream, gold. Slow-food editorial aesthetic. Bottom 15% of the frame is a plain solid dark-charcoal band reserved for brand footer strip. Photorealistic, no rendered text.
@@ -374,7 +374,7 @@ Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 Rotate 8–12 per post. Don't repeat exactly across days — Instagram down-ranks copy-paste captions.
 
 **Local (Hyderabad / Telangana):**
-`#HyderabadFoodies` `#KukatpallyDiaries` `#HyderabadHomemade` `#TelanganaFood` `#AndhraFood` `#HyderabadFoodBlogger` `#TeluguRuchulu`
+`#HyderabadFoodies` `#NeredmetDiaries` `#HyderabadHomemade` `#TelanganaFood` `#AndhraFood` `#HyderabadFoodBlogger` `#TeluguRuchulu`
 
 **Craft / process:**
 `#HomemadeFood` `#SlowFood` `#HomeChef` `#HomeKitchen` `#SmallBatch` `#HomeMadeWithLove` `#FarmToTable`
