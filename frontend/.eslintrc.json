@@ -1,0 +1,28 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "script"
+    },
+    "globals": {
+        "CONFIG": "readonly",
+        "MENU_ITEMS": "writable",
+        "CATEGORIES": "writable"
+    },
+    "rules": {
+        "no-unused-vars": ["warn", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^(CONFIG|IMG_PNG|MENU_ITEMS|CATEGORIES)$" }],
+        "no-undef": "warn",
+        "no-redeclare": "off"
+    },
+    "overrides": [
+        {
+            "files": ["playwright.config.js", "tests/**/*.js"],
+            "env": { "node": true, "browser": false },
+            "parserOptions": { "sourceType": "script" }
+        }
+    ]
+}

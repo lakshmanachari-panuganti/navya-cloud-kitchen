@@ -1,0 +1,46 @@
+name: Deploy Backend · PRD
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'backend/**'
+      - '.github/workflows/deploy-backend-prd.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-backend-prd
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    name: Backend · Build & Deploy (PRD)
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Backend Dependencies
+        working-directory: backend
+        run: npm ci
+
+      - name: Deploy to Azure Static Web Apps (PRD)
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_PRD }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: upload
+          app_location: 'frontend'
+          api_location: 'backend'
+          output_location: ''
+          skip_app_build: true

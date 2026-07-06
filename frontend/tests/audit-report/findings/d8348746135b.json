@@ -1,0 +1,20 @@
+{
+  "id": "d8348746135b",
+  "timestamp": "2026-07-05T11:47:22.519Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "<title> is 73 characters (recommended ≤65)",
+  "description": "",
+  "page": "products/avise-ginjala-podi",
+  "url": "/products/avise-ginjala-podi.html",
+  "selector": "",
+  "expected": "",
+  "actual": "Buy Avise Ginjala Podi Online — Homemade, Hyderabad | Navya Cloud Kitchen",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross seo › meta: products/avise-ginjala-podi",
+  "evidence": [],
+  "extra": null
+}

@@ -1,0 +1,20 @@
+{
+  "id": "1512c8c8461f",
+  "timestamp": "2026-07-05T11:48:04.316Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "Meta description length 176 outside recommended 50–160",
+  "description": "",
+  "page": "blog/karivepaku-podi-curry-leaves-powder",
+  "url": "/blog/karivepaku-podi-curry-leaves-powder.html",
+  "selector": "",
+  "expected": "",
+  "actual": "Learn why Karivepaku Podi (curry leaves powder) is an essential part of Andhra cuisine, its nutritional benefits, traditional preparation method, and how to pair it with meals.",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross seo › meta: blog/karivepaku-podi-curry-leaves-powder",
+  "evidence": [],
+  "extra": null
+}

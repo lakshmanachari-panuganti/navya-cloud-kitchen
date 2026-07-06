@@ -124,7 +124,7 @@ Write-Host "`n4. Configuring Static Web App Environment Settings..."
 az staticwebapp appsettings set `
     --name $SwaName `
     --resource-group $ResourceGroup `
-    --setting-names "AZURE_STORAGE_CONNECTION_STRING=$StorageConnString" "RAZORPAY_KEY_ID=rzp_test_XXXXXXXXXXXXXX" "RAZORPAY_KEY_SECRET=dummy_secret_do_not_use" | Out-Null
+    --setting-names "AZURE_STORAGE_CONNECTION_STRING=$StorageConnString" "PHONEPE_CLIENT_ID=your_client_id_here" "PHONEPE_CLIENT_SECRET=your_client_secret_here" "PHONEPE_MERCHANT_ID=your_merchant_id_here" "PHONEPE_API_BASE=https://api-preprod.phonepe.com/apis/pg-sandbox" | Out-Null
 
 # 5. Get Deployment Token
 Write-Host "`nFetching SWA Deployment Token..."
@@ -139,4 +139,4 @@ Write-Host "SWA Deployment Token  : $SwaToken"
 Write-Host ""
 Write-Host "To deploy the application code, use the Azure Static Web Apps CLI (swa-cli):" -ForegroundColor Yellow
 Write-Host "1. npm install -g @azure/static-web-apps-cli"
-Write-Host "2. swa deploy ./ --api-location ./api --env production --deployment-token `"$SwaToken`""
+Write-Host "2. swa deploy ./frontend --api-location ./backend --env production --deployment-token `"$SwaToken`""

@@ -1,0 +1,20 @@
+{
+  "id": "38bf16d049c8",
+  "timestamp": "2026-07-05T11:47:19.075Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "Missing og:type meta tag",
+  "description": "",
+  "page": "policies",
+  "url": "/policies.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross seo › meta: policies",
+  "evidence": [],
+  "extra": null
+}

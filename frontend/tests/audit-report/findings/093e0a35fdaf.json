@@ -1,0 +1,20 @@
+{
+  "id": "093e0a35fdaf",
+  "timestamp": "2026-07-05T11:48:43.477Z",
+  "severity": "low",
+  "category": "security",
+  "title": "Missing response header: permissions-policy",
+  "description": "No Permissions-Policy declared.",
+  "page": "products/avise-ginjala-podi",
+  "url": "/products/avise-ginjala-podi.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross security posture › headers: products/avise-ginjala-podi",
+  "evidence": [],
+  "extra": null
+}

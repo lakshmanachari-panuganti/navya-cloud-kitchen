@@ -1,0 +1,20 @@
+{
+  "id": "1b90c81e700b",
+  "timestamp": "2026-07-05T11:47:53.843Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "No <link rel=\"icon\"> declared",
+  "description": "",
+  "page": "products/vellulli-karampodi",
+  "url": "/products/vellulli-karampodi.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross seo › meta: products/vellulli-karampodi",
+  "evidence": [],
+  "extra": null
+}

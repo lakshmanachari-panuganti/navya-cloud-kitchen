@@ -1,0 +1,20 @@
+{
+  "id": "31294e56eb07",
+  "timestamp": "2026-07-05T11:48:12.203Z",
+  "severity": "high",
+  "category": "seo",
+  "title": "Google Analytics measurement ID is a placeholder (G-XXXXXXXXXX)",
+  "description": "",
+  "page": "",
+  "url": "/index.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "Replace the placeholder with the real GA4 measurement ID before launch.",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross seo › Google Analytics ID is not a placeholder",
+  "evidence": [],
+  "extra": null
+}

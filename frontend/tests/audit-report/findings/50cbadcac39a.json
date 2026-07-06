@@ -1,0 +1,20 @@
+{
+  "id": "50cbadcac39a",
+  "timestamp": "2026-07-05T11:47:12.868Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "Meta description length 166 outside recommended 50–160",
+  "description": "",
+  "page": "home",
+  "url": "/index.html",
+  "selector": "",
+  "expected": "",
+  "actual": "Traditional Andhra podulu & sweets, cooked fresh the night you order in Kukatpally, Hyderabad. Zero preservatives, made to order. Next-day delivery via Rapido/Porter.",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross seo › meta: home",
+  "evidence": [],
+  "extra": null
+}

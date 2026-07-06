@@ -1,0 +1,34 @@
+{
+  "id": "ec45aeded47f",
+  "timestamp": "2026-07-05T11:46:04.260Z",
+  "severity": "high",
+  "category": "accessibility",
+  "title": "[a11y color-contrast] Elements must meet minimum color contrast ratio thresholds",
+  "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+  "page": "home",
+  "url": "/index.html",
+  "selector": "article[data-product-id=\"flaxseed_garlic_podi\"] > .pcard-sizes[role=\"group\"][aria-label=\"Choose pack size\"] > .pcard-size[data-idx=\"2\"][type=\"button\"] > .pcard-size-unit",
+  "expected": "",
+  "actual": "Fix any of the following:\n  Element has insufficient color contrast of 2.54 (foreground color: #b0a08a, background color: #ffffff, font size: 7.8pt (10.4px), font weight: normal). Expected contrast ratio of 4.5:1",
+  "remediation": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=playwright",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@desktop @responsive accessibility › axe: home",
+  "evidence": [],
+  "extra": {
+    "impact": "serious",
+    "tags": [
+      "cat.color",
+      "wcag2aa",
+      "wcag143",
+      "TTv5",
+      "TT13.c",
+      "EN-301-549",
+      "EN-9.1.4.3",
+      "ACT",
+      "RGAAv4",
+      "RGAA-3.2.1"
+    ]
+  }
+}

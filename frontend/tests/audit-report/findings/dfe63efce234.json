@@ -1,0 +1,20 @@
+{
+  "id": "dfe63efce234",
+  "timestamp": "2026-07-05T11:47:15.498Z",
+  "severity": "low",
+  "category": "link-integrity",
+  "title": "Anchor with empty/hash-only href: \"#\"",
+  "description": "",
+  "page": "home",
+  "url": "/index.html",
+  "selector": "",
+  "expected": "",
+  "actual": "Cart\n                0",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross links › links: home",
+  "evidence": [],
+  "extra": null
+}

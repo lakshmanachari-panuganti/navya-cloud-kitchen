@@ -1,0 +1,20 @@
+{
+  "id": "98aba57a0605",
+  "timestamp": "2026-07-05T11:47:37.532Z",
+  "severity": "low",
+  "category": "seo",
+  "title": "No <link rel=\"icon\"> declared",
+  "description": "",
+  "page": "products/minapa-sunni-undalu",
+  "url": "/products/minapa-sunni-undalu.html",
+  "selector": "",
+  "expected": "",
+  "actual": "",
+  "remediation": "",
+  "steps": [],
+  "browser": "chromium",
+  "device": "chromium-desktop",
+  "spec": "@chromium-only @cross seo › meta: products/minapa-sunni-undalu",
+  "evidence": [],
+  "extra": null
+}
