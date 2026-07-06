@@ -16,7 +16,7 @@
     <meta name="twitter:title" content="Navya Cloud Kitchen — Homemade Andhra Podulu & Sweets">
     <meta name="twitter:description" content="Traditional podulu & sweets, cooked fresh the night you order, in Hyderabad. Zero preservatives, made to order.">
     <meta name="twitter:image" content="https://navyacloudkitchen.com/images/hero_bg_desktop.png">
-    <meta name="theme-color" content="#1a0a00">
+    <meta name="theme-color" content="#0B0F0A">
 
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
@@ -29,11 +29,16 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Noto+Sans+Telugu:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=Noto+Sans+Telugu:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="brand-tokens.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- Ambient page glows -->
+    <div class="ambient-glow ambient-glow--tl" aria-hidden="true"></div>
+    <div class="ambient-glow ambient-glow--br" aria-hidden="true"></div>
+    <div class="ambient-glow ambient-glow--mid" aria-hidden="true"></div>
 
     <!-- Sticky Top Nav -->
     <header class="top-nav" id="topNav">
@@ -41,9 +46,10 @@
             <a href="#" class="nav-brand" aria-label="Navya Cloud Kitchen — Home">
                 <picture>
                     <source srcset="images/logo.webp" type="image/webp">
-                    <img id="navLogo" alt=""
+                    <img id="navLogo" src="images/logo.png" alt="Navya Cloud Kitchen"
                      class="nav-logo"
-                     onerror="this.src='https://placehold.co/44x44/2D5A27/fff?text=NK'">
+                     width="40" height="40"
+                     onerror="this.src='https://placehold.co/40x40/171D14/A3E635?text=N'">
                 </picture>
                 <div class="nav-brand-text">
                     <div class="nav-title">Navya Cloud Kitchen</div>
@@ -52,10 +58,10 @@
             </a>
             <nav class="nav-links" id="navLinks" aria-label="Primary">
                 <div class="nav-dropdown">
-                    <a href="#menuContainer" class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
                         Products
                         <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-                    </a>
+                    </button>
                     <div class="nav-dropdown-menu" role="menu">
                         <a href="#menuContainer" role="menuitem">Podulu</a>
                         <a href="#menuContainer" role="menuitem">Pickles</a>
@@ -69,14 +75,14 @@
             </nav>
             <div class="nav-actions">
                 <a href="#account" class="nav-icon-btn nav-account-btn" id="navAccountBtn" aria-label="Sign in or account">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
                         <circle cx="12" cy="7" r="4"/>
                     </svg>
-                    <span class="nav-account-label" id="navAccountLabel">Sign In / Account</span>
+                    <span class="nav-account-label" id="navAccountLabel">Sign In</span>
                 </a>
                 <button class="nav-icon-btn nav-cart-btn" id="navCartBtn" aria-label="View cart">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <circle cx="9" cy="20" r="1.5"/>
                         <circle cx="17" cy="20" r="1.5"/>
                         <path d="M2 3h3l2.6 12.4a1.5 1.5 0 0 0 1.5 1.2h8.2a1.5 1.5 0 0 0 1.5-1.1L21 8H6"/>
@@ -99,8 +105,9 @@
             <div class="mobile-menu-brand">
                 <picture>
                     <source srcset="images/logo.webp" type="image/webp">
-                    <img alt="" class="mobile-menu-logo"
-                        onerror="this.src='https://placehold.co/40x40/2D5A27/fff?text=NK'">
+                    <img src="images/logo.png" alt="Navya Cloud Kitchen" class="mobile-menu-logo"
+                        width="40" height="40"
+                        onerror="this.src='https://placehold.co/40x40/171D14/A3E635?text=N'">
                 </picture>
                 <div>
                     <div class="mobile-menu-title">Navya Cloud Kitchen</div>
@@ -108,7 +115,7 @@
                 </div>
             </div>
             <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <line x1="18" y1="6" x2="6" y2="18"/>
                     <line x1="6" y1="6" x2="18" y2="18"/>
                 </svg>
@@ -117,14 +124,14 @@
 
         <nav class="mobile-menu-nav" aria-label="Menu">
             <a href="#" class="mm-link" data-close-menu>
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12L12 4l9 8"/><path d="M5 10v10h14V10"/></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12L12 4l9 8"/><path d="M5 10v10h14V10"/></svg>
                 <span>Home</span>
             </a>
 
             <div class="mm-accordion" data-mm-accordion>
                 <button type="button" class="mm-accordion-trigger" aria-expanded="false" aria-controls="mmProducts">
                     <span class="mm-link-inner">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
                         <span>Products</span>
                     </span>
                     <svg class="mm-caret" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
@@ -139,27 +146,27 @@
             </div>
 
             <a href="#story" class="mm-link" data-close-menu>
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4V4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4V4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
                 <span>Our Story</span>
             </a>
             <a href="#contact" class="mm-link" data-close-menu>
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v12H5.5L4 17.5V4z"/></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v12H5.5L4 17.5V4z"/></svg>
                 <span>Contact Us</span>
             </a>
             <a href="#track" class="mm-link" data-close-menu>
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 8h11v9H1z"/><path d="M12 12h6l3 3v2h-9z"/><circle cx="5.5" cy="17.5" r="1.6"/><circle cx="16.5" cy="17.5" r="1.6"/></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 8h11v9H1z"/><path d="M12 12h6l3 3v2h-9z"/><circle cx="5.5" cy="17.5" r="1.6"/><circle cx="16.5" cy="17.5" r="1.6"/></svg>
                 <span>Track Order</span>
             </a>
             <a href="#faqs" class="mm-link" data-close-menu>
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1 1-1.1 1.8"/><line x1="12" y1="17" x2="12" y2="17.01"/></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1 1-1.1 1.8"/><line x1="12" y1="17" x2="12" y2="17.01"/></svg>
                 <span>FAQs</span>
             </a>
             <a href="#account" class="mm-link" data-close-menu>
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 <span>Sign In / My Account</span>
             </a>
             <a href="#" class="mm-link" data-close-menu id="mmCartLink">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M2 3h3l2.6 12.4a1.5 1.5 0 0 0 1.5 1.2h8.2a1.5 1.5 0 0 0 1.5-1.1L21 8H6"/></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M2 3h3l2.6 12.4a1.5 1.5 0 0 0 1.5 1.2h8.2a1.5 1.5 0 0 0 1.5-1.1L21 8H6"/></svg>
                 <span>Cart</span>
                 <span class="mm-cart-count" id="mmCartCount">0</span>
             </a>
@@ -169,19 +176,19 @@
             <div class="mm-section-title">Quick Contact</div>
             <div class="mm-quick-grid">
                 <a href="tel:+918686216633" class="mm-quick-tile" aria-label="Call">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7 12.8 12.8 0 0 0 .7 2.8 2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5 12.8 12.8 0 0 0 2.8.7A2 2 0 0 1 22 16.9z"/></svg>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7 12.8 12.8 0 0 0 .7 2.8 2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5 12.8 12.8 0 0 0 2.8.7A2 2 0 0 1 22 16.9z"/></svg>
                     <span>Call</span>
                 </a>
                 <a href="https://wa.me/918686216633" target="_blank" rel="noopener" class="mm-quick-tile" aria-label="WhatsApp">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/></svg>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/></svg>
                     <span>WhatsApp</span>
                 </a>
                 <a href="#location" class="mm-quick-tile" aria-label="Location">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                     <span>Location</span>
                 </a>
                 <a href="mailto:navya.cloudkitchen.online@gmail.com" class="mm-quick-tile" aria-label="Email">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                     <span>Email</span>
                 </a>
             </div>
@@ -189,13 +196,10 @@
 
         <div class="mobile-menu-section mm-socials">
             <a href="https://instagram.com/navya.cloudkitchen.online" target="_blank" rel="noopener" aria-label="Instagram">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.4A4 4 0 1 1 12.6 8 4 4 0 0 1 16 11.4z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.4A4 4 0 1 1 12.6 8 4 4 0 0 1 16 11.4z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
             </a>
             <a href="https://wa.me/918686216633" target="_blank" rel="noopener" aria-label="WhatsApp">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/></svg>
-            </a>
-            <a href="#facebook" aria-label="Facebook">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/></svg>
             </a>
         </div>
 
@@ -204,7 +208,7 @@
         </div>
     </aside>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero" aria-labelledby="heroTitle">
         <div class="hero-frame">
             <div class="hero-bg">
@@ -219,7 +223,6 @@
                 </picture>
                 <div class="hero-overlay" aria-hidden="true"></div>
                 <div class="hero-vignette" aria-hidden="true"></div>
-                <div class="hero-feather" aria-hidden="true"></div>
             </div>
             <div class="hero-content">
                 <div class="hero-overline reveal-up">From our kitchen to yours</div>
@@ -232,6 +235,7 @@
                 <div class="hero-actions reveal-up" style="--d:0.7s">
                     <button class="hero-cta-primary" onclick="document.getElementById('menuContainer').scrollIntoView({behavior:'smooth'})" aria-label="Browse the menu and order now">
                         Order Now
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </button>
                     <a class="hero-cta-ghost" href="#story" aria-label="Read our story">Our Story</a>
                 </div>
@@ -239,8 +243,8 @@
         </div>
     </section>
 
-    <!-- Marquee Strip -->
-    <div class="marquee-strip">
+    <!-- Marquee -->
+    <div class="marquee-strip" aria-hidden="true">
         <div class="marquee-track">
             <span>Karivepaku Podi</span><span class="marquee-dot">✦</span>
             <span>Munagaku Podi</span><span class="marquee-dot">✦</span>
@@ -251,7 +255,6 @@
             <span>Sunni Undalu</span><span class="marquee-dot">✦</span>
             <span>Nuvvula Undalu</span><span class="marquee-dot">✦</span>
             <span>Palli Undalu</span><span class="marquee-dot">✦</span>
-            <!-- Duplicate for seamless loop -->
             <span>Karivepaku Podi</span><span class="marquee-dot">✦</span>
             <span>Munagaku Podi</span><span class="marquee-dot">✦</span>
             <span>Avise Ginjala Podi</span><span class="marquee-dot">✦</span>
@@ -270,36 +273,40 @@
             <div class="hero-features scroll-reveal" role="list">
                 <div class="feature-card" role="listitem">
                     <span class="feature-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 2c-4 6 2 8 0 14"/>
-                            <path d="M20 8c-6 2-8 8-14 8"/>
-                            <path d="M4 8c6 2 8 8 14 8"/>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                            <path d="M2 21c0-3 1.85-5.36 5.08-6"/>
                         </svg>
                     </span>
-                    <span class="feature-title">Zero<br>Preservatives</span>
-                    <span class="feature-desc">Pure &amp; natural ingredients</span>
+                    <div class="feature-body">
+                        <span class="feature-title">Zero Preservatives</span>
+                        <span class="feature-desc">Pure &amp; natural ingredients</span>
+                    </div>
                 </div>
                 <div class="feature-card" role="listitem">
                     <span class="feature-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="6" y="3" width="12" height="18" rx="2"/>
-                            <path d="M9 8h6M9 12h6M9 16h4"/>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/>
+                            <line x1="6" y1="17" x2="18" y2="17"/>
                         </svg>
                     </span>
-                    <span class="feature-title">Made<br>to Order</span>
-                    <span class="feature-desc">Freshly prepared just for you</span>
+                    <div class="feature-body">
+                        <span class="feature-title">Made to Order</span>
+                        <span class="feature-desc">Freshly prepared just for you</span>
+                    </div>
                 </div>
                 <div class="feature-card" role="listitem">
                     <span class="feature-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M1 8h11v9H1z"/>
-                            <path d="M12 12h6l3 3v2h-9z"/>
-                            <circle cx="5.5" cy="17.5" r="1.8"/>
-                            <circle cx="16.5" cy="17.5" r="1.8"/>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 3h5v5"/>
+                            <path d="M21 3l-9 9"/>
+                            <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
                         </svg>
                     </span>
-                    <span class="feature-title">Next-Day<br>Dispatch</span>
-                    <span class="feature-desc">Fast &amp; reliable delivery</span>
+                    <div class="feature-body">
+                        <span class="feature-title">Next-Day Dispatch</span>
+                        <span class="feature-desc">Fast &amp; reliable delivery</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -310,30 +317,40 @@
         <div class="section-container">
             <div class="section-header scroll-reveal">
                 <span class="section-tag">Simple as 1-2-3</span>
-                <h2 class="section-heading">How It Works</h2>
+                <h2 class="section-heading">How It <em>Works</em></h2>
             </div>
             <div class="steps-grid">
                 <div class="step-card scroll-reveal" style="--d:0s">
                     <div class="step-number">01</div>
-                    <div class="step-icon">📱</div>
-                    <h3 class="step-title">Browse & Order</h3>
+                    <div class="step-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="5" y="2" width="14" height="20" rx="2"/>
+                            <line x1="12" y1="18" x2="12" y2="18.01"/>
+                        </svg>
+                    </div>
+                    <h3 class="step-title">Browse &amp; Order</h3>
                     <p class="step-desc">Pick your favourites from our menu and place your order before 6 PM.</p>
-                </div>
-                <div class="step-connector scroll-reveal" style="--d:0.1s">
-                    <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4"/></svg>
                 </div>
                 <div class="step-card scroll-reveal" style="--d:0.15s">
                     <div class="step-number">02</div>
-                    <div class="step-icon">🍳</div>
+                    <div class="step-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/>
+                            <line x1="6" y1="17" x2="18" y2="17"/>
+                        </svg>
+                    </div>
                     <h3 class="step-title">We Cook Tonight</h3>
                     <p class="step-desc">Fresh ingredients, slow-roasted overnight with traditional recipes passed down generations.</p>
                 </div>
-                <div class="step-connector scroll-reveal" style="--d:0.25s">
-                    <svg width="40" height="2" viewBox="0 0 40 2"><line x1="0" y1="1" x2="40" y2="1" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4"/></svg>
-                </div>
                 <div class="step-card scroll-reveal" style="--d:0.3s">
                     <div class="step-number">03</div>
-                    <div class="step-icon">📦</div>
+                    <div class="step-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
                     <h3 class="step-title">Delivered Fresh</h3>
                     <p class="step-desc">Packed with care and delivered to your doorstep the very next morning.</p>
                 </div>
@@ -343,36 +360,38 @@
 
     <!-- Our Story -->
     <section class="story-section" id="story">
-        <div class="story-grain"></div>
         <div class="section-container">
-            <div class="story-grid">
-                <div class="story-visual scroll-reveal">
+            <div class="story-grid scroll-reveal">
+                <div class="story-visual">
                     <div class="story-img-frame">
                         <div class="story-img-placeholder">
-                            <span>🏡</span>
+                            <span class="icon-chip icon-chip--lg" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 12L12 4l9 8"/>
+                                    <path d="M5 10v10h14V10"/>
+                                </svg>
+                            </span>
                             <small>Navya Cloud Kitchen</small>
                         </div>
                     </div>
                     <div class="story-accent-badge">Est. with love</div>
                 </div>
                 <div class="story-text">
-                    <span class="section-tag scroll-reveal">Our Story</span>
-                    <h2 class="section-heading scroll-reveal" style="--d:0.1s">A Kitchen Born<br>from <em>Amma's</em> Recipes</h2>
-                    <p class="story-para scroll-reveal" style="--d:0.2s">What started as weekend batches for friends and family grew into something beautiful. Every powder is hand-roasted, every laddu hand-rolled - just like how our mothers and grandmothers made them.</p>
-                    <p class="story-para scroll-reveal" style="--d:0.3s">No factory lines. No machines. No shortcuts. Just the patient art of traditional home cooking, done the way it's been done for generations.</p>
-                    <div class="story-stats scroll-reveal" style="--d:0.4s">
+                    <span class="section-tag">Our Story</span>
+                    <h2 class="section-heading">A Kitchen Born<br>from <em>Amma's</em> Recipes</h2>
+                    <p class="story-para">What started as weekend batches for friends and family grew into something beautiful. Every powder is hand-roasted, every laddu hand-rolled — just like how our mothers and grandmothers made them.</p>
+                    <p class="story-para">No factory lines. No machines. No shortcuts. Just the patient art of traditional home cooking, done the way it's been done for generations.</p>
+                    <div class="story-stats">
                         <div class="stat-item">
                             <div class="stat-value">500+</div>
                             <div class="stat-label">Happy Families</div>
                         </div>
-                        <div class="stat-divider"></div>
                         <div class="stat-item">
                             <div class="stat-value">9</div>
                             <div class="stat-label">Handcrafted Items</div>
                         </div>
-                        <div class="stat-divider"></div>
                         <div class="stat-item">
-                            <div class="stat-value">0</div>
+                            <div class="stat-value">Zero</div>
                             <div class="stat-label">Preservatives</div>
                         </div>
                     </div>
@@ -381,10 +400,15 @@
         </div>
     </section>
 
-    <!-- Order Timing Banner -->
+    <!-- Timing banner -->
     <div class="timing-banner">
         <div class="timing-inner">
-            <span class="timing-clock">⏰</span>
+            <span class="timing-clock" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="9"/>
+                    <polyline points="12 7 12 12 15 14"/>
+                </svg>
+            </span>
             <div class="timing-text">
                 <strong>Order cut-off: 6:00 PM today</strong>
                 <span>We cook tonight · You receive tomorrow morning</span>
@@ -405,14 +429,14 @@
         <div class="section-container">
             <div class="section-header scroll-reveal">
                 <span class="section-tag">What People Say</span>
-                <h2 class="section-heading">Loved by Families</h2>
+                <h2 class="section-heading">Loved by <em>Families</em></h2>
             </div>
             <div class="reviews-grid">
                 <div class="review-card scroll-reveal" style="--d:0s">
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"The Karivepaku Podi tastes exactly like my grandmother used to make. I order every month - my kids love it mixed into curd rice!"</p>
+                    <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                    <p class="review-text">"The Karivepaku Podi tastes exactly like my grandmother used to make. I order every month — my kids love it mixed into curd rice!"</p>
                     <div class="review-author">
-                        <div class="review-avatar">P</div>
+                        <div class="review-avatar" aria-hidden="true">P</div>
                         <div>
                             <div class="review-name">Priya Reddy</div>
                             <div class="review-location">Hyderabad</div>
@@ -420,10 +444,10 @@
                     </div>
                 </div>
                 <div class="review-card scroll-reveal" style="--d:0.12s">
-                    <div class="review-stars">★★★★★</div>
+                    <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
                     <p class="review-text">"Sunni Undalu were absolutely divine. Perfectly sweet, the ghee aroma is incredible. Better than any shop-bought laddu I've ever had."</p>
                     <div class="review-author">
-                        <div class="review-avatar">R</div>
+                        <div class="review-avatar" aria-hidden="true">R</div>
                         <div>
                             <div class="review-name">Ramesh Naidu</div>
                             <div class="review-location">Vizag</div>
@@ -431,10 +455,10 @@
                     </div>
                 </div>
                 <div class="review-card scroll-reveal" style="--d:0.24s">
-                    <div class="review-stars">★★★★★</div>
+                    <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
                     <p class="review-text">"Finally found a reliable source for authentic podulu! The Munagaku Podi is our daily staple now. Super fresh and so flavourful."</p>
                     <div class="review-author">
-                        <div class="review-avatar">S</div>
+                        <div class="review-avatar" aria-hidden="true">S</div>
                         <div>
                             <div class="review-name">Sravani Devi</div>
                             <div class="review-location">Vijayawada</div>
@@ -447,28 +471,29 @@
 
     <!-- Final CTA -->
     <section class="final-cta-section">
-        <div class="final-cta-grain"></div>
         <div class="section-container">
             <div class="final-cta-content scroll-reveal">
                 <h2 class="final-cta-heading">Ready to taste <em>home</em>?</h2>
                 <p class="final-cta-desc">Order before 6 PM and enjoy freshly made traditional delicacies delivered to your doorstep tomorrow morning.</p>
                 <button class="final-cta-btn" onclick="document.getElementById('menuContainer').scrollIntoView({behavior:'smooth'})">
                     Browse the Menu
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </button>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="site-footer">
+    <footer class="site-footer" id="contact">
         <div class="section-container">
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="footer-logo-row">
                         <picture>
                             <source srcset="images/logo.webp" type="image/webp">
-                            <img id="footerLogo" alt="Navya Cloud Kitchen" class="footer-logo"
-                             onerror="this.src='https://placehold.co/36x36/2D5A27/fff?text=NK'">
+                            <img id="footerLogo" src="images/logo.png" alt="Navya Cloud Kitchen" class="footer-logo"
+                             width="36" height="36"
+                             onerror="this.src='https://placehold.co/36x36/171D14/A3E635?text=N'">
                         </picture>
                         <span class="footer-name">Navya Cloud Kitchen</span>
                     </div>
@@ -491,19 +516,19 @@
                 <div class="footer-contact">
                     <h4 class="footer-col-title">Get in Touch</h4>
                     <a href="https://wa.me/918686216633" id="footerWhatsApp" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="1.75" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
                         </svg>
                         <span>WhatsApp: +91 86862 16633</span>
                     </a>
                     <a href="tel:+918686216633">
-                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="1.75" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                         </svg>
                         <span>Call: +91 86862 16633</span>
                     </a>
                     <a href="https://instagram.com/navya.cloudkitchen.online" target="_blank" rel="noopener">
-                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="1.75" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
@@ -511,18 +536,24 @@
                         <span>@navya.cloudkitchen.online</span>
                     </a>
                     <a href="mailto:navya.cloudkitchen.online@gmail.com">
-                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="1.75" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                             <polyline points="22,6 12,13 2,6"></polyline>
                         </svg>
                         <span>navya.cloudkitchen.online@gmail.com</span>
                     </a>
-                    <span>📍 Kukatpally, Hyderabad, Telangana</span>
-                    <span>⏰ Orders close at 6 PM daily</span>
+                    <span>
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="1.75" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Kukatpally, Hyderabad, Telangana
+                    </span>
+                    <span>
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="1.75" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
+                        Orders close at 6 PM daily
+                    </span>
                 </div>
             </div>
             <div class="footer-bottom">
-                <span>&copy; 2026 Navya Cloud Kitchen. Made with ❤️</span>
+                <span>&copy; 2026 Navya Cloud Kitchen.</span>
                 <span class="footer-fssai">FSSAI License: Applied for</span>
             </div>
         </div>
@@ -535,7 +566,8 @@
             <div class="cart-bar-total" id="cartBarTotal">₹0</div>
         </div>
         <button class="cart-bar-btn" id="viewCartBtn">
-            View Cart &nbsp;→
+            View Cart
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-left:6px"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </button>
     </div>
 
@@ -543,11 +575,11 @@
     <div class="drawer-overlay" id="drawerOverlay"></div>
 
     <!-- Cart / Checkout Drawer -->
-    <div class="drawer" id="cartDrawer">
+    <div class="drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
         <div class="drawer-handle"></div>
         <div class="drawer-header">
-            <h2 class="drawer-title">Your Order</h2>
-            <button class="drawer-close" id="closeDrawerBtn" aria-label="Close">✕</button>
+            <h2 class="drawer-title" id="drawerTitle">Your Order</h2>
+            <button class="drawer-close" id="closeDrawerBtn" aria-label="Close cart">✕</button>
         </div>
         <div class="drawer-body">
             <!-- Cart Items -->
@@ -559,12 +591,19 @@
                 <div class="bill-divider"></div>
                 <div class="bill-row bill-total"><span>Grand Total</span><span id="billGrandTotal">₹0</span></div>
                 <div class="courier-note">
-                    🛵 <strong>Delivery via Rapido/Porter</strong> — paid directly to the rider at your door (typically ₹150–300 by distance). We don't add any delivery markup.
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>
+                        <path d="M5 17H3v-4l2-5h9l4 5h2v4h-2"/><path d="M14 8V6a2 2 0 0 0-2-2H9"/>
+                    </svg>
+                    <div><strong>Delivery via Rapido/Porter</strong> — paid directly to the rider at your door (typically ₹150–300 by distance). We don't add any delivery markup.</div>
                 </div>
             </div>
 
             <!-- Delivery Form -->
-            <div class="form-section-title">📦 Delivery Details</div>
+            <div class="form-section-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                Delivery Details
+            </div>
             <form id="checkoutForm" class="checkout-form" onsubmit="event.preventDefault();">
                 <div class="form-group">
                     <label for="custName">Full Name</label>
@@ -585,7 +624,8 @@
                     <textarea id="custAddress" rows="3" placeholder="Flat No., Building, Street, Landmark, City" required></textarea>
                 </div>
                 <button type="submit" class="pay-btn" id="payBtn">
-                    <span id="payBtnText">💬 Send Order via WhatsApp — ₹<span id="payBtnAmount">0</span></span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    <span id="payBtnText">Send Order via WhatsApp — ₹<span id="payBtnAmount">0</span></span>
                 </button>
                 <p class="pay-note">We confirm your order on WhatsApp. Payment collected via UPI on delivery.</p>
             </form>
@@ -593,14 +633,19 @@
     </div>
 
     <!-- Success Screen -->
-    <div class="success-screen" id="successScreen">
+    <div class="success-screen" id="successScreen" role="dialog" aria-modal="true" aria-labelledby="successTitle">
         <div class="success-inner">
-            <div class="success-lottie">🎊</div>
-            <h2 class="success-title">Order Confirmed!</h2>
+            <div class="success-lottie" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 6 9 17l-5-5"/>
+                </svg>
+            </div>
+            <h2 class="success-title" id="successTitle">Order Confirmed!</h2>
             <p class="success-subtitle" id="successMessage">Your payment was received successfully.</p>
             <div class="success-order-card" id="successOrderCard"></div>
             <button class="whatsapp-btn" id="whatsappShareBtn">
-                <span>💬</span> Send to Kitchen via WhatsApp
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                Send to Kitchen via WhatsApp
             </button>
             <button class="ghost-btn" id="successCloseBtn">Continue Shopping</button>
         </div>
