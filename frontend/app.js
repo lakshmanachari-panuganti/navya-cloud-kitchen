@@ -164,12 +164,22 @@ const MENU_ITEMS = [
     }
 ];
 
+// Inline SVG icon strings (Lucide-style, currentColor). Kept as strings so the
+// existing template concatenation continues to work without changes.
+const ICON = {
+    home: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12L12 4l9 8"/><path d="M5 10v10h14V10"/></svg>`,
+    leaf: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>`,
+    flame: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>`,
+    candy: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.6 5.6a4 4 0 1 1 5.66 5.66l-1.06 1.06a4 4 0 1 1-5.66-5.66Z"/><path d="M5.5 15.4 3 18l3 3 2.6-2.5"/><path d="m18.5 8.6 2.5-2.6-3-3-2.6 2.5"/></svg>`,
+    gift: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M5 12v9h14v-9"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>`,
+};
+
 const CATEGORIES = {
-    all: { label: "All Items", icon: "🏠" },
-    everyday_podulu: { label: "Everyday Podulu", icon: "🌿", iconType: "green" },
-    traditional_comfort: { label: "Traditional Podulu", icon: "🌶️", iconType: "amber" },
-    sweets: { label: "Sweets & Snacks", icon: "🍬", iconType: "red" },
-    bundles: { label: "Combo Packs", icon: "🎁", iconType: "amber" }
+    all: { label: "All Items", icon: ICON.home },
+    everyday_podulu: { label: "Everyday Podulu", icon: ICON.leaf, iconType: "green" },
+    traditional_comfort: { label: "Traditional Podulu", icon: ICON.flame, iconType: "amber" },
+    sweets: { label: "Sweets & Snacks", icon: ICON.candy, iconType: "amber" },
+    bundles: { label: "Combo Packs", icon: ICON.gift, iconType: "amber" }
 };
 
 /* ── State ────────────────────────────────────────────────── */
@@ -207,7 +217,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setupScrollNav();
     setupScrollReveal();
     setupMobileMenu();
-    initCountdown();
 
     // Update checkout trust microcopy
     const payNote = document.querySelector('.pay-note');
@@ -218,7 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function showMenuSkeletons() {
     const container = document.getElementById("menuContainer");
-    const skeletonHTML = Array(4).fill(`
+    const skeletonHTML = Array(6).fill(`
         <div class="skeleton-card">
             <div class="skeleton-img"></div>
             <div class="skeleton-text" style="width:60%"></div>
@@ -226,31 +235,7 @@ function showMenuSkeletons() {
             <div class="skeleton-text" style="width:80%"></div>
         </div>
     `).join('');
-    container.innerHTML = `<div class="menu-grid">${skeletonHTML}</div>`;
-}
-
-function initCountdown() {
-    const el = document.querySelector('.timing-text strong');
-    if (!el) return;
-
-    function update() {
-        const now = new Date();
-        const cutoff = new Date(now);
-        cutoff.setHours(18, 0, 0, 0);
-
-        if (now >= cutoff) {
-            el.textContent = "Orders open again tomorrow at 9 AM";
-            return;
-        }
-
-        const diff = cutoff - now;
-        const hours = Math.floor(diff / 3600000);
-        const mins = Math.floor((diff % 3600000) / 60000);
-        el.textContent = `Order cut-off in ${hours}h ${mins}m — tonight's batch`;
-    }
-
-    update();
-    setInterval(update, 60000);
+    container.innerHTML = `<section class="menu-section"><div class="menu-grid">${skeletonHTML}</div></section>`;
 }
 
 function initDeliveryDate() {
@@ -615,7 +600,7 @@ function refreshDrawerCartList() {
 
     const keys = Object.keys(cart);
     if (keys.length === 0) {
-        list.innerHTML = `<div style="text-align:center;padding:24px 0;color:var(--text-300);font-size:0.88rem;">Your cart is empty.</div>`;
+        list.innerHTML = `<div style="text-align:center;padding:24px 0;color:var(--text-muted);font-size:0.88rem;">Your cart is empty.</div>`;
     } else {
         keys.forEach(id => {
             const { name, price, qty } = cart[id];
@@ -809,12 +794,19 @@ function showSuccess(orderId, total, name, phone, address, date) {
     document.getElementById("successMessage").textContent =
         `Order ready to send · Ref: ${orderId}`;
 
+    const svg = {
+        user: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
+        phone: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7 12.8 12.8 0 0 0 .7 2.8 2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5 12.8 12.8 0 0 0 2.8.7A2 2 0 0 1 22 16.9z"/></svg>`,
+        pin: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+        calendar: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
+        rupee: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12M6 8h12M6 13l9 8M6 13c8 0 8-10 0-10"/></svg>`,
+    };
     document.getElementById("successOrderCard").innerHTML = `
-        <strong>👤 ${name}</strong><br>
-        📱 ${phone}<br>
-        📍 ${address}<br>
-        🗓️ Delivery: ${date}<br>
-        💰 Items Total: ₹${total}
+        <strong>${svg.user}${name}</strong><br>
+        ${svg.phone}${phone}<br>
+        ${svg.pin}${address}<br>
+        ${svg.calendar}Delivery: ${date}<br>
+        ${svg.rupee}Items Total: ₹${total}
     `;
 
     const lines = Object.values(cart).map(i => `• ${i.name} ×${i.qty} (₹${i.price * i.qty})`).join("\n");

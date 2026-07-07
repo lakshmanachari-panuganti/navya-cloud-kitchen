@@ -75,6 +75,16 @@ async function settle(page) {
                 el.style.setProperty('display', 'none', 'important');
             });
         });
+        // Force-reveal any scroll-triggered content. IntersectionObserver
+        // may not fire for elements far below the initial viewport during
+        // a fullPage capture, leaving `.scroll-reveal` blocks stuck at
+        // opacity:0.
+        document.querySelectorAll('.scroll-reveal, .reveal-up').forEach((el) => {
+            el.classList.add('revealed');
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+            el.style.animation = 'none';
+        });
     });
     // Small settle delay for reveal-up animations to finish
     await page.waitForTimeout(600);
