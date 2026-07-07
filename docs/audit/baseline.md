@@ -47,7 +47,7 @@
 
 ## Lighthouse Baseline
 
-> **TODO:** Run PageSpeed Insights on https://navya.cloudkitchen.online and paste scores here.
+> **TODO:** Run PageSpeed Insights on https://www.navyacloudkitchen.com and paste scores here.
 
 | Metric | Score |
 |--------|-------|

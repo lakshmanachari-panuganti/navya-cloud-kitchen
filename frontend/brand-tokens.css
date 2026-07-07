@@ -1,28 +1,79 @@
 /* ============================================================
-   BRAND TOKENS — Single source of truth for Navya Cloud Kitchen
-   Import this BEFORE style.css so these values are available.
+   BRAND TOKENS — Navya Cloud Kitchen (Dark Premium Theme)
+   Single source of truth. Imported before style.css.
    ============================================================ */
 :root {
-    /* ── Core palette ──────────────────────────────────────── */
-    --brand-green: #204C30;
-    --brand-gold: #C8912E;
-    --brand-cta: #B23A25;
-    --brand-cta-hover: #9A3020;
-    --brand-cream: #F8F4E8;
-    --brand-ink: #2A1810;
+    /* ── Canvas & surfaces ─────────────────────────────────── */
+    --bg-base:        #0B0F0A;
+    --bg-panel:       #10150E;
+    --bg-card:        #171D14;
+    --bg-card-hover:  #1C2418;
+    --bg-input:       #0E130C;
 
-    /* ── Extended (mapped to existing design tokens) ───────── */
-    --brand-terracotta: #c4652a;
-    --brand-terracotta-light: #d9844e;
-    --brand-saffron: #e8983c;
-    --brand-leaf: #3a6b35;
-    --brand-leaf-dark: #2a4f26;
-    --brand-leaf-pale: #e8f0e6;
-    --brand-surface: #faf7f2;
-    --brand-border: #e8dfd0;
+    /* ── Borders ───────────────────────────────────────────── */
+    --border-subtle:  rgba(174, 230, 60, 0.10);
+    --border-strong:  rgba(174, 230, 60, 0.25);
+    --border-hairline: rgba(255, 255, 255, 0.05);
+
+    /* ── Accent — curry-leaf green (brand bridge: Karivepaku) */
+    --accent:         #A3E635;
+    --accent-strong:  #B8F04A;
+    --accent-dim:     rgba(163, 230, 53, 0.14);
+    --accent-glow:    rgba(163, 230, 53, 0.35);
+    --on-accent:      #0B0F0A;
+
+    /* ── Secondary — turmeric/ghee gold, used sparingly ────── */
+    --gold:           #E8B44F;
+    --gold-dim:       rgba(232, 180, 79, 0.15);
+
+    /* ── WhatsApp brand (restyled for dark) ────────────────── */
+    --wa-green:       #25D366;
+    --wa-green-deep:  #128C7E;
+
+    /* ── Text ──────────────────────────────────────────────── */
+    --text-primary:   #F4F6F0;
+    --text-secondary: #B4BEA9;
+    --text-muted:     #7A8672;
+    --text-faint:     #4E5647;
+
+    /* ── Semantic ──────────────────────────────────────────── */
+    --danger:         #F87171;
+    --success:        var(--accent);
+
+    /* ── Effects ───────────────────────────────────────────── */
+    --glow-ambient:   radial-gradient(ellipse at center, rgba(163,230,53,0.10), transparent 65%);
+    --shadow-card:    0 8px 32px rgba(0,0,0,0.45);
+    --shadow-lift:    0 20px 60px rgba(0,0,0,0.55);
+    --shadow-panel:   0 30px 90px rgba(0,0,0,0.5);
+    --shadow-accent:  0 0 24px var(--accent-glow);
+
+    /* ── Radii ─────────────────────────────────────────────── */
+    --radius-panel:   28px;
+    --radius-card:    18px;
+    --radius-input:   12px;
+    --radius-pill:    999px;
+    --radius-chip:    10px;
+
+    /* ── Spacing (kept from existing scale) ────────────────── */
+    --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+    --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px;
+    --space-12: 48px; --space-16: 64px; --space-20: 80px; --space-24: 96px;
+
+    /* ── Typography ────────────────────────────────────────── */
+    --font-display: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-body:    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-telugu:  "Noto Sans Telugu", "Inter", sans-serif;
+
+    /* ── Motion ────────────────────────────────────────────── */
+    --ease:      cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
+    --t-fast:    0.18s var(--ease);
+    --t-mid:     0.35s var(--ease-out);
+    --t-slow:    0.6s var(--ease-out);
 }
 
-/* ── Telugu webfont integration ───────────────────────────── */
+/* Telugu webfont integration */
 [lang="te"], .te {
-    font-family: "Noto Sans Telugu", "DM Sans", sans-serif;
+    font-family: var(--font-telugu);
+    font-feature-settings: "kern" 1;
 }

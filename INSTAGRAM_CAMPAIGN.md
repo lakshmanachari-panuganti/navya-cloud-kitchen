@@ -1,8 +1,8 @@
 # Navya Cloud Kitchen — 10-Day Instagram Carousel Campaign
 
-**Brand:** Navya Cloud Kitchen · Kukatpally, Hyderabad
-**Website:** https://navya.cloudkitchen.online
-**Instagram:** [@navya.cloudkitchen.online](https://instagram.com/navya.cloudkitchen.online)
+**Brand:** Navya Cloud Kitchen · Neredmet, Hyderabad
+**Website:** https://www.navyacloudkitchen.com
+**Instagram:** [@navyacloudkitchen](https://instagram.com/navyacloudkitchen)
 **WhatsApp:** +91 8686 21 6633
 **Tagline:** *Fresh, healthy & Traditional*
 
@@ -35,9 +35,9 @@ Imagen struggles with rendering exact text/logos reliably. Each prompt describes
 Build a single **350×100 px transparent PNG** in Canva or Figma containing:
 
 - **Left:** `logo.png` (gold-on-charcoal brand mark)
-- **Centre:** `navya.cloudkitchen.online` in DM Sans, white
+- **Centre:** `www.navyacloudkitchen.com` in DM Sans, white
 - **Right (stacked):**
-  - Instagram glyph + `@navya.cloudkitchen.online`
+  - Instagram glyph + `@navyacloudkitchen`
   - WhatsApp glyph + `+91 8686 21 6633`
 
 Drop the same strip on every AI-generated image. **Consistency > cleverness.**
@@ -75,11 +75,11 @@ Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 > Our Kandi Podi is what happens when toor and chana dal are hand-roasted till amber, ground with cumin and dry red chili — nothing else. It's the podi our own mothers made. Now made for yours.
 >
 > Order via WhatsApp → +91 8686 21 6633
-> Menu → navya.cloudkitchen.online
+> Menu → www.navyacloudkitchen.com
 >
 > Tag the friend who eats podi-annam thrice a week 🌾
 >
-> #NavyaCloudKitchen #KandiPodi #HyderabadFoodies #AndhraFood #HomemadePodi #KukatpallyDiaries #TeluguFood #HomeMadeWithLove
+> #NavyaCloudKitchen #KandiPodi #HyderabadFoodies #AndhraFood #HomemadePodi #NeredmetDiaries #TeluguFood #HomeMadeWithLove
 
 **Gemini prompt:**
 > Editorial food photography, warm natural window light, top-down 45° angle. A pool of steaming white basmati rice on a hammered brass thali, glossy melted ghee shining in the center, a copper spoon lifting golden-brown Kandi Podi (lentil powder) sprinkled across the rice. Rustic wooden background with jute placemat. Colour palette: warm gold, cream, brown, charcoal. Shallow depth of field, food-magazine styling in the mood of Bon Appétit meets Deccan tradition. Leave the bottom 15% of the frame as a plain dark-charcoal band with subtle grain texture — reserved space for a brand footer strip. High resolution, photorealistic, no text or logos in the image.
@@ -107,7 +107,7 @@ Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 >
 > 100g / 250g / 500g → WhatsApp us to order
 > +91 8686 21 6633
-> navya.cloudkitchen.online
+> www.navyacloudkitchen.com
 >
 > #KarivepakuPodi #CurryLeavesPowder #AndhraKitchen #HomemadeFood #HyderabadHomemade #NavyaCloudKitchen #TeluguRuchulu
 
@@ -136,7 +136,7 @@ Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 > Grab 250g and thank us next week 🌿
 >
 > WhatsApp → +91 8686 21 6633
-> navya.cloudkitchen.online
+> www.navyacloudkitchen.com
 >
 > #MunagakuPodi #MoringaPodi #AndhraFood #HyderabadFoodBlogger #HomemadePodi #NavyaCloudKitchen #SlowFood
 
@@ -166,7 +166,7 @@ Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 > Heat rating: unapologetic 🌶️
 >
 > 100g / 250g / 500g → WhatsApp +91 8686 21 6633
-> navya.cloudkitchen.online
+> www.navyacloudkitchen.com
 >
 > Tag the one who orders "extra spicy" everywhere 🔥
 >
@@ -197,7 +197,7 @@ Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 > The one to add to your pantry once you've done the basics.
 >
 > WhatsApp us → +91 8686 21 6633
-> Full menu → navya.cloudkitchen.online
+> Full menu → www.navyacloudkitchen.com
 >
 > ⚠️ Contains sesame.
 >
@@ -228,7 +228,7 @@ Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 > Try our Everyday combo — Kandi + Avise Ginjala + Karivepaku, ₹450 delivered.
 >
 > WhatsApp → +91 8686 21 6633
-> navya.cloudkitchen.online
+> www.navyacloudkitchen.com
 >
 > #AviseGinjalaPodi #FlaxseedPowder #HomemadePodi #NavyaCloudKitchen #HyderabadHomemade #EverydayFlavours
 
@@ -259,7 +259,7 @@ Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 >
 > Box of 6 → ₹260
 > WhatsApp to order → +91 8686 21 6633
-> navya.cloudkitchen.online
+> www.navyacloudkitchen.com
 >
 > ⚠️ Contains dairy (cow ghee).
 >
@@ -292,7 +292,7 @@ Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 >
 > Box of 10 → ₹199
 > WhatsApp → +91 8686 21 6633
-> navya.cloudkitchen.online
+> www.navyacloudkitchen.com
 >
 > ⚠️ Contains sesame.
 >
@@ -324,7 +324,7 @@ Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 > A ₹120 pack. A childhood snack. Zero apologies.
 >
 > WhatsApp → +91 8686 21 6633
-> navya.cloudkitchen.online
+> www.navyacloudkitchen.com
 >
 > ⚠️ Contains peanuts.
 >
@@ -357,12 +357,12 @@ Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 > Everything hand-roasted this week. Nothing older than the pouch you'll open.
 >
 > WhatsApp → +91 8686 21 6633
-> Menu → navya.cloudkitchen.online
-> Insta → @navya.cloudkitchen.online
+> Menu → www.navyacloudkitchen.com
+> Insta → @navyacloudkitchen
 >
 > Tag a friend who needs to know 🌾
 >
-> #StarterTrio #NavyaCloudKitchen #HyderabadFoodies #AndhraFood #HomemadePodi #KukatpallyDiaries
+> #StarterTrio #NavyaCloudKitchen #HyderabadFoodies #AndhraFood #HomemadePodi #NeredmetDiaries
 
 **Gemini prompt:**
 > Overhead editorial flat-lay on a warm cream linen cloth. Three small identical craft-brown paper pouches sealed with jute twine, arranged in a gentle arc — each labelled area left blank (space for later overlay). One pouch is deep gold-brown (Kandi Podi), one dark green (Karivepaku Podi), one deep olive (Munagaku Podi). Around them: a sprig of fresh curry leaves, a few moringa leaves, three dried red chilies, a small brass spoon. Palette: earthy browns, forest and olive greens, cream, gold. Slow-food editorial aesthetic. Bottom 15% of the frame is a plain solid dark-charcoal band reserved for brand footer strip. Photorealistic, no rendered text.
@@ -374,7 +374,7 @@ Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 Rotate 8–12 per post. Don't repeat exactly across days — Instagram down-ranks copy-paste captions.
 
 **Local (Hyderabad / Telangana):**
-`#HyderabadFoodies` `#KukatpallyDiaries` `#HyderabadHomemade` `#TelanganaFood` `#AndhraFood` `#HyderabadFoodBlogger` `#TeluguRuchulu`
+`#HyderabadFoodies` `#NeredmetDiaries` `#HyderabadHomemade` `#TelanganaFood` `#AndhraFood` `#HyderabadFoodBlogger` `#TeluguRuchulu`
 
 **Craft / process:**
 `#HomemadeFood` `#SlowFood` `#HomeChef` `#HomeKitchen` `#SmallBatch` `#HomeMadeWithLove` `#FarmToTable`
