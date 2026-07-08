@@ -221,9 +221,19 @@ document.addEventListener("DOMContentLoaded", () => {
     // Update checkout trust microcopy
     const payNote = document.querySelector('.pay-note');
     if (payNote) {
-        payNote.textContent = "Secure payment via PhonePe · UPI/Cards/NetBanking · Cooked fresh, dispatched next morning";
+        payNote.textContent = "Secure payment via PhonePe · UPI/Cards/NetBanking · A full unhurried day of cooking · Dispatched the day after";
     }
 });
+
+// Order workflow lead time (calendar days from order date to earliest delivery):
+// Day 0 → order placed · Day +1 → preparation & cooking · Day +2 → dispatch / delivery
+const DELIVERY_LEAD_DAYS = 2;
+
+function computeEarliestDeliveryDate(fromDate = new Date()) {
+    const d = new Date(fromDate);
+    d.setDate(d.getDate() + DELIVERY_LEAD_DAYS);
+    return d;
+}
 
 function showMenuSkeletons() {
     const container = document.getElementById("menuContainer");
@@ -241,9 +251,7 @@ function showMenuSkeletons() {
 function initDeliveryDate() {
     const el = document.getElementById("deliveryDate");
     if (!el) return;
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    const iso = tomorrow.toISOString().split("T")[0];
+    const iso = computeEarliestDeliveryDate().toISOString().split("T")[0];
     el.min = iso;
     el.value = iso;
 }
@@ -801,10 +809,16 @@ function showSuccess(orderId, total, name, phone, address, date) {
         calendar: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
         rupee: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12M6 8h12M6 13l9 8M6 13c8 0 8-10 0-10"/></svg>`,
     };
+    // Delivery day is what the customer picked; preparation happens the day before.
+    const prepDate = new Date(date);
+    prepDate.setDate(prepDate.getDate() - 1);
+    const prepIso = prepDate.toISOString().split("T")[0];
+
     document.getElementById("successOrderCard").innerHTML = `
         <strong>${svg.user}${name}</strong><br>
         ${svg.phone}${phone}<br>
         ${svg.pin}${address}<br>
+        ${svg.calendar}Preparation: ${prepIso}<br>
         ${svg.calendar}Delivery: ${date}<br>
         ${svg.rupee}Items Total: ₹${total}
     `;
@@ -812,7 +826,8 @@ function showSuccess(orderId, total, name, phone, address, date) {
     const lines = Object.values(cart).map(i => `• ${i.name} ×${i.qty} (₹${i.price * i.qty})`).join("\n");
     const msg = encodeURIComponent(
         `*New Order - Navya Cloud Kitchen*\n\n` +
-        `*Ref:* ${orderId}\n*Name:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}\n*Date:* ${date}\n\n` +
+        `*Ref:* ${orderId}\n*Name:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}\n` +
+        `*Preparation Day:* ${prepIso}\n*Delivery Day:* ${date}\n\n` +
         `*Items:*\n${lines}\n\n*Items Total: ₹${total}*\n` +
         `_Courier extra - paid to Rapido/Porter at drop-off._\n\nThank you! 🙏`
     );
