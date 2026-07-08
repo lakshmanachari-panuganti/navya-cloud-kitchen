@@ -17,7 +17,7 @@ const CONFIG = {
     INSTAGRAM_URL: "https://instagram.com/navyacloudkitchen",
 
     // Contact email.
-    EMAIL: "navyacloudkitchen@gmail.com.com",
+    EMAIL: "info@navyacloudkitchen.com",
 
     // Delivery is handled by a third-party courier (Rapido/Porter). The
     // customer pays the courier directly at time of drop-off, so the site
