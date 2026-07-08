@@ -10,7 +10,7 @@ const CONFIG = {
 
     // tel: link value (with leading +) and human-readable display form.
     PHONE_TEL: "+918686216633",
-    PHONE_DISPLAY: "+91 86862 16633",
+    PHONE_DISPLAY: "+91 8686 21 6633",
 
     // Instagram handle (no leading @) and full URL.
     INSTAGRAM_HANDLE: "navyacloudkitchen",
