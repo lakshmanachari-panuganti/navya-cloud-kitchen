@@ -74,7 +74,7 @@
                 <a href="#contact">Contact Us</a>
             </nav>
             <div class="nav-actions">
-                <a href="#account" class="nav-icon-btn nav-account-btn" id="navAccountBtn" aria-label="Sign in or account">
+                <a href="#account" class="nav-icon-btn nav-account-btn" id="navAccountBtn" aria-label="Sign in or account" hidden>
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
                         <circle cx="12" cy="7" r="4"/>
@@ -153,18 +153,6 @@
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v12H5.5L4 17.5V4z"/></svg>
                 <span>Contact Us</span>
             </a>
-            <a href="#track" class="mm-link" data-close-menu>
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 8h11v9H1z"/><path d="M12 12h6l3 3v2h-9z"/><circle cx="5.5" cy="17.5" r="1.6"/><circle cx="16.5" cy="17.5" r="1.6"/></svg>
-                <span>Track Order</span>
-            </a>
-            <a href="#faqs" class="mm-link" data-close-menu>
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1 1-1.1 1.8"/><line x1="12" y1="17" x2="12" y2="17.01"/></svg>
-                <span>FAQs</span>
-            </a>
-            <a href="#account" class="mm-link" data-close-menu>
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                <span>Sign In / My Account</span>
-            </a>
             <a href="#" class="mm-link" data-close-menu id="mmCartLink">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M2 3h3l2.6 12.4a1.5 1.5 0 0 0 1.5 1.2h8.2a1.5 1.5 0 0 0 1.5-1.1L21 8H6"/></svg>
                 <span>Cart</span>
@@ -236,6 +224,10 @@
                         Order Now
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </button>
+                    <p class="hero-cutoff">
+                        <span aria-hidden="true">⏰</span>
+                        Order before <strong>6 PM</strong> for delivery tomorrow morning
+                    </p>
                 </div>
             </div>
         </div>
@@ -391,6 +383,25 @@
 
     <!-- Menu Container -->
     <main class="menu-main" id="menuContainer"></main>
+
+    <!-- SEO fallback: crawlable product list. app.js only touches #menuContainer /
+         #categoryTabs, so this stays put. Hidden visually; still indexed. -->
+    <section class="sr-only" aria-hidden="true">
+        <h2>Our Menu — Traditional Podulu &amp; Sweets</h2>
+        <ul>
+            <li><strong>Munagaku Podi</strong> (Moringa Leaves Powder) — from ₹199. Drumstick leaves slow-roasted with urad dal, red chilies &amp; garlic. Available in 100g, 250g, 500g.</li>
+            <li><strong>Karivepaku Podi</strong> (Curry Leaves Powder) — from ₹199. Fresh curry leaves hand-roasted with coriander seeds &amp; dry chilies. Available in 100g, 250g, 500g.</li>
+            <li><strong>Avise Ginjala Podi</strong> (Flaxseed Garlic Powder) — from ₹129. Flaxseeds slow-roasted with garlic &amp; warming spices. Available in 100g, 250g, 500g.</li>
+            <li><strong>Kandi Podi</strong> (Classic Lentil Powder) — from ₹129. Roasted toor &amp; chana dal ground with cumin &amp; dry red chilies. Available in 100g, 250g, 500g.</li>
+            <li><strong>Vellulli Karampodi</strong> (Spicy Garlic Powder) — from ₹159. Fiery red chilies ground with whole roasted garlic &amp; tamarind. Available in 100g, 250g, 500g.</li>
+            <li><strong>Nuvvula Podi</strong> (Sesame Seeds Powder) — from ₹159. Roasted sesame seeds ground with mild spices. Available in 100g, 250g, 500g.</li>
+            <li><strong>Minapa Sunni Undalu</strong> (Urad Dal Laddoos) — ₹260 per box of 6. Slow-roasted urad dal rolled with pure cow ghee &amp; bellam jaggery.</li>
+            <li><strong>Nuvvula Undalu</strong> (Sesame Jaggery Laddoos) — ₹199 per box of 10. Roasted sesame seeds bound with cardamom-infused jaggery syrup.</li>
+            <li><strong>Bellam Palli Undalu</strong> (Peanut Jaggery Bites) — ₹120 per 200g pack. Crunchy roasted peanuts set in cardamom-infused jaggery.</li>
+            <li><strong>Podi Starter Box</strong> — ₹449. 3 × 100g podulu — Karivepaku, Munagaku &amp; Kandi.</li>
+            <li><strong>Festival Sweet Box</strong> — ₹499. All 3 sweets — Sunni Undalu, Nuvvula Undalu &amp; Palli Undalu.</li>
+        </ul>
+    </section>
 
     <!-- Testimonials -->
     <section class="reviews-section" id="reviews">
@@ -637,6 +648,28 @@
         "sameAs": ["https://www.instagram.com/navyacloudkitchen"],
         "openingHours": "Mo-Su 09:00-18:00",
         "priceRange": "₹₹"
+    }
+    </script>
+
+    <!-- Product catalogue for crawler / rich results -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Navya Cloud Kitchen — Menu",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "item": { "@type": "Product", "name": "Munagaku Podi", "description": "Moringa Leaves Powder — drumstick leaves slow-roasted with urad dal, red chilies & garlic.", "image": "https://navyacloudkitchen.com/images/moringa_podi.webp", "brand": { "@type": "Brand", "name": "Navya Cloud Kitchen" }, "offers": { "@type": "AggregateOffer", "priceCurrency": "INR", "lowPrice": "199", "highPrice": "699", "offerCount": 3 } } },
+            { "@type": "ListItem", "position": 2, "item": { "@type": "Product", "name": "Karivepaku Podi", "description": "Curry Leaves Powder — fresh curry leaves hand-roasted with coriander seeds & dry chilies.", "image": "https://navyacloudkitchen.com/images/curry_leaves_podi.webp", "brand": { "@type": "Brand", "name": "Navya Cloud Kitchen" }, "offers": { "@type": "AggregateOffer", "priceCurrency": "INR", "lowPrice": "199", "highPrice": "699", "offerCount": 3 } } },
+            { "@type": "ListItem", "position": 3, "item": { "@type": "Product", "name": "Avise Ginjala Podi", "description": "Flaxseed Garlic Powder — flaxseeds slow-roasted with garlic & warming spices.", "image": "https://navyacloudkitchen.com/images/flaxseed_garlic_podi.webp", "brand": { "@type": "Brand", "name": "Navya Cloud Kitchen" }, "offers": { "@type": "AggregateOffer", "priceCurrency": "INR", "lowPrice": "129", "highPrice": "449", "offerCount": 3 } } },
+            { "@type": "ListItem", "position": 4, "item": { "@type": "Product", "name": "Kandi Podi", "description": "Classic Lentil Powder — roasted toor & chana dal ground with cumin & dry red chilies.", "image": "https://navyacloudkitchen.com/images/kandi_podi.webp", "brand": { "@type": "Brand", "name": "Navya Cloud Kitchen" }, "offers": { "@type": "AggregateOffer", "priceCurrency": "INR", "lowPrice": "129", "highPrice": "449", "offerCount": 3 } } },
+            { "@type": "ListItem", "position": 5, "item": { "@type": "Product", "name": "Vellulli Karampodi", "description": "Spicy Garlic Powder — fiery red chilies ground with whole roasted garlic & tamarind.", "image": "https://navyacloudkitchen.com/images/vellulli_karampodi.webp", "brand": { "@type": "Brand", "name": "Navya Cloud Kitchen" }, "offers": { "@type": "AggregateOffer", "priceCurrency": "INR", "lowPrice": "159", "highPrice": "549", "offerCount": 3 } } },
+            { "@type": "ListItem", "position": 6, "item": { "@type": "Product", "name": "Nuvvula Podi", "description": "Sesame Seeds Powder — roasted sesame seeds ground with mild spices.", "image": "https://navyacloudkitchen.com/images/nuvvula_podi.webp", "brand": { "@type": "Brand", "name": "Navya Cloud Kitchen" }, "offers": { "@type": "AggregateOffer", "priceCurrency": "INR", "lowPrice": "159", "highPrice": "549", "offerCount": 3 } } },
+            { "@type": "ListItem", "position": 7, "item": { "@type": "Product", "name": "Minapa Sunni Undalu", "description": "Urad Dal Laddoos — slow-roasted urad dal rolled with pure cow ghee & bellam jaggery. Box of 6.", "image": "https://navyacloudkitchen.com/images/sunni_undalu.webp", "brand": { "@type": "Brand", "name": "Navya Cloud Kitchen" }, "offers": { "@type": "Offer", "priceCurrency": "INR", "price": "260", "availability": "https://schema.org/InStock" } } },
+            { "@type": "ListItem", "position": 8, "item": { "@type": "Product", "name": "Nuvvula Undalu", "description": "Sesame Jaggery Laddoos — roasted sesame seeds bound with cardamom-infused jaggery syrup. Box of 10.", "image": "https://navyacloudkitchen.com/images/nuvvula_undalu.webp", "brand": { "@type": "Brand", "name": "Navya Cloud Kitchen" }, "offers": { "@type": "Offer", "priceCurrency": "INR", "price": "199", "availability": "https://schema.org/InStock" } } },
+            { "@type": "ListItem", "position": 9, "item": { "@type": "Product", "name": "Bellam Palli Undalu", "description": "Peanut Jaggery Bites — crunchy roasted peanuts set in cardamom-infused jaggery. 200g pack.", "image": "https://navyacloudkitchen.com/images/palli_undalu.webp", "brand": { "@type": "Brand", "name": "Navya Cloud Kitchen" }, "offers": { "@type": "Offer", "priceCurrency": "INR", "price": "120", "availability": "https://schema.org/InStock" } } },
+            { "@type": "ListItem", "position": 10, "item": { "@type": "Product", "name": "Podi Starter Box", "description": "Three most popular podulu — Karivepaku, Munagaku & Kandi — in convenient 100g jars.", "image": "https://navyacloudkitchen.com/images/curry_leaves_podi.webp", "brand": { "@type": "Brand", "name": "Navya Cloud Kitchen" }, "offers": { "@type": "Offer", "priceCurrency": "INR", "price": "449", "availability": "https://schema.org/InStock" } } },
+            { "@type": "ListItem", "position": 11, "item": { "@type": "Product", "name": "Festival Sweet Box", "description": "All three sweets — Sunni Undalu, Nuvvula Undalu & Palli Undalu — together in one gift box.", "image": "https://navyacloudkitchen.com/images/sunni_undalu.webp", "brand": { "@type": "Brand", "name": "Navya Cloud Kitchen" }, "offers": { "@type": "Offer", "priceCurrency": "INR", "price": "499", "availability": "https://schema.org/InStock" } } }
+        ]
     }
     </script>
 
