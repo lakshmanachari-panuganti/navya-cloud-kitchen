@@ -3151,6 +3151,11 @@ body.menu-open { overflow: hidden; }
    so the extra weight lands legible instead of muddy. */
 :root {
     --text-secondary: #D8DCC8;
+    /* --text-muted was #7A8672 — measured 4.43:1 on --bg-card, failing
+       WCAG AA (4.5:1) for small text. Bump one shade brighter to
+       #A8B6A0, which measures ~6.7:1 on --bg-card and comfortably
+       clears AA across every panel background. */
+    --text-muted: #A8B6A0;
 }
 .hero-desc,
 .story-para,
