@@ -126,3 +126,38 @@ test('trust strip — mobile', async ({ page }) => {
     await page.waitForTimeout(400);
     await strip.screenshot({ path: path.join(OUT, 'trust-mobile.png') });
 });
+
+test('checkout drawer — desktop', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/index.html');
+    await page.evaluate(async () => {
+        if (document.fonts && document.fonts.ready) await document.fonts.ready;
+    });
+    await page.locator('.pcard-cta').first().click();
+    await page.waitForTimeout(300);
+    await page.locator('#viewCartBtn').click();
+    await page.waitForTimeout(700);
+    // Scroll drawer body down so the address + remember + pay button are visible
+    await page.locator('.form-remember').scrollIntoViewIfNeeded();
+    await page.waitForTimeout(300);
+    await page.locator('#cartDrawer').screenshot({
+        path: path.join(OUT, 'checkout-desktop.png'),
+    });
+});
+
+test('checkout drawer — mobile', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/index.html');
+    await page.evaluate(async () => {
+        if (document.fonts && document.fonts.ready) await document.fonts.ready;
+    });
+    await page.locator('.pcard-cta').first().click();
+    await page.waitForTimeout(300);
+    await page.locator('#viewCartBtn').click();
+    await page.waitForTimeout(700);
+    await page.locator('.form-remember').scrollIntoViewIfNeeded();
+    await page.waitForTimeout(300);
+    await page.locator('#cartDrawer').screenshot({
+        path: path.join(OUT, 'checkout-mobile.png'),
+    });
+});

@@ -207,6 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (footerWA) footerWA.href = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}`;
 
     initDeliveryDate();
+    loadSavedCustomer();
     renderCategoryPills("all");
     showMenuSkeletons();
     // Defer render to next frame so skeletons are visible on slow connections
@@ -254,6 +255,29 @@ function initDeliveryDate() {
     const iso = computeEarliestDeliveryDate().toISOString().split("T")[0];
     el.min = iso;
     el.value = iso;
+}
+
+const CUSTOMER_STORAGE_KEY = "nk_customer";
+function loadSavedCustomer() {
+    try {
+        const raw = localStorage.getItem(CUSTOMER_STORAGE_KEY);
+        if (!raw) return;
+        const saved = JSON.parse(raw);
+        const name = document.getElementById("custName");
+        const phone = document.getElementById("custPhone");
+        const addr = document.getElementById("custAddress");
+        if (name && saved.name) name.value = saved.name;
+        if (phone && saved.phone) phone.value = saved.phone;
+        if (addr && saved.address) addr.value = saved.address;
+    } catch { /* corrupt entry → ignore */ }
+}
+function persistCustomerIfOptedIn(name, phone, address) {
+    const cb = document.getElementById("rememberDetails");
+    if (cb && cb.checked) {
+        localStorage.setItem(CUSTOMER_STORAGE_KEY, JSON.stringify({ name, phone, address }));
+    } else {
+        localStorage.removeItem(CUSTOMER_STORAGE_KEY);
+    }
 }
 
 /* ── Category Pills ───────────────────────────────────────── */
@@ -786,6 +810,8 @@ function submitOrderViaWhatsApp() {
     if (Object.keys(cart).length === 0) {
         alert("Your cart is empty!"); return;
     }
+
+    persistCustomerIfOptedIn(name, phone, address);
 
     const { total } = cartTotals();
     const orderRef = "NCK-" + Date.now().toString(36).toUpperCase();

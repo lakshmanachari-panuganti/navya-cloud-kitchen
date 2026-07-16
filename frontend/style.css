@@ -2890,6 +2890,32 @@ body.menu-open { overflow: hidden; }
 .pcard[data-category="sweets"]::before             { background: var(--gold); }
 .pcard[data-category="bundles"]::before            { background: #D8DCC8; }
 
+/* Checkout — "remember me" opt-in row. Persists name/phone/address
+   in localStorage so returning WhatsApp customers don't retype every
+   order. Checkbox tinted lime to match the primary accent. */
+.form-remember {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+    margin: -2px 0 6px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-input);
+    font-size: 0.78rem;
+    line-height: 1.45;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+.form-remember input[type="checkbox"] {
+    accent-color: var(--accent);
+    width: 16px; height: 16px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+.form-remember:hover { border-color: var(--border-olive); }
+
 /* Review stars — swap the old text ★ for crisp SVG glyphs, plus a
    small "Verified" pill trailing the stars row so readers know these
    testimonials are real customers, not marketing filler. */
