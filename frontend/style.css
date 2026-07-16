@@ -2867,6 +2867,29 @@ body.menu-open { overflow: hidden; }
 /* HTML `hidden` attr must beat class-level `display` rules */
 [hidden] { display: none !important; }
 
+/* Category stripe — 3px left rail on every product card, coloured per
+   category. Lets shoppers tell Everyday Podulu / Traditional / Sweets /
+   Combo Packs apart at a glance while scrolling, without reading the
+   section heading each time. */
+.pcard {
+    position: relative;
+    overflow: hidden;
+}
+.pcard::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 3px;
+    background: var(--border-subtle);
+    border-radius: 3px 0 0 3px;
+    pointer-events: none;
+    z-index: 2;
+}
+.pcard[data-category="everyday_podulu"]::before   { background: var(--accent); }
+.pcard[data-category="traditional_comfort"]::before { background: var(--gold-soft); }
+.pcard[data-category="sweets"]::before             { background: var(--gold); }
+.pcard[data-category="bundles"]::before            { background: #D8DCC8; }
+
 /* Body copy on dark surfaces reads too thin at 400. Bump to 500 across
    every long-form paragraph and lift secondary text one shade brighter
    so the extra weight lands legible instead of muddy. */

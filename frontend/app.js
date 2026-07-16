@@ -324,6 +324,7 @@ function buildPodiCard(item) {
     const card = document.createElement("article");
     card.className = "pcard";
     card.dataset.productId = item.id;
+    card.dataset.category = item.category;
 
     // Default to the "Most popular" size; fall back to the middle cell.
     const popularIdx = item.sizes.findIndex(s => s.badge === "Most popular");
@@ -407,6 +408,7 @@ function buildSweetCard(item) {
     const card = document.createElement("article");
     card.className = "pcard pcard--single";
     card.dataset.productId = item.id;
+    card.dataset.category = item.category;
 
     // Derive PNG fallback from the webp image path (deployed) or keep as-is (local)
     const pngSrcSweet = item.image.endsWith('.webp') ? item.image.replace('.webp', '.png') : item.image;
