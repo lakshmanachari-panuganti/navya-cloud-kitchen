@@ -12,7 +12,7 @@
     <link rel="icon" href="images/logo.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..800,0..100&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="brand-tokens.css" />
     <link rel="stylesheet" href="style.css" />
     <style>
@@ -41,9 +41,9 @@
         }
 
         .policies-back:hover {
-            color: var(--accent);
-            background: var(--accent-dim);
-            border-color: var(--border-strong);
+            color: var(--accent-soft-hi);
+            background: var(--accent-soft-dim);
+            border-color: var(--border-olive);
         }
 
         .policies-page h1 {
@@ -93,14 +93,14 @@
         .policies-page .policies-updated {
             display: inline-block;
             font-size: 0.68rem;
-            color: var(--accent);
+            color: var(--accent-soft-hi);
             letter-spacing: 0.16em;
             text-transform: uppercase;
             margin-bottom: var(--space-4);
             padding: 4px 10px;
             border-radius: var(--radius-pill);
-            background: var(--accent-dim);
-            border: 1px solid var(--border-strong);
+            background: var(--accent-soft-dim);
+            border: 1px solid var(--border-olive);
             font-weight: 600;
         }
 
@@ -123,13 +123,13 @@
         .policies-page ol ol { list-style: lower-alpha; margin-top: var(--space-2); }
 
         .policies-page a {
-            color: var(--accent);
+            color: var(--accent-soft-hi);
             text-decoration: underline;
-            text-decoration-color: var(--border-strong);
+            text-decoration-color: var(--border-olive);
             text-underline-offset: 3px;
             transition: color var(--t-fast);
         }
-        .policies-page a:hover { color: var(--accent-strong); text-decoration-color: var(--accent); }
+        .policies-page a:hover { color: var(--accent); text-decoration-color: var(--accent-soft); }
 
         .policies-page .policies-toc {
             display: flex;
@@ -155,13 +155,13 @@
         }
 
         .policies-page .policies-toc a:hover {
-            background: var(--accent);
-            color: var(--on-accent);
-            border-color: var(--accent);
+            background: var(--accent-soft-dim);
+            color: var(--text-primary);
+            border-color: var(--border-olive);
         }
 
         .policies-page .business-details {
-            border: 1px solid var(--border-strong);
+            border: 1px solid var(--border-olive);
             border-radius: var(--radius-card);
             padding: var(--space-6);
             margin-bottom: var(--space-8);
@@ -206,15 +206,15 @@
         }
 
         .policies-page .grievance-box {
-            background: var(--accent-dim);
-            border: 1px solid var(--border-strong);
+            background: var(--accent-soft-dim);
+            border: 1px solid var(--border-olive);
             border-radius: var(--radius-card);
             padding: var(--space-5);
             margin-top: var(--space-6);
         }
-        .policies-page .grievance-box h3 { margin-top: 0; color: var(--accent); }
+        .policies-page .grievance-box h3 { margin-top: 0; color: var(--accent-soft-hi); }
         .policies-page .grievance-box p { color: var(--text-primary); }
-        .policies-page .grievance-box strong { color: var(--accent); }
+        .policies-page .grievance-box strong { color: var(--accent-soft-hi); }
     </style>
 </head>
 
@@ -242,9 +242,9 @@
                     India
                 </dd>
                 <dt>Email</dt>
-                <dd><a href="mailto:navyacloudkitchen@gmail.com.com" data-site-href="email"><span data-site-text="email">navyacloudkitchen@gmail.com.com</span></a></dd>
+                <dd><a href="mailto:info@navyacloudkitchen.com" data-site-href="email"><span data-site-text="email">info@navyacloudkitchen.com</span></a></dd>
                 <dt>WhatsApp / Call</dt>
-                <dd><a href="https://wa.me/918686216633" data-site-href="whatsapp"><span data-site-text="phone-display">+91 86862 16633</span></a></dd>
+                <dd><a href="https://wa.me/918686216633" data-site-href="whatsapp"><span data-site-text="phone-display">+91 8686 21 6633</span></a></dd>
                 <dt>Instagram</dt>
                 <dd><a href="https://instagram.com/navyacloudkitchen" data-site-href="instagram" target="_blank" rel="noopener"><span data-site-text="instagram-handle">@navyacloudkitchen</span></a></dd>
             </dl>
@@ -537,11 +537,11 @@
                 </p>
                 <p>
                     <strong>Email:</strong>
-                    <a href="mailto:navyacloudkitchen@gmail.com.com" data-site-href="email"><span data-site-text="email">navyacloudkitchen@gmail.com.com</span></a>
+                    <a href="mailto:info@navyacloudkitchen.com" data-site-href="email"><span data-site-text="email">info@navyacloudkitchen.com</span></a>
                 </p>
                 <p>
                     <strong>Phone / WhatsApp:</strong>
-                    <a href="https://wa.me/918686216633" data-site-href="whatsapp"><span data-site-text="phone-display">+91 86862 16633</span></a>
+                    <a href="https://wa.me/918686216633" data-site-href="whatsapp"><span data-site-text="phone-display">+91 8686 21 6633</span></a>
                 </p>
                 <p>
                     <strong>Instagram:</strong>
@@ -638,10 +638,11 @@
             <p class="policies-updated">Last updated: July 2026</p>
             <p>
                 The orders for the user are shipped through registered domestic courier partners (including but not
-                limited to Rapido, Porter and similar) and/or speed post only. Orders are shipped within
-                <strong>2 days</strong> from the date of the order and/or payment or as per the delivery date agreed
-                at the time of order confirmation and delivering of the shipment, subject to courier company / post
-                office norms. <strong>Navya Cloud Kitchen</strong> (Platform Owner) shall not be liable for any delay
+                limited to Rapido, Porter and similar) and/or speed post only. Every order is dedicated a full day
+                for careful preparation and cooking the day after it is placed, and is shipped the following day —
+                i.e. typically <strong>2 days</strong> from the date of the order and/or payment, or as per the
+                delivery date agreed at the time of order confirmation and delivering of the shipment, subject to
+                courier company / post office norms. <strong>Navya Cloud Kitchen</strong> (Platform Owner) shall not be liable for any delay
                 in delivery by the courier company / postal authority. Delivery of all orders will be made to the
                 address provided by the buyer at the time of purchase. Delivery of our services will be confirmed on
                 your email ID and/or WhatsApp number as specified at the time of order placement. If there are any
@@ -661,7 +662,7 @@
             <a href="https://wa.me/918686216633" data-site-href="whatsapp">WhatsApp</a>,
             <a href="https://instagram.com/navyacloudkitchen" data-site-href="instagram" target="_blank" rel="noopener">Instagram</a>,
             or email
-            <a href="mailto:navyacloudkitchen@gmail.com.com" data-site-href="email"><span data-site-text="email">navyacloudkitchen@gmail.com.com</span></a>.
+            <a href="mailto:info@navyacloudkitchen.com" data-site-href="email"><span data-site-text="email">info@navyacloudkitchen.com</span></a>.
         </p>
     </main>
     <script src="config.js"></script>

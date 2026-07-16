@@ -148,31 +148,31 @@ test.describe('@desktop @cross cart & checkout', () => {
         }
     });
 
-    test('delivery date defaults to tomorrow and rejects past dates', async ({ page, report }) => {
+    test('delivery date defaults to order+2 days and rejects earlier dates', async ({ page, report }) => {
         await page.locator('.pcard .pcard-cta').first().click();
         await page.locator('#viewCartBtn').click();
         await page.waitForTimeout(300);
         const min = await page.locator('#deliveryDate').getAttribute('min');
         const val = await page.locator('#deliveryDate').inputValue();
-        const today = new Date();
-        const tomorrow = new Date(today.getTime() + 86_400_000).toISOString().split('T')[0];
-        if (min !== tomorrow) {
+        // Workflow: order day → +1 preparation day → +2 delivery day
+        const earliest = new Date(Date.now() + 2 * 86_400_000).toISOString().split('T')[0];
+        if (min !== earliest) {
             await report({
                 severity: SEVERITY.MEDIUM,
                 category: CATEGORIES.FUNCTIONAL,
-                title: 'Delivery date min attribute is not tomorrow',
+                title: 'Delivery date min attribute is not order+2 days',
                 page: 'home',
-                expected: tomorrow,
+                expected: earliest,
                 actual: String(min),
             });
         }
-        if (val !== tomorrow) {
+        if (val !== earliest) {
             await report({
                 severity: SEVERITY.LOW,
                 category: CATEGORIES.UX,
-                title: 'Delivery date is not pre-filled to tomorrow',
+                title: 'Delivery date is not pre-filled to order+2 days (preparation day + dispatch day)',
                 page: 'home',
-                expected: tomorrow,
+                expected: earliest,
                 actual: String(val),
             });
         }

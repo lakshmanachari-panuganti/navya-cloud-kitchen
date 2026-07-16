@@ -41,3 +41,16 @@ playwright-report/
 frontend/tests/screenshots/
 # Google Fonts local cache — populated by global-setup / `npm run fonts:download`
 frontend/tests/fonts/
+
+# Audit report generated outputs — recreate with `npm run audit`
+# (AUDIT_REPORT.md and discovered-routes.json are intentionally kept)
+frontend/tests/audit-report/findings/
+frontend/tests/audit-report/artifacts/
+frontend/tests/audit-report/baseline/
+frontend/tests/audit-report/evidence/
+frontend/tests/audit-report/visual/
+frontend/tests/audit-report/visual-diff/
+frontend/tests/audit-report/html/
+frontend/tests/audit-report/junit.xml
+frontend/tests/audit-report/results.json
+frontend/tests/audit-report/summary.json
