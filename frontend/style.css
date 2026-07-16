@@ -2890,6 +2890,47 @@ body.menu-open { overflow: hidden; }
 .pcard[data-category="sweets"]::before             { background: var(--gold); }
 .pcard[data-category="bundles"]::before            { background: #D8DCC8; }
 
+/* Slim business-trust strip under the feature-highlight cards. Compact
+   iconic row for FSSAI / delivery / payment / support — the credentials
+   people scan for on food-DTC sites but that were previously buried in
+   the footer. */
+.trust-strip {
+    list-style: none;
+    margin: var(--space-6) auto 0;
+    padding: 10px var(--space-3);
+    max-width: 1100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-2) var(--space-5);
+    background: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-pill);
+}
+.trust-strip li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+.trust-strip li svg {
+    width: 16px; height: 16px;
+    color: var(--accent-soft-hi);
+    flex-shrink: 0;
+}
+@media (max-width: 560px) {
+    .trust-strip {
+        border-radius: var(--radius-input);
+        padding: var(--space-3);
+        gap: 8px var(--space-4);
+    }
+    .trust-strip li { font-size: 0.72rem; }
+}
+
 /* Desktop hero — soften the overlay ramp so the food photo bleeds
    smoothly across the frame instead of ending in a hard vertical cut
    around the mid-point. Also darken the far-right edge just enough that
