@@ -207,6 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (footerWA) footerWA.href = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}`;
 
     initDeliveryDate();
+    loadSavedCustomer();
     renderCategoryPills("all");
     showMenuSkeletons();
     // Defer render to next frame so skeletons are visible on slow connections
@@ -214,6 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
         renderMenu("all");
     });
     setupCartEvents();
+    setupMarqueeClick();
     setupScrollNav();
     setupScrollReveal();
     setupMobileMenu();
@@ -221,9 +223,19 @@ document.addEventListener("DOMContentLoaded", () => {
     // Update checkout trust microcopy
     const payNote = document.querySelector('.pay-note');
     if (payNote) {
-        payNote.textContent = "Secure payment via PhonePe · UPI/Cards/NetBanking · Cooked fresh, dispatched next morning";
+        payNote.textContent = "Secure payment via PhonePe · UPI/Cards/NetBanking · A full unhurried day of cooking · Dispatched the day after";
     }
 });
+
+// Order workflow lead time (calendar days from order date to earliest delivery):
+// Day 0 → order placed · Day +1 → preparation & cooking · Day +2 → dispatch / delivery
+const DELIVERY_LEAD_DAYS = 2;
+
+function computeEarliestDeliveryDate(fromDate = new Date()) {
+    const d = new Date(fromDate);
+    d.setDate(d.getDate() + DELIVERY_LEAD_DAYS);
+    return d;
+}
 
 function showMenuSkeletons() {
     const container = document.getElementById("menuContainer");
@@ -241,11 +253,55 @@ function showMenuSkeletons() {
 function initDeliveryDate() {
     const el = document.getElementById("deliveryDate");
     if (!el) return;
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    const iso = tomorrow.toISOString().split("T")[0];
+    const iso = computeEarliestDeliveryDate().toISOString().split("T")[0];
     el.min = iso;
     el.value = iso;
+}
+
+const CUSTOMER_STORAGE_KEY = "nk_customer";
+function loadSavedCustomer() {
+    try {
+        const raw = localStorage.getItem(CUSTOMER_STORAGE_KEY);
+        if (!raw) return;
+        const saved = JSON.parse(raw);
+        const name = document.getElementById("custName");
+        const phone = document.getElementById("custPhone");
+        const addr = document.getElementById("custAddress");
+        if (name && saved.name) name.value = saved.name;
+        if (phone && saved.phone) phone.value = saved.phone;
+        if (addr && saved.address) addr.value = saved.address;
+    } catch { /* corrupt entry → ignore */ }
+}
+/* Marquee → menu shortcut. The scrolling ticker at the top of the page
+   is aria-hidden decoration, but sighted mouse/tap users get a free
+   navigation win: clicking any product name jumps to the menu and
+   pre-selects that item's category. Keyboard/screen-reader users have
+   the existing category pills, so nothing regresses on a11y. */
+function setupMarqueeClick() {
+    const track = document.querySelector('.marquee-track');
+    if (!track) return;
+    track.addEventListener('click', (e) => {
+        const el = e.target.closest('span:not(.marquee-dot)');
+        if (!el) return;
+        const name = el.textContent.trim();
+        const item = MENU_ITEMS.find(i =>
+            i.name === name || i.name.includes(name) || name.includes(i.name)
+        );
+        if (item) {
+            renderCategoryPills(item.category);
+            renderMenu(item.category);
+        }
+        const menu = document.getElementById('menuContainer');
+        if (menu) menu.scrollIntoView({ behavior: 'smooth' });
+    });
+}
+function persistCustomerIfOptedIn(name, phone, address) {
+    const cb = document.getElementById("rememberDetails");
+    if (cb && cb.checked) {
+        localStorage.setItem(CUSTOMER_STORAGE_KEY, JSON.stringify({ name, phone, address }));
+    } else {
+        localStorage.removeItem(CUSTOMER_STORAGE_KEY);
+    }
 }
 
 /* ── Category Pills ───────────────────────────────────────── */
@@ -316,6 +372,7 @@ function buildPodiCard(item) {
     const card = document.createElement("article");
     card.className = "pcard";
     card.dataset.productId = item.id;
+    card.dataset.category = item.category;
 
     // Default to the "Most popular" size; fall back to the middle cell.
     const popularIdx = item.sizes.findIndex(s => s.badge === "Most popular");
@@ -399,6 +456,7 @@ function buildSweetCard(item) {
     const card = document.createElement("article");
     card.className = "pcard pcard--single";
     card.dataset.productId = item.id;
+    card.dataset.category = item.category;
 
     // Derive PNG fallback from the webp image path (deployed) or keep as-is (local)
     const pngSrcSweet = item.image.endsWith('.webp') ? item.image.replace('.webp', '.png') : item.image;
@@ -777,6 +835,8 @@ function submitOrderViaWhatsApp() {
         alert("Your cart is empty!"); return;
     }
 
+    persistCustomerIfOptedIn(name, phone, address);
+
     const { total } = cartTotals();
     const orderRef = "NCK-" + Date.now().toString(36).toUpperCase();
     showSuccess(orderRef, total, name, phone, address, date);
@@ -792,7 +852,7 @@ function showSuccess(orderId, total, name, phone, address, date) {
     window.gtag?.('event', 'purchase', { transaction_id: orderId, value: total, currency: 'INR', items: items });
 
     document.getElementById("successMessage").textContent =
-        `Order ready to send · Ref: ${orderId}`;
+        `Tap the green button below to send your order to our kitchen on WhatsApp · Ref: ${orderId}`;
 
     const svg = {
         user: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
@@ -801,10 +861,16 @@ function showSuccess(orderId, total, name, phone, address, date) {
         calendar: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
         rupee: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12M6 8h12M6 13l9 8M6 13c8 0 8-10 0-10"/></svg>`,
     };
+    // Delivery day is what the customer picked; preparation happens the day before.
+    const prepDate = new Date(date);
+    prepDate.setDate(prepDate.getDate() - 1);
+    const prepIso = prepDate.toISOString().split("T")[0];
+
     document.getElementById("successOrderCard").innerHTML = `
         <strong>${svg.user}${name}</strong><br>
         ${svg.phone}${phone}<br>
         ${svg.pin}${address}<br>
+        ${svg.calendar}Preparation: ${prepIso}<br>
         ${svg.calendar}Delivery: ${date}<br>
         ${svg.rupee}Items Total: ₹${total}
     `;
@@ -812,7 +878,8 @@ function showSuccess(orderId, total, name, phone, address, date) {
     const lines = Object.values(cart).map(i => `• ${i.name} ×${i.qty} (₹${i.price * i.qty})`).join("\n");
     const msg = encodeURIComponent(
         `*New Order - Navya Cloud Kitchen*\n\n` +
-        `*Ref:* ${orderId}\n*Name:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}\n*Date:* ${date}\n\n` +
+        `*Ref:* ${orderId}\n*Name:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}\n` +
+        `*Preparation Day:* ${prepIso}\n*Delivery Day:* ${date}\n\n` +
         `*Items:*\n${lines}\n\n*Items Total: ₹${total}*\n` +
         `_Courier extra - paid to Rapido/Porter at drop-off._\n\nThank you! 🙏`
     );
