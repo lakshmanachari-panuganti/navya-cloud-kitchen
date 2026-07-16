@@ -2890,6 +2890,21 @@ body.menu-open { overflow: hidden; }
 .pcard[data-category="sweets"]::before             { background: var(--gold); }
 .pcard[data-category="bundles"]::before            { background: #D8DCC8; }
 
+/* Desktop hero — soften the overlay ramp so the food photo bleeds
+   smoothly across the frame instead of ending in a hard vertical cut
+   around the mid-point. Also darken the far-right edge just enough that
+   the image doesn't slam into the frame border. */
+@media (min-width: 900px) {
+    .hero-overlay {
+        background: linear-gradient(95deg,
+            rgba(11, 15, 10, 0.95) 0%,
+            rgba(11, 15, 10, 0.85) 30%,
+            rgba(11, 15, 10, 0.50) 55%,
+            rgba(11, 15, 10, 0.15) 78%,
+            rgba(11, 15, 10, 0.30) 100%);
+    }
+}
+
 /* Body copy on dark surfaces reads too thin at 400. Bump to 500 across
    every long-form paragraph and lift secondary text one shade brighter
    so the extra weight lands legible instead of muddy. */
