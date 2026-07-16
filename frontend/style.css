@@ -2248,21 +2248,6 @@ body.menu-open { overflow: hidden; }
     text-align: center;
     position: relative;
 }
-.success-lottie {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 88px; height: 88px;
-    border-radius: var(--radius-pill);
-    background: var(--accent);
-    color: var(--on-accent);
-    box-shadow: 0 0 32px var(--accent-glow), 0 16px 44px rgba(0, 0, 0, 0.45);
-    animation: popBounce 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.5);
-}
-.success-lottie svg { width: 44px; height: 44px; stroke-width: 2; }
-@keyframes popBounce {
-    0%   { transform: scale(0); opacity: 0; }
-    80%  { transform: scale(1.15); opacity: 1; }
-    100% { transform: scale(1); }
-}
 .success-title {
     font-family: var(--font-display);
     font-size: 2.2rem;
@@ -2983,6 +2968,122 @@ body.menu-open { overflow: hidden; }
         gap: 8px var(--space-4);
     }
     .trust-strip li { font-size: 0.72rem; }
+}
+
+/* "From the Kitchen" strip — surfaces the three blog posts on the home
+   page (previously reachable only from the footer). Photography-first
+   card layout, matches the visual language of the product menu. */
+.blog-strip {
+    padding: var(--space-16) 0 var(--space-8);
+    background: var(--bg-base);
+}
+.blog-strip-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    max-width: 1200px;
+    margin: var(--space-8) auto 0;
+    padding: 0 var(--space-5);
+}
+@media (min-width: 720px) {
+    .blog-strip-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.blog-teaser {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-card);
+    border: 1px solid var(--border-hairline);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    text-decoration: none;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.32);
+    transition: transform var(--t-mid), border-color var(--t-mid),
+                background var(--t-mid), box-shadow var(--t-mid);
+}
+.blog-teaser:hover {
+    transform: translateY(-3px);
+    background: var(--bg-card-hover);
+    border-color: var(--border-olive);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45);
+}
+.blog-teaser picture,
+.blog-teaser img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+    background: var(--bg-panel);
+    transition: transform 0.6s var(--ease-out);
+}
+.blog-teaser:hover img { transform: scale(1.04); }
+.blog-teaser-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: var(--space-4);
+}
+.blog-teaser-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+}
+.blog-teaser-desc {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    flex: 1;
+}
+.blog-teaser-cta {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.01em;
+    margin-top: 4px;
+}
+.blog-teaser:hover .blog-teaser-cta { color: var(--accent-strong); }
+
+/* Related-reads block at the end of each blog post — cross-links to the
+   two other articles so readers stay in the funnel. */
+.related-reads {
+    margin: var(--space-8) 0 0;
+    padding: var(--space-5) var(--space-5);
+    background: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-card);
+}
+.related-reads h2 {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-soft-hi);
+    margin: 0 0 var(--space-3);
+}
+.related-reads ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.related-reads a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.5;
+    border-bottom: 1px solid transparent;
+    transition: color var(--t-mid), border-color var(--t-mid);
+}
+.related-reads a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
 }
 
 /* Desktop hero — soften the overlay ramp so the food photo bleeds

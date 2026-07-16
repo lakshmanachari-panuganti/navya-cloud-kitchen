@@ -828,7 +828,7 @@ function showSuccess(orderId, total, name, phone, address, date) {
     window.gtag?.('event', 'purchase', { transaction_id: orderId, value: total, currency: 'INR', items: items });
 
     document.getElementById("successMessage").textContent =
-        `Order ready to send · Ref: ${orderId}`;
+        `Tap the green button below to send your order to our kitchen on WhatsApp · Ref: ${orderId}`;
 
     const svg = {
         user: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,

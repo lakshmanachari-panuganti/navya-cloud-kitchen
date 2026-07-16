@@ -127,6 +127,50 @@ test('trust strip — mobile', async ({ page }) => {
     await strip.screenshot({ path: path.join(OUT, 'trust-mobile.png') });
 });
 
+test('blog strip — desktop', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/index.html');
+    await page.evaluate(async () => {
+        if (document.fonts && document.fonts.ready) await document.fonts.ready;
+        document.querySelectorAll('.scroll-reveal').forEach((el) => {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+        });
+    });
+    const strip = page.locator('.blog-strip');
+    await strip.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(500);
+    await strip.screenshot({ path: path.join(OUT, 'blog-strip-desktop.png') });
+});
+
+test('related reads — desktop', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/blog/kandi-podi-benefits-uses.html');
+    await page.evaluate(async () => {
+        if (document.fonts && document.fonts.ready) await document.fonts.ready;
+    });
+    const box = page.locator('.related-reads');
+    await box.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(400);
+    await box.screenshot({ path: path.join(OUT, 'related-reads-desktop.png') });
+});
+
+test('blog strip — mobile', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/index.html');
+    await page.evaluate(async () => {
+        if (document.fonts && document.fonts.ready) await document.fonts.ready;
+        document.querySelectorAll('.scroll-reveal').forEach((el) => {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+        });
+    });
+    const strip = page.locator('.blog-strip');
+    await strip.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(500);
+    await strip.screenshot({ path: path.join(OUT, 'blog-strip-mobile.png') });
+});
+
 test('checkout drawer — desktop', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto('/index.html');
