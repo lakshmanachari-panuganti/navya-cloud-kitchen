@@ -215,6 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
         renderMenu("all");
     });
     setupCartEvents();
+    setupMarqueeClick();
     setupScrollNav();
     setupScrollReveal();
     setupMobileMenu();
@@ -270,6 +271,29 @@ function loadSavedCustomer() {
         if (phone && saved.phone) phone.value = saved.phone;
         if (addr && saved.address) addr.value = saved.address;
     } catch { /* corrupt entry → ignore */ }
+}
+/* Marquee → menu shortcut. The scrolling ticker at the top of the page
+   is aria-hidden decoration, but sighted mouse/tap users get a free
+   navigation win: clicking any product name jumps to the menu and
+   pre-selects that item's category. Keyboard/screen-reader users have
+   the existing category pills, so nothing regresses on a11y. */
+function setupMarqueeClick() {
+    const track = document.querySelector('.marquee-track');
+    if (!track) return;
+    track.addEventListener('click', (e) => {
+        const el = e.target.closest('span:not(.marquee-dot)');
+        if (!el) return;
+        const name = el.textContent.trim();
+        const item = MENU_ITEMS.find(i =>
+            i.name === name || i.name.includes(name) || name.includes(i.name)
+        );
+        if (item) {
+            renderCategoryPills(item.category);
+            renderMenu(item.category);
+        }
+        const menu = document.getElementById('menuContainer');
+        if (menu) menu.scrollIntoView({ behavior: 'smooth' });
+    });
 }
 function persistCustomerIfOptedIn(name, phone, address) {
     const cb = document.getElementById("rememberDetails");

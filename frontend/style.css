@@ -2970,6 +2970,18 @@ body.menu-open { overflow: hidden; }
     .trust-strip li { font-size: 0.72rem; }
 }
 
+/* Marquee items become clickable shortcuts to the menu (see
+   setupMarqueeClick in app.js). Cursor + colour hint tells users the
+   text is interactive; hover pause + colour lift makes it read as
+   tappable, not decorative. */
+.marquee-strip { cursor: pointer; }
+.marquee-track > span:not(.marquee-dot) {
+    transition: color 0.15s ease;
+}
+.marquee-strip:hover .marquee-track > span:not(.marquee-dot) {
+    color: var(--accent);
+}
+
 /* "From the Kitchen" strip — surfaces the three blog posts on the home
    page (previously reachable only from the footer). Photography-first
    card layout, matches the visual language of the product menu. */
