@@ -2867,6 +2867,21 @@ body.menu-open { overflow: hidden; }
 /* HTML `hidden` attr must beat class-level `display` rules */
 [hidden] { display: none !important; }
 
+/* Body copy on dark surfaces reads too thin at 400. Bump to 500 across
+   every long-form paragraph and lift secondary text one shade brighter
+   so the extra weight lands legible instead of muddy. */
+:root {
+    --text-secondary: #D8DCC8;
+}
+.hero-desc,
+.story-para,
+.pcard-desc,
+.step-desc,
+.review-text,
+.final-cta-desc {
+    font-weight: 500;
+}
+
 /* Visually-hidden SEO fallback list */
 .sr-only {
     position: absolute !important;
