@@ -78,7 +78,7 @@
     --space-12: 48px; --space-16: 64px; --space-20: 80px; --space-24: 96px;
 
     /* ── Typography ────────────────────────────────────────── */
-    --font-display: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-display: "Fraunces", "Georgia", "Times New Roman", serif;
     --font-body:    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     --font-telugu:  "Noto Sans Telugu", "Inter", sans-serif;
 

@@ -2839,17 +2839,33 @@ body.menu-open { overflow: hidden; }
 /* Section tag was 0.68rem — too tight to read comfortably */
 .section-tag { font-size: 0.78rem; }
 
-/* Hero 6 PM cutoff notice */
-.hero-cutoff {
-    margin-top: 14px;
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    letter-spacing: 0.01em;
+/* Fraunces refinements — dial the SOFT axis and tune tracking so the
+   variable serif reads warm and confident at hero size. NO ITALIC — the
+   em words in headings use accent colour + heavier weight instead. */
+.hero-title,
+.section-heading,
+.final-cta-heading {
+    font-variation-settings: "opsz" 120, "SOFT" 60;
+    letter-spacing: -0.02em;
 }
-.hero-cutoff strong { color: #A3E635; font-weight: 600; }
+.hero-title em,
+.section-heading em,
+.final-cta-heading em {
+    font-style: normal;
+    font-weight: 700;
+    color: var(--accent);
+}
+/* Prices align nicely with tabular figures */
+.pcard-size-price,
+.pcard-main-price,
+.cart-bar-total,
+#billSubtotal,
+#billGrandTotal {
+    font-variant-numeric: tabular-nums;
+}
+
+/* HTML `hidden` attr must beat class-level `display` rules */
+[hidden] { display: none !important; }
 
 /* Visually-hidden SEO fallback list */
 .sr-only {
