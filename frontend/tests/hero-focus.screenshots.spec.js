@@ -127,6 +127,18 @@ test('trust strip — mobile', async ({ page }) => {
     await strip.screenshot({ path: path.join(OUT, 'trust-mobile.png') });
 });
 
+test('category scroll cue — mobile', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/index.html');
+    await page.evaluate(async () => {
+        if (document.fonts && document.fonts.ready) await document.fonts.ready;
+    });
+    const catSection = page.locator('.categories-section');
+    await catSection.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(500);
+    await catSection.screenshot({ path: path.join(OUT, 'cat-cue-mobile.png') });
+});
+
 test('blog strip — desktop', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto('/index.html');
