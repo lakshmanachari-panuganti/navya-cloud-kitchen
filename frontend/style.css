@@ -2890,17 +2890,6 @@ body.menu-open { overflow: hidden; }
 .pcard[data-category="sweets"]::before             { background: var(--gold); }
 .pcard[data-category="bundles"]::before            { background: #D8DCC8; }
 
-/* Photography-forward product cards — bleed the image to the card
-   edges so the food photo becomes the visual anchor instead of a
-   framed thumbnail. The card's overflow:hidden clip keeps the extended
-   image tidy; only the top corners stay rounded. */
-.pcard-img-wrap {
-    margin: calc(-1 * var(--space-4)) calc(-1 * var(--space-4)) 0;
-    border-radius: var(--radius-card) var(--radius-card) 0 0;
-    border: none;
-    aspect-ratio: 4 / 3;
-}
-
 /* Review stars — swap the old text ★ for crisp SVG glyphs, plus a
    small "Verified" pill trailing the stars row so readers know these
    testimonials are real customers, not marketing filler. */

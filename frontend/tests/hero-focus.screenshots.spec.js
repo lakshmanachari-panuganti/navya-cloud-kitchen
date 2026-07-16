@@ -79,38 +79,6 @@ test('trust strip — desktop', async ({ page }) => {
     await strip.screenshot({ path: path.join(OUT, 'trust-desktop.png') });
 });
 
-test('pcard — desktop closeup', async ({ page }) => {
-    await page.setViewportSize({ width: 1440, height: 900 });
-    await page.goto('/index.html');
-    await page.evaluate(async () => {
-        if (document.fonts && document.fonts.ready) await document.fonts.ready;
-        document.querySelectorAll('.scroll-reveal').forEach((el) => {
-            el.style.opacity = '1';
-            el.style.transform = 'none';
-        });
-    });
-    const card = page.locator('.pcard').first();
-    await card.scrollIntoViewIfNeeded();
-    await page.waitForTimeout(600);
-    await card.screenshot({ path: path.join(OUT, 'pcard-desktop.png') });
-});
-
-test('pcard — mobile closeup', async ({ page }) => {
-    await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto('/index.html');
-    await page.evaluate(async () => {
-        if (document.fonts && document.fonts.ready) await document.fonts.ready;
-        document.querySelectorAll('.scroll-reveal').forEach((el) => {
-            el.style.opacity = '1';
-            el.style.transform = 'none';
-        });
-    });
-    const card = page.locator('.pcard').first();
-    await card.scrollIntoViewIfNeeded();
-    await page.waitForTimeout(600);
-    await card.screenshot({ path: path.join(OUT, 'pcard-mobile.png') });
-});
-
 test('reviews — desktop', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto('/index.html');
