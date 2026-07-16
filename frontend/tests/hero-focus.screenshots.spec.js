@@ -79,6 +79,38 @@ test('trust strip — desktop', async ({ page }) => {
     await strip.screenshot({ path: path.join(OUT, 'trust-desktop.png') });
 });
 
+test('reviews — desktop', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/index.html');
+    await page.evaluate(async () => {
+        if (document.fonts && document.fonts.ready) await document.fonts.ready;
+        document.querySelectorAll('.scroll-reveal').forEach((el) => {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+        });
+    });
+    const section = page.locator('.reviews-section');
+    await section.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(400);
+    await section.screenshot({ path: path.join(OUT, 'reviews-desktop.png') });
+});
+
+test('reviews — mobile', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/index.html');
+    await page.evaluate(async () => {
+        if (document.fonts && document.fonts.ready) await document.fonts.ready;
+        document.querySelectorAll('.scroll-reveal').forEach((el) => {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+        });
+    });
+    const section = page.locator('.reviews-section');
+    await section.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(400);
+    await section.screenshot({ path: path.join(OUT, 'reviews-mobile.png') });
+});
+
 test('trust strip — mobile', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/index.html');

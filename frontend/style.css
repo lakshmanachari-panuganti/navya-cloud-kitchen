@@ -2890,6 +2890,34 @@ body.menu-open { overflow: hidden; }
 .pcard[data-category="sweets"]::before             { background: var(--gold); }
 .pcard[data-category="bundles"]::before            { background: #D8DCC8; }
 
+/* Review stars — swap the old text ★ for crisp SVG glyphs, plus a
+   small "Verified" pill trailing the stars row so readers know these
+   testimonials are real customers, not marketing filler. */
+.review-stars {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    filter: none;
+}
+.review-stars svg { flex-shrink: 0; }
+.review-verified {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 10px;
+    padding: 3px 9px 3px 7px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-soft-hi);
+    background: var(--accent-soft-dim);
+    border: 1px solid var(--border-olive);
+    border-radius: var(--radius-pill);
+    line-height: 1.2;
+}
+.review-verified svg { color: var(--accent); }
+
 /* Slim business-trust strip under the feature-highlight cards. Compact
    iconic row for FSSAI / delivery / payment / support — the credentials
    people scan for on food-DTC sites but that were previously buried in
