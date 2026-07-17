@@ -49,7 +49,7 @@ const MENU_ITEMS = [
         sub: "Flaxseed Garlic Powder",
         category: "everyday_podulu",
         tier: "Everyday",
-        benefit: "Everyday Favourite",
+        benefit: "Customer Favourite",
         description: "Flaxseeds slow-roasted with garlic & warming spices. Best mixed with curd rice or hot rice with ghee.",
         sizes: [
             { grams: 100, price: 129 },
@@ -94,7 +94,7 @@ const MENU_ITEMS = [
         sub: "Sesame Seeds Powder",
         category: "traditional_comfort",
         tier: "Signature",
-        benefit: "Signature",
+        benefit: "Mild & Nutty",
         description: "Roasted sesame seeds ground with mild spices. Mix into hot rice or vegetable stir-fries.",
         allergens: "Contains sesame.",
         sizes: [
@@ -451,7 +451,7 @@ function buildSweetCard(item) {
             </picture>
         </div>
         <header class="pcard-tags">
-            <span class="pcard-tier">Sweet</span>
+            <span class="pcard-tier">${item.category === "bundles" ? "Combo" : "Sweet"}</span>
             <span class="pcard-benefit">${item.benefit}</span>
         </header>
         <div class="pcard-heading">
