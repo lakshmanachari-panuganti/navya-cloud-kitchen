@@ -178,7 +178,12 @@ const CATEGORIES = {
     all: { label: "All Items", icon: ICON.home },
     everyday_podulu: { label: "Everyday Podulu", icon: ICON.leaf, iconType: "green" },
     traditional_comfort: { label: "Traditional Podulu", icon: ICON.flame, iconType: "amber" },
-    sweets: { label: "Sweets & Snacks", icon: ICON.candy, iconType: "amber" },
+    sweets: {
+        label: "Sweets & Snacks",
+        icon: ICON.candy,
+        iconType: "amber",
+        blurb: "Traditional South Indian undalu — slow-cooked the way our grandmothers made them. Unhurried, small-batch, and made with whole ingredients: unrefined bellam jaggery, pure cow ghee, roasted seeds and pulses."
+    },
     bundles: { label: "Combo Packs", icon: ICON.gift, iconType: "amber" }
 };
 
@@ -215,7 +220,6 @@ document.addEventListener("DOMContentLoaded", () => {
         renderMenu("all");
     });
     setupCartEvents();
-    setupMarqueeClick();
     setupScrollNav();
     setupScrollReveal();
     setupMobileMenu();
@@ -272,29 +276,6 @@ function loadSavedCustomer() {
         if (addr && saved.address) addr.value = saved.address;
     } catch { /* corrupt entry → ignore */ }
 }
-/* Marquee → menu shortcut. The scrolling ticker at the top of the page
-   is aria-hidden decoration, but sighted mouse/tap users get a free
-   navigation win: clicking any product name jumps to the menu and
-   pre-selects that item's category. Keyboard/screen-reader users have
-   the existing category pills, so nothing regresses on a11y. */
-function setupMarqueeClick() {
-    const track = document.querySelector('.marquee-track');
-    if (!track) return;
-    track.addEventListener('click', (e) => {
-        const el = e.target.closest('span:not(.marquee-dot)');
-        if (!el) return;
-        const name = el.textContent.trim();
-        const item = MENU_ITEMS.find(i =>
-            i.name === name || i.name.includes(name) || name.includes(i.name)
-        );
-        if (item) {
-            renderCategoryPills(item.category);
-            renderMenu(item.category);
-        }
-        const menu = document.getElementById('menuContainer');
-        if (menu) menu.scrollIntoView({ behavior: 'smooth' });
-    });
-}
 function persistCustomerIfOptedIn(name, phone, address) {
     const cb = document.getElementById("rememberDetails");
     if (cb && cb.checked) {
@@ -342,6 +323,7 @@ function renderMenu(filterKey) {
                 <div class="section-label-icon ${cat.iconType || 'green'}">${cat.icon}</div>
                 <div>
                     <div class="section-title">${cat.label}</div>
+                    ${cat.blurb ? `<p class="section-blurb">${cat.blurb}</p>` : ""}
                 </div>
             </div>
             <div class="menu-grid" id="grid-${catKey}"></div>
@@ -860,26 +842,24 @@ function showSuccess(orderId, total, name, phone, address, date) {
         pin: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
         calendar: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
         rupee: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12M6 8h12M6 13l9 8M6 13c8 0 8-10 0-10"/></svg>`,
+        receipt: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2h13a1 1 0 0 1 1 1v18l-3-2-3 2-3-2-3 2-3-2V3a1 1 0 0 1 1-1z"/><line x1="8" y1="7" x2="14" y2="7"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="8" y1="15" x2="12" y2="15"/></svg>`,
     };
-    // Delivery day is what the customer picked; preparation happens the day before.
-    const prepDate = new Date(date);
-    prepDate.setDate(prepDate.getDate() - 1);
-    const prepIso = prepDate.toISOString().split("T")[0];
 
     document.getElementById("successOrderCard").innerHTML = `
         <strong>${svg.user}${name}</strong><br>
         ${svg.phone}${phone}<br>
-        ${svg.pin}${address}<br>
-        ${svg.calendar}Preparation: ${prepIso}<br>
+        ${svg.receipt}Order # ${orderId}<br>
         ${svg.calendar}Delivery: ${date}<br>
         ${svg.rupee}Items Total: ₹${total}
+        <div class="success-order-card__gap"></div>
+        <span class="success-order-card__address">${svg.pin}${address}</span>
     `;
 
     const lines = Object.values(cart).map(i => `• ${i.name} ×${i.qty} (₹${i.price * i.qty})`).join("\n");
     const msg = encodeURIComponent(
         `*New Order - Navya Cloud Kitchen*\n\n` +
         `*Ref:* ${orderId}\n*Name:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}\n` +
-        `*Preparation Day:* ${prepIso}\n*Delivery Day:* ${date}\n\n` +
+        `*Delivery Day:* ${date}\n\n` +
         `*Items:*\n${lines}\n\n*Items Total: ₹${total}*\n` +
         `_Courier extra - paid to Rapido/Porter at drop-off._\n\nThank you! 🙏`
     );
