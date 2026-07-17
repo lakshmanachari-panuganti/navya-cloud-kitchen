@@ -803,6 +803,7 @@ body.menu-open { overflow: hidden; }
     max-width: 480px;
     font-weight: 400;
 }
+.hero-desc--short { display: none; }
 
 .hero-actions {
     display: flex;
@@ -936,7 +937,14 @@ body.menu-open { overflow: hidden; }
         font-size: clamp(2.4rem, 11vw, 3.4rem);
         line-height: 1.02;
     }
-    .hero-desc { display: none; }
+    /* Swap the long hero paragraph for a one-line version instead of
+       hiding it outright — small screens still need the core pitch
+       (zero preservatives / homemade) above the fold. */
+    .hero-desc--full { display: none; }
+    .hero-desc--short {
+        display: block;
+        font-size: 0.95rem;
+    }
     .hero-actions { gap: 10px; margin-top: var(--space-3); }
     .hero-cta-primary, .hero-cta-ghost {
         flex: 0 0 auto;
@@ -2238,6 +2246,12 @@ body.menu-open { overflow: hidden; }
     color: var(--accent-soft-hi);
     vertical-align: -2px;
     margin-right: 6px;
+}
+.success-order-card__gap { height: 1.1em; }
+.success-order-card__address {
+    display: block;
+    text-indent: -20px;
+    padding-left: 20px;
 }
 .whatsapp-btn {
     display: inline-flex; align-items: center; justify-content: center;
