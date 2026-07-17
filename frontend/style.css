@@ -968,7 +968,7 @@ body.menu-open { overflow: hidden; }
    HOW IT WORKS
 ═══════════════════════════════════════════════════════════ */
 .how-it-works {
-    padding: var(--space-20) 0;
+    padding: var(--space-16) 0;
     background: var(--bg-base);
 }
 .steps-grid {
@@ -1043,7 +1043,7 @@ body.menu-open { overflow: hidden; }
 ═══════════════════════════════════════════════════════════ */
 .story-section {
     position: relative;
-    padding: var(--space-20) 0;
+    padding: var(--space-16) 0;
     background: var(--bg-base);
 }
 .story-section .section-container { max-width: 1200px; }
@@ -1084,22 +1084,6 @@ body.menu-open { overflow: hidden; }
     position: relative;
 }
 .story-img-frame img { width: 100%; height: 100%; object-fit: cover; }
-.story-img-placeholder {
-    width: 100%; height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-2);
-    color: var(--text-muted);
-}
-.story-img-placeholder .icon-chip { margin-bottom: var(--space-2); }
-.story-img-placeholder small {
-    font-family: var(--font-display);
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    letter-spacing: 0.02em;
-}
 .story-accent-badge {
     position: absolute;
     bottom: -14px;
@@ -1334,7 +1318,15 @@ body.menu-open { overflow: hidden; }
 }
 @media (min-width: 1024px) {
     .menu-section { padding: var(--space-8) var(--space-8) var(--space-4); }
-    .menu-grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+    /* Fixed-width (not 1fr) columns + justify-content:center so a
+       category with fewer than 3 items (e.g. Combo Packs) renders as a
+       centered row instead of a stretched 3-column grid with a large
+       dead gap on the right. */
+    .menu-grid {
+        grid-template-columns: repeat(3, minmax(0, 360px));
+        justify-content: center;
+        gap: var(--space-6);
+    }
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -1588,7 +1580,7 @@ body.menu-open { overflow: hidden; }
    REVIEWS
 ═══════════════════════════════════════════════════════════ */
 .reviews-section {
-    padding: var(--space-20) 0;
+    padding: var(--space-16) 0;
     background: var(--bg-base);
 }
 .reviews-grid {
