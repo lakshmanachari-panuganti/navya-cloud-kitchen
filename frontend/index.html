@@ -53,7 +53,7 @@
                 </picture>
                 <div class="nav-brand-text">
                     <div class="nav-title">Navya Cloud Kitchen</div>
-                    <div class="nav-sub">Fresh, healthy &amp; Traditional</div>
+                    <div class="nav-sub">Fresh, Homemade &amp; Traditional</div>
                 </div>
             </a>
             <nav class="nav-links" id="navLinks" aria-label="Primary">
@@ -390,13 +390,16 @@
         </div>
     </section>
 
-    <!-- Category Pills -->
-    <div class="categories-section">
-        <div class="category-scroll" id="categoryTabs"></div>
-    </div>
+    <!-- Category Pills + Menu (shared wrapper bounds the sticky bar so it
+         releases once the product grid ends, instead of floating over
+         the sections/footer below). -->
+    <div class="menu-shell">
+        <div class="categories-section">
+            <div class="category-scroll" id="categoryTabs"></div>
+        </div>
 
-    <!-- Menu Container -->
-    <main class="menu-main" id="menuContainer"></main>
+        <main class="menu-main" id="menuContainer"></main>
+    </div>
 
     <!-- SEO fallback: crawlable product list. app.js only touches #menuContainer /
          #categoryTabs, so this stays put. Hidden visually; still indexed. -->

@@ -1302,6 +1302,13 @@ body.menu-open { overflow: hidden; }
 /* ═══════════════════════════════════════════════════════════
    CATEGORY PILLS
 ═══════════════════════════════════════════════════════════ */
+/* Bounds the sticky bar's "stuck" range to the product grid only —
+   see .menu-shell in index.html. Without this wrapper, position:sticky
+   has no containing block to release against and the bar stays pinned
+   over every section below it (testimonials, footer, etc). */
+.menu-shell {
+    position: relative;
+}
 .categories-section {
     padding: var(--space-8) 0 var(--space-4);
     background: var(--bg-base);
