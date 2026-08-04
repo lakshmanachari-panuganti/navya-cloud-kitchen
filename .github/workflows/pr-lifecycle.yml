@@ -1,0 +1,20 @@
+name: PR Lifecycle
+
+# Thin caller. The implementation lives in the administration repository so a fix
+# reaches every repository at once.
+# https://github.com/lakshmanachari-panuganti/Repository-Administration-Governance
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  lifecycle:
+    uses: lakshmanachari-panuganti/Repository-Administration-Governance/.github/workflows/pr-lifecycle.yml@main
+    with:
+      language: none
+      test-command: ''
+      enable-agents: false
+    secrets: inherit
