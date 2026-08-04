@@ -6,7 +6,9 @@ name: PR Lifecycle
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened, ready_for_review]
+    # labeled/unlabeled matter: needs-human is applied by a person after the pull request
+    # already exists, and without these the lifecycle never re-evaluates it.
+    types: [opened, synchronize, reopened, ready_for_review, labeled, unlabeled]
   pull_request_review:
     types: [submitted]
 
