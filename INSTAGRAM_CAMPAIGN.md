@@ -3,7 +3,7 @@
 **Brand:** Navya Cloud Kitchen · Neredmet, Hyderabad
 **Website:** https://www.navyacloudkitchen.com
 **Instagram:** [@navyacloudkitchen](https://instagram.com/navyacloudkitchen)
-**WhatsApp:** +91 8686 21 6633
+**WhatsApp:** +91 8074 12 6633
 **Tagline:** *Fresh, healthy & Traditional*
 
 ---
@@ -38,7 +38,7 @@ Build a single **350×100 px transparent PNG** in Canva or Figma containing:
 - **Centre:** `www.navyacloudkitchen.com` in DM Sans, white
 - **Right (stacked):**
   - Instagram glyph + `@navyacloudkitchen`
-  - WhatsApp glyph + `+91 8686 21 6633`
+  - WhatsApp glyph + `+91 8074 12 6633`
 
 Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 
@@ -74,7 +74,7 @@ Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 >
 > Our Kandi Podi is what happens when toor and chana dal are hand-roasted till amber, ground with cumin and dry red chili — nothing else. It's the podi our own mothers made. Now made for yours.
 >
-> Order via WhatsApp → +91 8686 21 6633
+> Order via WhatsApp → +91 8074 12 6633
 > Menu → www.navyacloudkitchen.com
 >
 > Tag the friend who eats podi-annam thrice a week 🌾
@@ -106,7 +106,7 @@ Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 > Have it on hot rice with a spoon of ghee. That's the whole recipe.
 >
 > 100g / 250g / 500g → WhatsApp us to order
-> +91 8686 21 6633
+> +91 8074 12 6633
 > www.navyacloudkitchen.com
 >
 > #KarivepakuPodi #CurryLeavesPowder #AndhraKitchen #HomemadeFood #HyderabadHomemade #NavyaCloudKitchen #TeluguRuchulu
@@ -135,7 +135,7 @@ Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 >
 > Grab 250g and thank us next week 🌿
 >
-> WhatsApp → +91 8686 21 6633
+> WhatsApp → +91 8074 12 6633
 > www.navyacloudkitchen.com
 >
 > #MunagakuPodi #MoringaPodi #AndhraFood #HyderabadFoodBlogger #HomemadePodi #NavyaCloudKitchen #SlowFood
@@ -165,7 +165,7 @@ Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 >
 > Heat rating: unapologetic 🌶️
 >
-> 100g / 250g / 500g → WhatsApp +91 8686 21 6633
+> 100g / 250g / 500g → WhatsApp +91 8074 12 6633
 > www.navyacloudkitchen.com
 >
 > Tag the one who orders "extra spicy" everywhere 🔥
@@ -196,7 +196,7 @@ Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 >
 > The one to add to your pantry once you've done the basics.
 >
-> WhatsApp us → +91 8686 21 6633
+> WhatsApp us → +91 8074 12 6633
 > Full menu → www.navyacloudkitchen.com
 >
 > ⚠️ Contains sesame.
@@ -227,7 +227,7 @@ Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 >
 > Try our Everyday combo — Kandi + Avise Ginjala + Karivepaku, ₹450 delivered.
 >
-> WhatsApp → +91 8686 21 6633
+> WhatsApp → +91 8074 12 6633
 > www.navyacloudkitchen.com
 >
 > #AviseGinjalaPodi #FlaxseedPowder #HomemadePodi #NavyaCloudKitchen #HyderabadHomemade #EverydayFlavours
@@ -258,7 +258,7 @@ Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 > That's the entire recipe. No stabilisers, no palm oil, no shortcuts.
 >
 > Box of 6 → ₹260
-> WhatsApp to order → +91 8686 21 6633
+> WhatsApp to order → +91 8074 12 6633
 > www.navyacloudkitchen.com
 >
 > ⚠️ Contains dairy (cow ghee).
@@ -291,7 +291,7 @@ Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 > Now available every week, not just once a year.
 >
 > Box of 10 → ₹199
-> WhatsApp → +91 8686 21 6633
+> WhatsApp → +91 8074 12 6633
 > www.navyacloudkitchen.com
 >
 > ⚠️ Contains sesame.
@@ -323,7 +323,7 @@ Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 >
 > A ₹120 pack. A childhood snack. Zero apologies.
 >
-> WhatsApp → +91 8686 21 6633
+> WhatsApp → +91 8074 12 6633
 > www.navyacloudkitchen.com
 >
 > ⚠️ Contains peanuts.
@@ -356,7 +356,7 @@ Drop the same strip on every AI-generated image. **Consistency > cleverness.**
 >
 > Everything hand-roasted this week. Nothing older than the pouch you'll open.
 >
-> WhatsApp → +91 8686 21 6633
+> WhatsApp → +91 8074 12 6633
 > Menu → www.navyacloudkitchen.com
 > Insta → @navyacloudkitchen
 >
