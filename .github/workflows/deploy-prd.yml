@@ -1,4 +1,4 @@
-name: Deploy Frontend · PRD
+name: Deploy · PRD
 
 on:
   push:
@@ -6,16 +6,17 @@ on:
       - main
     paths:
       - 'frontend/**'
-      - '.github/workflows/deploy-frontend-prd.yml'
+      - 'backend/**'
+      - '.github/workflows/deploy-prd.yml'
   workflow_dispatch:
 
 concurrency:
-  group: deploy-frontend-prd
+  group: deploy-prd
   cancel-in-progress: false
 
 jobs:
   build-and-deploy:
-    name: Frontend · Build & Deploy (PRD)
+    name: Build & Deploy (PRD)
     runs-on: ubuntu-latest
     environment: production
     permissions:
@@ -30,11 +31,15 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install & Lint
+      - name: Install & Lint Frontend
         working-directory: frontend
         run: |
           npm ci
           npm run lint
+
+      - name: Install Backend Dependencies
+        working-directory: backend
+        run: npm ci
 
       - name: Deploy to Azure Static Web Apps (PRD)
         uses: Azure/static-web-apps-deploy@v1

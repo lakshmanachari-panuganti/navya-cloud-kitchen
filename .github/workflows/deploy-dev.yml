@@ -1,4 +1,4 @@
-name: Deploy Backend · DEV
+name: Deploy · DEV
 
 on:
   push:
@@ -6,8 +6,9 @@ on:
       - develop
       - ai-driven1
     paths:
+      - 'frontend/**'
       - 'backend/**'
-      - '.github/workflows/deploy-backend-dev.yml'
+      - '.github/workflows/deploy-dev.yml'
   pull_request:
     types:
       - opened
@@ -18,16 +19,17 @@ on:
       - develop
       - ai-driven1
     paths:
+      - 'frontend/**'
       - 'backend/**'
   workflow_dispatch:
 
 concurrency:
-  group: deploy-backend-dev-${{ github.ref }}
+  group: deploy-dev-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   build-and-deploy:
-    name: Backend · Build & Deploy (DEV)
+    name: Build & Deploy (DEV)
     if: github.event_name != 'pull_request' || github.event.action != 'closed'
     runs-on: ubuntu-latest
     permissions:
@@ -42,6 +44,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+
+      - name: Install & Lint Frontend
+        working-directory: frontend
+        run: |
+          npm ci
+          npm run lint
 
       - name: Install Backend Dependencies
         working-directory: backend
