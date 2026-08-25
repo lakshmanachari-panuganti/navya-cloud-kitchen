@@ -9,6 +9,11 @@ on:
       - 'frontend/**'
       - '.github/workflows/deploy-frontend-dev.yml'
   pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - closed
     branches:
       - develop
       - ai-driven1
@@ -23,6 +28,7 @@ concurrency:
 jobs:
   build-and-deploy:
     name: Frontend · Build & Deploy (DEV)
+    if: github.event_name != 'pull_request' || github.event.action != 'closed'
     runs-on: ubuntu-latest
     permissions:
       contents: read
