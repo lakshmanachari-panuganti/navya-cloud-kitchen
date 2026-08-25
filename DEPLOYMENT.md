@@ -278,7 +278,7 @@ az staticwebapp appsettings set `
 Edit [`config.js`](./config.js):
 ```javascript
 const CONFIG = {
-    WHATSAPP_NUMBER: "918686216633",  // Owner's WhatsApp (with country code)
+    WHATSAPP_NUMBER: "918074126633",  // Owner's WhatsApp (with country code)
     RAZORPAY_KEY_ID: "rzp_live_XXXXXXXX",  // Public key only - safe in frontend
     CURRENCY: "INR",
     DELIVERY_CHARGE: 50,
@@ -342,7 +342,7 @@ After deploying, verify the following:
 
 | Contact | Details |
 |---|---|
-| Owner WhatsApp | +91 86862 16633 |
+| Owner WhatsApp | +91 80741 26633 |
 | Azure Portal | [portal.azure.com](https://portal.azure.com) → `rg-navyascloudkitchen1-dev` |
 | Razorpay Dashboard | [dashboard.razorpay.com](https://dashboard.razorpay.com) |
 
