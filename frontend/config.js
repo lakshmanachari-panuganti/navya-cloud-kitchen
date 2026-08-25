@@ -6,11 +6,11 @@
 const CONFIG = {
     // Phone / WhatsApp number in E.164 (country code first, digits only).
     // Used for wa.me links and as the base for PHONE_TEL / PHONE_DISPLAY.
-    WHATSAPP_NUMBER: "918686216633",
+    WHATSAPP_NUMBER: "918074126633",
 
     // tel: link value (with leading +) and human-readable display form.
-    PHONE_TEL: "+918686216633",
-    PHONE_DISPLAY: "+91 8686 21 6633",
+    PHONE_TEL: "+918074126633",
+    PHONE_DISPLAY: "+91 8074 12 6633",
 
     // Instagram handle (no leading @) and full URL.
     INSTAGRAM_HANDLE: "navyacloudkitchen",
